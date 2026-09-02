@@ -71,15 +71,12 @@ function Home() {
   const makes = Array.from(new Set((rvs.data ?? []).map((rv) => rv.make))).sort();
 
   function runQuickSearch() {
-    navigate({
-      to: "/inventory",
-      search: {
-        rvClass: quick.rvClass || undefined,
-        make: quick.make || undefined,
-        condition: quick.condition || undefined,
-        priceMax: quick.priceMax ? Number(quick.priceMax) : undefined,
-      },
-    });
+    const search: InventorySearch = {};
+    if (quick.rvClass) search.rvClass = quick.rvClass;
+    if (quick.make) search.make = quick.make;
+    if (quick.condition) search.condition = quick.condition;
+    if (quick.priceMax) search.priceMax = Number(quick.priceMax);
+    navigate({ to: "/inventory", search });
   }
 
   return (
