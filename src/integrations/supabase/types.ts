@@ -14,16 +14,432 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blog_posts: {
+        Row: {
+          body: string
+          cover_image: string | null
+          created_at: string
+          excerpt: string | null
+          id: string
+          published: boolean
+          published_at: string
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body: string
+          cover_image?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          published?: boolean
+          published_at?: string
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string
+          cover_image?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          published?: boolean
+          published_at?: string
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      delivery_quotes: {
+        Row: {
+          created_at: string
+          delivery_type: string
+          destination: string | null
+          email: string
+          id: string
+          message: string | null
+          name: string
+          phone: string | null
+          rv_of_interest: string | null
+          status: string
+          target_date: string | null
+        }
+        Insert: {
+          created_at?: string
+          delivery_type?: string
+          destination?: string | null
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          phone?: string | null
+          rv_of_interest?: string | null
+          status?: string
+          target_date?: string | null
+        }
+        Update: {
+          created_at?: string
+          delivery_type?: string
+          destination?: string | null
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string | null
+          rv_of_interest?: string | null
+          status?: string
+          target_date?: string | null
+        }
+        Relationships: []
+      }
+      financing_applications: {
+        Row: {
+          address: string | null
+          annual_income: number | null
+          created_at: string
+          credit_range: string | null
+          desired_rv: string | null
+          down_payment: number | null
+          email: string
+          employment: string | null
+          id: string
+          name: string
+          notes: string | null
+          phone: string
+          status: string
+        }
+        Insert: {
+          address?: string | null
+          annual_income?: number | null
+          created_at?: string
+          credit_range?: string | null
+          desired_rv?: string | null
+          down_payment?: number | null
+          email: string
+          employment?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          phone: string
+          status?: string
+        }
+        Update: {
+          address?: string | null
+          annual_income?: number | null
+          created_at?: string
+          credit_range?: string | null
+          desired_rv?: string | null
+          down_payment?: number | null
+          email?: string
+          employment?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          phone?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      inquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          kind: string
+          message: string | null
+          name: string
+          phone: string | null
+          preferred_date: string | null
+          rv_id: string | null
+          rv_of_interest: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          kind?: string
+          message?: string | null
+          name: string
+          phone?: string | null
+          preferred_date?: string | null
+          rv_id?: string | null
+          rv_of_interest?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          kind?: string
+          message?: string | null
+          name?: string
+          phone?: string | null
+          preferred_date?: string | null
+          rv_id?: string | null
+          rv_of_interest?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "inquiries_rv_id_fkey"
+            columns: ["rv_id"]
+            isOneToOne: false
+            referencedRelation: "rvs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      reviews: {
+        Row: {
+          body: string
+          created_at: string
+          customer_name: string
+          id: string
+          published: boolean
+          rating: number
+          reviewed_on: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          customer_name: string
+          id?: string
+          published?: boolean
+          rating?: number
+          reviewed_on?: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          customer_name?: string
+          id?: string
+          published?: boolean
+          rating?: number
+          reviewed_on?: string
+        }
+        Relationships: []
+      }
+      rvs: {
+        Row: {
+          condition: string
+          created_at: string
+          description: string | null
+          engine: string | null
+          featured: boolean
+          features: string[]
+          fuel_type: string
+          id: string
+          length_ft: number | null
+          location: string
+          make: string
+          mileage: number
+          model: string
+          photos: string[]
+          price: number
+          published: boolean
+          rv_class: string
+          sleeps: number | null
+          slides: number | null
+          status: string
+          stock_number: string
+          updated_at: string
+          video_url: string | null
+          vin: string | null
+          year: number
+        }
+        Insert: {
+          condition?: string
+          created_at?: string
+          description?: string | null
+          engine?: string | null
+          featured?: boolean
+          features?: string[]
+          fuel_type?: string
+          id?: string
+          length_ft?: number | null
+          location?: string
+          make: string
+          mileage?: number
+          model: string
+          photos?: string[]
+          price: number
+          published?: boolean
+          rv_class: string
+          sleeps?: number | null
+          slides?: number | null
+          status?: string
+          stock_number: string
+          updated_at?: string
+          video_url?: string | null
+          vin?: string | null
+          year: number
+        }
+        Update: {
+          condition?: string
+          created_at?: string
+          description?: string | null
+          engine?: string | null
+          featured?: boolean
+          features?: string[]
+          fuel_type?: string
+          id?: string
+          length_ft?: number | null
+          location?: string
+          make?: string
+          mileage?: number
+          model?: string
+          photos?: string[]
+          price?: number
+          published?: boolean
+          rv_class?: string
+          sleeps?: number | null
+          slides?: number | null
+          status?: string
+          stock_number?: string
+          updated_at?: string
+          video_url?: string | null
+          vin?: string | null
+          year?: number
+        }
+        Relationships: []
+      }
+      service_requests: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          phone: string | null
+          preferred_date: string | null
+          rv_details: string | null
+          service_type: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          phone?: string | null
+          preferred_date?: string | null
+          rv_details?: string | null
+          service_type: string
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string | null
+          preferred_date?: string | null
+          rv_details?: string | null
+          service_type?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      trade_in_requests: {
+        Row: {
+          asking_value: number | null
+          condition: string | null
+          created_at: string
+          email: string
+          id: string
+          location: string | null
+          make: string | null
+          mileage: number | null
+          model: string | null
+          name: string
+          notes: string | null
+          phone: string | null
+          photos: string[]
+          status: string
+          vin: string | null
+          year: number | null
+        }
+        Insert: {
+          asking_value?: number | null
+          condition?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          location?: string | null
+          make?: string | null
+          mileage?: number | null
+          model?: string | null
+          name: string
+          notes?: string | null
+          phone?: string | null
+          photos?: string[]
+          status?: string
+          vin?: string | null
+          year?: number | null
+        }
+        Update: {
+          asking_value?: number | null
+          condition?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          location?: string | null
+          make?: string | null
+          mileage?: number | null
+          model?: string | null
+          name?: string
+          notes?: string | null
+          phone?: string | null
+          photos?: string[]
+          status?: string
+          vin?: string | null
+          year?: number | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      is_staff: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "staff"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +566,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "staff"],
+    },
   },
 } as const
