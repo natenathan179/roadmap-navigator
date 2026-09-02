@@ -2,10 +2,10 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
 import { InventoryBrowser } from "@/components/site/InventoryBrowser";
 import { PageHeader } from "@/components/site/PageHeader";
-import { parseInventorySearch, type InventorySearch } from "@/lib/search";
+import { parseInventorySearch, type InventorySearch, type InventorySearchInput } from "@/lib/search";
 
 export const Route = createFileRoute("/inventory/")({
-  validateSearch: (search: Record<string, unknown>): InventorySearch => parseInventorySearch(search),
+  validateSearch: (search: InventorySearchInput): InventorySearch => parseInventorySearch(search),
   head: () => ({
     meta: [
       { title: "RV Inventory | Motorhomes for Sale in Bend, Oregon" },
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/inventory/")({
 
 function InventoryPage() {
   const search = Route.useSearch();
-  const navigate = useNavigate({ from: "/inventory" });
+  const navigate = useNavigate({ from: "/inventory/" });
 
   return (
     <>

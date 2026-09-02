@@ -2,10 +2,10 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
 import { InventoryBrowser } from "@/components/site/InventoryBrowser";
 import { PageHeader } from "@/components/site/PageHeader";
-import { parseInventorySearch, type InventorySearch } from "@/lib/search";
+import { parseInventorySearch, type InventorySearch, type InventorySearchInput } from "@/lib/search";
 
 export const Route = createFileRoute("/new-rvs")({
-  validateSearch: (search: Record<string, unknown>): InventorySearch => parseInventorySearch(search),
+  validateSearch: (search: InventorySearchInput): InventorySearch => parseInventorySearch(search),
   head: () => ({
     meta: [
       { title: "New Motorhomes for Sale | Summit Ridge RV, Bend Oregon" },
