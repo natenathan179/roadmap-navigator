@@ -9,6 +9,10 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import { Footer } from "../components/site/Footer";
+import { Header } from "../components/site/Header";
+import { MobileCtaBar } from "../components/site/MobileCtaBar";
+import { Toaster } from "../components/ui/sonner";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
