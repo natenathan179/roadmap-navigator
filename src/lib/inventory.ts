@@ -50,10 +50,11 @@ const RV_COLUMNS =
   "id,stock_number,year,make,model,rv_class,condition,fuel_type,engine,price,mileage,length_ft,sleeps,slides,vin,location,description,features,photos,video_url,featured,status,created_at";
 
 function normalize(row: Record<string, unknown>): Rv {
+  const length = row["length_ft"];
   return {
     ...(row as unknown as Rv),
-    price: Number(row.price ?? 0),
-    length_ft: row.length_ft === null || row.length_ft === undefined ? null : Number(row.length_ft),
+    price: Number(row["price"] ?? 0),
+    length_ft: length === null || length === undefined ? null : Number(length),
   };
 }
 
