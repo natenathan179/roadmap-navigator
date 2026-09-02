@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { RV_CLASSES, FUEL_TYPES } from "@/lib/dealership";
-import { applyFilters, rvsQuery, type Rv } from "@/lib/inventory";
+import { applyFilters, rvsQuery, type Filters, type Rv } from "@/lib/inventory";
 import { EMPTY_FILTERS, type InventorySearch } from "@/lib/search";
 
 type Props = {
@@ -30,7 +30,7 @@ function selectClass() {
 }
 
 export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
-  const f = { ...EMPTY_FILTERS, ...search };
+  const f: Filters = { ...EMPTY_FILTERS, ...search };
   const { data, isLoading } = useQuery(rvsQuery());
   const [showFilters, setShowFilters] = useState(false);
 

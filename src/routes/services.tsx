@@ -70,7 +70,7 @@ function Services() {
                   name: "service_type",
                   label: "Service needed",
                   type: "select",
-                  options: [...SERVICE_CATEGORIES],
+                  options: SERVICE_CATEGORIES.map((s) => s.name),
                   required: true,
                   full: true,
                 },
