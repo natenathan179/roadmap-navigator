@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DeliveryRouteImport } from './routes/delivery'
+import { Route as FinancingRouteImport } from './routes/financing'
+import { Route as NewRvsRouteImport } from './routes/new-rvs'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TradeInRouteImport } from './routes/trade-in'
+import { Route as UsedRvsRouteImport } from './routes/used-rvs'
+import { Route as InventoryIndexRouteImport } from './routes/inventory.index'
+import { Route as InventoryStockRouteImport } from './routes/inventory.$stock'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeliveryRoute = DeliveryRouteImport.update({
+  id: '/delivery',
+  path: '/delivery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinancingRoute = FinancingRouteImport.update({
+  id: '/financing',
+  path: '/financing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewRvsRoute = NewRvsRouteImport.update({
+  id: '/new-rvs',
+  path: '/new-rvs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TradeInRoute = TradeInRouteImport.update({
+  id: '/trade-in',
+  path: '/trade-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsedRvsRoute = UsedRvsRouteImport.update({
+  id: '/used-rvs',
+  path: '/used-rvs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryIndexRoute = InventoryIndexRouteImport.update({
+  id: '/inventory/',
+  path: '/inventory/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryStockRoute = InventoryStockRouteImport.update({
+  id: '/inventory/$stock',
+  path: '/inventory/$stock',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/delivery': typeof DeliveryRoute
+  '/financing': typeof FinancingRoute
+  '/new-rvs': typeof NewRvsRoute
+  '/services': typeof ServicesRoute
+  '/trade-in': typeof TradeInRoute
+  '/used-rvs': typeof UsedRvsRoute
+  '/inventory/$stock': typeof InventoryStockRoute
+  '/inventory/': typeof InventoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/delivery': typeof DeliveryRoute
+  '/financing': typeof FinancingRoute
+  '/new-rvs': typeof NewRvsRoute
+  '/services': typeof ServicesRoute
+  '/trade-in': typeof TradeInRoute
+  '/used-rvs': typeof UsedRvsRoute
+  '/inventory/$stock': typeof InventoryStockRoute
+  '/inventory': typeof InventoryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/delivery': typeof DeliveryRoute
+  '/financing': typeof FinancingRoute
+  '/new-rvs': typeof NewRvsRoute
+  '/services': typeof ServicesRoute
+  '/trade-in': typeof TradeInRoute
+  '/used-rvs': typeof UsedRvsRoute
+  '/inventory/$stock': typeof InventoryStockRoute
+  '/inventory/': typeof InventoryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/delivery'
+    | '/financing'
+    | '/new-rvs'
+    | '/services'
+    | '/trade-in'
+    | '/used-rvs'
+    | '/inventory/$stock'
+    | '/inventory/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/delivery'
+    | '/financing'
+    | '/new-rvs'
+    | '/services'
+    | '/trade-in'
+    | '/used-rvs'
+    | '/inventory/$stock'
+    | '/inventory'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/delivery'
+    | '/financing'
+    | '/new-rvs'
+    | '/services'
+    | '/trade-in'
+    | '/used-rvs'
+    | '/inventory/$stock'
+    | '/inventory/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  DeliveryRoute: typeof DeliveryRoute
+  FinancingRoute: typeof FinancingRoute
+  NewRvsRoute: typeof NewRvsRoute
+  ServicesRoute: typeof ServicesRoute
+  TradeInRoute: typeof TradeInRoute
+  UsedRvsRoute: typeof UsedRvsRoute
+  InventoryStockRoute: typeof InventoryStockRoute
+  InventoryIndexRoute: typeof InventoryIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/delivery': {
+      id: '/delivery'
+      path: '/delivery'
+      fullPath: '/delivery'
+      preLoaderRoute: typeof DeliveryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financing': {
+      id: '/financing'
+      path: '/financing'
+      fullPath: '/financing'
+      preLoaderRoute: typeof FinancingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new-rvs': {
+      id: '/new-rvs'
+      path: '/new-rvs'
+      fullPath: '/new-rvs'
+      preLoaderRoute: typeof NewRvsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trade-in': {
+      id: '/trade-in'
+      path: '/trade-in'
+      fullPath: '/trade-in'
+      preLoaderRoute: typeof TradeInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/used-rvs': {
+      id: '/used-rvs'
+      path: '/used-rvs'
+      fullPath: '/used-rvs'
+      preLoaderRoute: typeof UsedRvsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory/': {
+      id: '/inventory/'
+      path: '/inventory'
+      fullPath: '/inventory/'
+      preLoaderRoute: typeof InventoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory/$stock': {
+      id: '/inventory/$stock'
+      path: '/inventory/$stock'
+      fullPath: '/inventory/$stock'
+      preLoaderRoute: typeof InventoryStockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  DeliveryRoute: DeliveryRoute,
+  FinancingRoute: FinancingRoute,
+  NewRvsRoute: NewRvsRoute,
+  ServicesRoute: ServicesRoute,
+  TradeInRoute: TradeInRoute,
+  UsedRvsRoute: UsedRvsRoute,
+  InventoryStockRoute: InventoryStockRoute,
+  InventoryIndexRoute: InventoryIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

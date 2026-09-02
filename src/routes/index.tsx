@@ -1,24 +1,421 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  BadgeCheck,
+  BadgeDollarSign,
+  ClipboardCheck,
+  Handshake,
+  MapPin,
+  Phone,
+  Search,
+  Truck,
+  Wrench,
+} from "lucide-react";
+import { useState } from "react";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { RvCard } from "@/components/site/RvCard";
+import { SectionHeading } from "@/components/site/SectionHeading";
+import { StarRating } from "@/components/site/StarRating";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
+import { DEALER, RV_CLASSES } from "@/lib/dealership";
+import { postsQuery, reviewsQuery, rvsQuery } from "@/lib/inventory";
+
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Motorhomes for Sale in Bend, Oregon | Summit Ridge RV" },
+      {
+        name: "description",
+        content:
+          "Browse new and used Class A, Class B, Class C and Super C motorhomes for sale at Summit Ridge RV in Bend, Oregon. Financing, trade-ins and nationwide delivery.",
+      },
+      { property: "og:title", content: "Motorhomes for Sale in Bend, Oregon | Summit Ridge RV" },
+      {
+        property: "og:description",
+        content:
+          "Quality new and pre-owned motorhomes backed by knowledgeable service and full dealership support.",
+      },
+    ],
+  }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+const TYPE_CARDS = [
+  { label: "Class A", image: "/rv/class-a-ext.jpg", copy: "Full-size luxury coaches, 29–45 ft" },
+  { label: "Class B", image: "/rv/class-b-ext.jpg", copy: "Agile touring vans, 17–24 ft" },
+  { label: "Class C", image: "/rv/class-c-ext.jpg", copy: "Family coaches with cab-over bunks" },
+  { label: "Super C", image: "/rv/super-c-ext.jpg", copy: "Heavy-duty chassis, serious towing" },
+];
+
+const WHY_US = [
+  { icon: BadgeCheck, title: "Quality Inventory", copy: "Every coach is road-tested and reconditioned before it hits the lot." },
+  { icon: ClipboardCheck, title: "Professional Inspections", copy: "A multi-point inspection report comes with every used unit." },
+  { icon: BadgeDollarSign, title: "Transparent Pricing", copy: "One price, posted publicly. No surprise fees at the desk." },
+  { icon: Handshake, title: "Trade-In Options", copy: "Real numbers on your current RV, applied the same day." },
+  { icon: Truck, title: "Delivery Assistance", copy: "Local drop-off or nationwide transport coordination." },
+  { icon: Wrench, title: "Experienced Specialists", copy: "An in-house service department that knows these coaches." },
+];
+
+function Home() {
+  const navigate = useNavigate();
+  const rvs = useQuery(rvsQuery());
+  const reviews = useQuery(reviewsQuery());
+  const posts = useQuery(postsQuery());
+
+  const [quick, setQuick] = useState({ rvClass: "", make: "", condition: "", priceMax: "" });
+
+  const featured = (rvs.data ?? []).filter((rv) => rv.status !== "sold").slice(0, 6);
+  const makes = Array.from(new Set((rvs.data ?? []).map((rv) => rv.make))).sort();
+
+  function runQuickSearch() {
+    navigate({
+      to: "/inventory",
+      search: {
+        rvClass: quick.rvClass || undefined,
+        make: quick.make || undefined,
+        condition: quick.condition || undefined,
+        priceMax: quick.priceMax ? Number(quick.priceMax) : undefined,
+      },
+    });
+  }
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      {/* HERO */}
+      <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
+        <img
+          src="/rv/hero.jpg"
+          alt="Luxury Class A motorhome on an open mountain highway at sunset"
+          width={1920}
+          height={1088}
+          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-60"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/80 to-navy/20" />
+        <div className="container-page flex min-h-[560px] flex-col justify-center py-20 md:min-h-[660px]">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+            {DEALER.city}, {DEALER.state} · Motorhome Specialists
+          </p>
+          <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-[1.05] md:text-6xl lg:text-7xl">
+            Find Your Road to Adventure
+          </h1>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-navy-foreground/85 md:text-lg">
+            Explore quality new and pre-owned motorhomes backed by knowledgeable service and dealership support.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+              <Link to="/inventory">View RV Inventory</Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-white/40 bg-transparent text-navy-foreground hover:bg-white/10 hover:text-navy-foreground"
+            >
+              <Link to="/financing">Get Financing</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* QUICK SEARCH */}
+      <section className="border-b border-border bg-surface">
+        <div className="container-page py-8">
+          <div className="rounded-lg border border-border bg-card p-6 shadow-lift md:-mt-16 md:relative md:z-10">
+            <h2 className="font-display text-sm font-bold uppercase tracking-[0.18em] text-primary">
+              I&apos;m Looking For
+            </h2>
+            <div className="mt-4 grid gap-3 md:grid-cols-5">
+              <select
+                aria-label="RV class"
+                className="h-11 rounded-md border border-input bg-background px-3 text-sm"
+                value={quick.rvClass}
+                onChange={(e) => setQuick((q) => ({ ...q, rvClass: e.target.value }))}
+              >
+                <option value="">Any RV class</option>
+                {RV_CLASSES.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+              <select
+                aria-label="Manufacturer"
+                className="h-11 rounded-md border border-input bg-background px-3 text-sm"
+                value={quick.make}
+                onChange={(e) => setQuick((q) => ({ ...q, make: e.target.value }))}
+              >
+                <option value="">Any manufacturer</option>
+                {makes.map((m) => (
+                  <option key={m} value={m}>
+                    {m}
+                  </option>
+                ))}
+              </select>
+              <select
+                aria-label="Condition"
+                className="h-11 rounded-md border border-input bg-background px-3 text-sm"
+                value={quick.condition}
+                onChange={(e) => setQuick((q) => ({ ...q, condition: e.target.value }))}
+              >
+                <option value="">New &amp; used</option>
+                <option value="new">New</option>
+                <option value="used">Used</option>
+              </select>
+              <Input
+                aria-label="Maximum price"
+                inputMode="numeric"
+                placeholder="Max price"
+                className="h-11"
+                value={quick.priceMax}
+                onChange={(e) => setQuick((q) => ({ ...q, priceMax: e.target.value }))}
+              />
+              <Button className="h-11 bg-accent text-accent-foreground hover:bg-accent/90" onClick={runQuickSearch}>
+                <Search className="mr-2 h-4 w-4" />
+                Search Inventory
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED */}
+      <section className="container-page py-16 md:py-20">
+        <SectionHeading
+          eyebrow="Featured Motorhomes"
+          title="Hand-picked coaches on the lot right now"
+          description="Every unit is inspected, serviced and photographed in detail before it is listed."
+          action={
+            <Button asChild variant="outline">
+              <Link to="/inventory">
+                View all inventory <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          }
+        />
+        {rvs.isLoading ? (
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <Skeleton key={i} className="h-96 w-full rounded-lg" />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((rv) => (
+              <RvCard key={rv.id} rv={rv} />
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* BROWSE BY TYPE */}
+      <section className="bg-surface py-16 md:py-20">
+        <div className="container-page">
+          <SectionHeading eyebrow="Browse by RV Type" title="Pick the class that fits how you travel" />
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {TYPE_CARDS.map((card) => (
+              <Link
+                key={card.label}
+                to="/inventory"
+                search={{ rvClass: card.label }}
+                className="group relative overflow-hidden rounded-lg shadow-card"
+              >
+                <img
+                  src={card.image}
+                  alt={`${card.label} motorhomes for sale`}
+                  loading="lazy"
+                  width={1600}
+                  height={1067}
+                  className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 text-navy-foreground">
+                  <h3 className="font-display text-lg font-bold">{card.label}</h3>
+                  <p className="mt-1 text-xs text-navy-foreground/75">{card.copy}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="container-page py-16 md:py-20">
+        <SectionHeading
+          eyebrow="Why Choose Us"
+          title="A dealership built around the coach, not the close"
+          align="center"
+        />
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {WHY_US.map((item) => (
+            <div key={item.title} className="flex gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-accent/10 text-accent">
+                <item.icon className="h-5 w-5" />
+              </span>
+              <div>
+                <h3 className="font-display text-base font-bold">{item.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{item.copy}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FINANCING + TRADE-IN CTA */}
+      <section className="container-page grid gap-6 pb-16 md:grid-cols-2 md:pb-20">
+        <div className="overflow-hidden rounded-lg bg-navy p-8 text-navy-foreground md:p-10">
+          <h2 className="font-display text-2xl font-bold md:text-3xl">Make Your RV Dreams a Reality</h2>
+          <p className="mt-3 max-w-md text-navy-foreground/75">
+            Apply once and we shop your application across multiple RV lenders. Terms from 10 to 20 years, with
+            full-timer programs available.
+          </p>
+          <Button asChild className="mt-7 bg-accent text-accent-foreground hover:bg-accent/90">
+            <Link to="/financing">Apply for Financing</Link>
+          </Button>
+        </div>
+        <div className="overflow-hidden rounded-lg border border-border bg-card p-8 shadow-card md:p-10">
+          <h2 className="font-display text-2xl font-bold md:text-3xl">Ready for Your Next Adventure?</h2>
+          <p className="mt-3 max-w-md text-muted-foreground">
+            Trade in your current RV. Send us the details and photos and we&apos;ll come back with a real, written
+            number — usually within one business day.
+          </p>
+          <Button asChild className="mt-7">
+            <Link to="/trade-in">Get My Trade-In Estimate</Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="bg-surface py-16 md:py-20">
+        <div className="container-page">
+          <SectionHeading
+            eyebrow="Customer Reviews"
+            title="What our owners say"
+            action={
+              <Button asChild variant="outline">
+                <Link to="/reviews">Read all reviews</Link>
+              </Button>
+            }
+          />
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {(reviews.data ?? []).slice(0, 3).map((review) => (
+              <figure key={review.id} className="rounded-lg border border-border bg-card p-6 shadow-card">
+                <StarRating rating={review.rating} />
+                <blockquote className="mt-4 text-sm leading-relaxed text-foreground">
+                  &ldquo;{review.body}&rdquo;
+                </blockquote>
+                <figcaption className="mt-5 text-xs text-muted-foreground">
+                  <span className="font-semibold text-foreground">{review.customer_name}</span> ·{" "}
+                  {new Date(review.reviewed_on).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GUIDES */}
+      <section className="container-page py-16 md:py-20">
+        <SectionHeading
+          eyebrow="RV Buying Guide"
+          title="Know before you buy"
+          description="Straight answers to the questions we get asked on the lot every week."
+          action={
+            <Button asChild variant="outline">
+              <Link to="/guides">All guides</Link>
+            </Button>
+          }
+        />
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {(posts.data ?? []).slice(0, 3).map((post) => (
+            <Link
+              key={post.id}
+              to="/guides/$slug"
+              params={{ slug: post.slug }}
+              className="group overflow-hidden rounded-lg border border-border bg-card shadow-card transition-shadow hover:shadow-lift"
+            >
+              <img
+                src={post.cover_image ?? "/rv/class-a-ext.jpg"}
+                alt=""
+                loading="lazy"
+                width={1600}
+                height={1067}
+                className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="p-6">
+                <h3 className="font-display text-base font-bold leading-snug group-hover:text-accent">
+                  {post.title}
+                </h3>
+                <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{post.excerpt}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* LOCATION */}
+      <section className="bg-navy py-16 text-navy-foreground md:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">Visit the Dealership</p>
+            <h2 className="mt-3 font-display text-2xl font-bold md:text-3xl">
+              Coffee&apos;s on. Come walk the lot.
+            </h2>
+            <p className="mt-4 max-w-md text-navy-foreground/75">
+              We&apos;re just north of Bend on Highway 97, twenty minutes from Redmond Airport with plenty of room to
+              test drive.
+            </p>
+            <dl className="mt-8 space-y-4 text-sm">
+              <div className="flex gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <div>
+                  <dt className="font-semibold">Address</dt>
+                  <dd className="text-navy-foreground/75">{DEALER.address}</dd>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <div>
+                  <dt className="font-semibold">Phone</dt>
+                  <dd className="text-navy-foreground/75">
+                    <a href={DEALER.phoneHref} className="hover:text-accent">
+                      {DEALER.phone}
+                    </a>
+                  </dd>
+                </div>
+              </div>
+            </dl>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Link to="/contact">Contact the Dealership</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="border-white/40 bg-transparent text-navy-foreground hover:bg-white/10 hover:text-navy-foreground"
+              >
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${DEALER.mapQuery}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Get Directions
+                </a>
+              </Button>
+            </div>
+          </div>
+          <img
+            src="/rv/dealership.jpg"
+            alt="Summit Ridge RV dealership lot with rows of motorhomes"
+            loading="lazy"
+            width={1600}
+            height={900}
+            className="rounded-lg object-cover shadow-lift"
+          />
+        </div>
+      </section>
+    </>
   );
 }
