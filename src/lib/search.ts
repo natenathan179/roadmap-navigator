@@ -9,8 +9,9 @@ const num = (v: unknown) => {
 };
 
 export type InventorySearch = Filters;
+export type InventorySearchInput = Partial<Record<keyof Filters, unknown>>;
 
-export function parseInventorySearch(search: Record<string, unknown>): InventorySearch {
+export function parseInventorySearch(search: InventorySearchInput): InventorySearch {
   const sort = str(search["sort"]) as SortKey;
   return {
     q: str(search["q"]),
