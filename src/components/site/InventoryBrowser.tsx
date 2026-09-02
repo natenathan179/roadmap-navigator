@@ -30,7 +30,7 @@ function selectClass() {
 }
 
 export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
-  const f: Filters = { ...EMPTY_FILTERS, ...search };
+  const f: Filters = { ...EMPTY_FILTERS, ...search } as Filters;
   const { data, isLoading } = useQuery(rvsQuery());
   const [showFilters, setShowFilters] = useState(false);
 
@@ -281,7 +281,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
               id="sort"
               className="h-10 rounded-md border border-input bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring"
               value={f.sort}
-              onChange={(e) => onChange({ sort: e.target.value as InventorySearch["sort"] })}
+              onChange={(e) => onChange({ sort: e.target.value as Filters["sort"] })}
             >
               {SORT_OPTIONS.map((o) => (
                 <option key={o.value} value={o.value}>

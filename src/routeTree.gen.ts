@@ -10,19 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DeliveryRouteImport } from './routes/delivery'
 import { Route as FinancingRouteImport } from './routes/financing'
 import { Route as NewRvsRouteImport } from './routes/new-rvs'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TradeInRouteImport } from './routes/trade-in'
 import { Route as UsedRvsRouteImport } from './routes/used-rvs'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as InventoryIndexRouteImport } from './routes/inventory.index'
 import { Route as InventoryStockRouteImport } from './routes/inventory.$stock'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -45,9 +56,24 @@ const NewRvsRoute = NewRvsRouteImport.update({
   path: '/new-rvs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TradeInRoute = TradeInRouteImport.update({
@@ -58,6 +84,16 @@ const TradeInRoute = TradeInRouteImport.update({
 const UsedRvsRoute = UsedRvsRouteImport.update({
   id: '/used-rvs',
   path: '/used-rvs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/guides/$slug',
+  path: '/guides/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InventoryIndexRoute = InventoryIndexRouteImport.update({
@@ -73,90 +109,132 @@ const InventoryStockRoute = InventoryStockRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
   '/financing': typeof FinancingRoute
   '/new-rvs': typeof NewRvsRoute
+  '/privacy': typeof PrivacyRoute
+  '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/inventory/$stock': typeof InventoryStockRoute
+  '/guides/': typeof GuidesIndexRoute
   '/inventory/': typeof InventoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
   '/financing': typeof FinancingRoute
   '/new-rvs': typeof NewRvsRoute
+  '/privacy': typeof PrivacyRoute
+  '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/inventory/$stock': typeof InventoryStockRoute
+  '/guides': typeof GuidesIndexRoute
   '/inventory': typeof InventoryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
   '/financing': typeof FinancingRoute
   '/new-rvs': typeof NewRvsRoute
+  '/privacy': typeof PrivacyRoute
+  '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/inventory/$stock': typeof InventoryStockRoute
+  '/guides/': typeof GuidesIndexRoute
   '/inventory/': typeof InventoryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/contact'
     | '/delivery'
     | '/financing'
     | '/new-rvs'
+    | '/privacy'
+    | '/reviews'
     | '/services'
+    | '/terms'
     | '/trade-in'
     | '/used-rvs'
+    | '/guides/$slug'
     | '/inventory/$stock'
+    | '/guides/'
     | '/inventory/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/contact'
     | '/delivery'
     | '/financing'
     | '/new-rvs'
+    | '/privacy'
+    | '/reviews'
     | '/services'
+    | '/terms'
     | '/trade-in'
     | '/used-rvs'
+    | '/guides/$slug'
     | '/inventory/$stock'
+    | '/guides'
     | '/inventory'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/contact'
     | '/delivery'
     | '/financing'
     | '/new-rvs'
+    | '/privacy'
+    | '/reviews'
     | '/services'
+    | '/terms'
     | '/trade-in'
     | '/used-rvs'
+    | '/guides/$slug'
     | '/inventory/$stock'
+    | '/guides/'
     | '/inventory/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   DeliveryRoute: typeof DeliveryRoute
   FinancingRoute: typeof FinancingRoute
   NewRvsRoute: typeof NewRvsRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ReviewsRoute: typeof ReviewsRoute
   ServicesRoute: typeof ServicesRoute
+  TermsRoute: typeof TermsRoute
   TradeInRoute: typeof TradeInRoute
   UsedRvsRoute: typeof UsedRvsRoute
+  GuidesSlugRoute: typeof GuidesSlugRoute
   InventoryStockRoute: typeof InventoryStockRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
   InventoryIndexRoute: typeof InventoryIndexRoute
 }
 
@@ -167,6 +245,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -197,11 +282,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewRvsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/trade-in': {
@@ -216,6 +322,20 @@ declare module '@tanstack/react-router' {
       path: '/used-rvs'
       fullPath: '/used-rvs'
       preLoaderRoute: typeof UsedRvsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inventory/': {
@@ -237,14 +357,20 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   DeliveryRoute: DeliveryRoute,
   FinancingRoute: FinancingRoute,
   NewRvsRoute: NewRvsRoute,
+  PrivacyRoute: PrivacyRoute,
+  ReviewsRoute: ReviewsRoute,
   ServicesRoute: ServicesRoute,
+  TermsRoute: TermsRoute,
   TradeInRoute: TradeInRoute,
   UsedRvsRoute: UsedRvsRoute,
+  GuidesSlugRoute: GuidesSlugRoute,
   InventoryStockRoute: InventoryStockRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
   InventoryIndexRoute: InventoryIndexRoute,
 }
 export const routeTree = rootRouteImport

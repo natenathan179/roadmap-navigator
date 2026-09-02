@@ -30,7 +30,7 @@ export function parseInventorySearch(search: InventorySearchInput): InventorySea
   };
 }
 
-export const EMPTY_FILTERS: InventorySearch = {
+export const EMPTY_FILTERS: Filters = {
   q: "",
   condition: "",
   rvClass: "",
