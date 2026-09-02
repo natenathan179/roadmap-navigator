@@ -30,14 +30,15 @@ function selectClass() {
 }
 
 export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
+  const f = { ...EMPTY_FILTERS, ...search };
   const { data, isLoading } = useQuery(rvsQuery());
   const [showFilters, setShowFilters] = useState(false);
 
   const list = useMemo<Rv[]>(() => {
     const base = data ?? [];
     const scoped = lockedCondition ? base.filter((rv) => rv.condition === lockedCondition) : base;
-    return applyFilters(scoped, { ...search, condition: lockedCondition ? "" : search.condition });
-  }, [data, search, lockedCondition]);
+    return applyFilters(scoped, { ...f, condition: lockedCondition ? "" : f.condition });
+  }, [data, f, lockedCondition]);
 
   const makes = useMemo(
     () => Array.from(new Set((data ?? []).map((rv) => rv.make))).sort(),
@@ -49,7 +50,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
   );
 
   const activeCount = (Object.keys(EMPTY_FILTERS) as (keyof InventorySearch)[]).filter(
-    (key) => key !== "sort" && search[key] !== EMPTY_FILTERS[key],
+    (key) => key !== "sort" && f[key] !== EMPTY_FILTERS[key],
   ).length;
 
   const filterPanel = (
@@ -58,7 +59,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
         <Label htmlFor="q">Keyword</Label>
         <Input
           id="q"
-          value={search.q}
+          value={f.q}
           placeholder="Make, model or stock #"
           onChange={(e) => onChange({ q: e.target.value })}
           className="mt-1.5"
@@ -71,7 +72,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
           <select
             id="condition"
             className={`mt-1.5 ${selectClass()}`}
-            value={search.condition}
+            value={f.condition}
             onChange={(e) => onChange({ condition: e.target.value })}
           >
             <option value="">New &amp; Used</option>
@@ -86,7 +87,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
         <select
           id="rvClass"
           className={`mt-1.5 ${selectClass()}`}
-          value={search.rvClass}
+          value={f.rvClass}
           onChange={(e) => onChange({ rvClass: e.target.value })}
         >
           <option value="">All classes</option>
@@ -104,7 +105,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
           <select
             id="fuel"
             className={`mt-1.5 ${selectClass()}`}
-            value={search.fuel}
+            value={f.fuel}
             onChange={(e) => onChange({ fuel: e.target.value })}
           >
             <option value="">Any</option>
@@ -120,7 +121,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
           <select
             id="make"
             className={`mt-1.5 ${selectClass()}`}
-            value={search.make}
+            value={f.make}
             onChange={(e) => onChange({ make: e.target.value })}
           >
             <option value="">Any</option>
@@ -139,7 +140,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
           <Input
             id="yearMin"
             inputMode="numeric"
-            value={search.yearMin || ""}
+            value={f.yearMin || ""}
             placeholder="2018"
             onChange={(e) => onChange({ yearMin: Number(e.target.value) || 0 })}
             className="mt-1.5"
@@ -150,7 +151,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
           <Input
             id="priceMax"
             inputMode="numeric"
-            value={search.priceMax || ""}
+            value={f.priceMax || ""}
             placeholder="300000"
             onChange={(e) => onChange({ priceMax: Number(e.target.value) || 0 })}
             className="mt-1.5"
@@ -164,7 +165,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
           <Input
             id="mileageMax"
             inputMode="numeric"
-            value={search.mileageMax || ""}
+            value={f.mileageMax || ""}
             placeholder="40000"
             onChange={(e) => onChange({ mileageMax: Number(e.target.value) || 0 })}
             className="mt-1.5"
@@ -175,7 +176,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
           <Input
             id="lengthMax"
             inputMode="numeric"
-            value={search.lengthMax || ""}
+            value={f.lengthMax || ""}
             placeholder="38"
             onChange={(e) => onChange({ lengthMax: Number(e.target.value) || 0 })}
             className="mt-1.5"
@@ -189,7 +190,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
           <select
             id="sleeps"
             className={`mt-1.5 ${selectClass()}`}
-            value={search.sleeps || ""}
+            value={f.sleeps || ""}
             onChange={(e) => onChange({ sleeps: Number(e.target.value) || 0 })}
           >
             <option value="">Any</option>
@@ -205,7 +206,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
           <select
             id="slides"
             className={`mt-1.5 ${selectClass()}`}
-            value={search.slides || ""}
+            value={f.slides || ""}
             onChange={(e) => onChange({ slides: Number(e.target.value) || 0 })}
           >
             <option value="">Any</option>
@@ -223,7 +224,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
         <select
           id="location"
           className={`mt-1.5 ${selectClass()}`}
-          value={search.location}
+          value={f.location}
           onChange={(e) => onChange({ location: e.target.value })}
         >
           <option value="">All locations</option>
@@ -239,7 +240,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
         type="button"
         variant="outline"
         className="w-full"
-        onClick={() => onChange({ ...EMPTY_FILTERS, sort: search.sort })}
+        onClick={() => onChange({ ...EMPTY_FILTERS, sort: f.sort })}
       >
         Reset filters
       </Button>
@@ -279,7 +280,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
             <select
               id="sort"
               className="h-10 rounded-md border border-input bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring"
-              value={search.sort}
+              value={f.sort}
               onChange={(e) => onChange({ sort: e.target.value as InventorySearch["sort"] })}
             >
               {SORT_OPTIONS.map((o) => (
@@ -303,7 +304,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
             <p className="mt-2 text-sm text-muted-foreground">
               Try widening your price or mileage range — new units arrive weekly.
             </p>
-            <Button className="mt-5" onClick={() => onChange({ ...EMPTY_FILTERS, sort: search.sort })}>
+            <Button className="mt-5" onClick={() => onChange({ ...EMPTY_FILTERS, sort: f.sort })}>
               Reset filters
             </Button>
           </div>
