@@ -22,6 +22,7 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { DEALER, RV_CLASSES } from "@/lib/dealership";
 import { postsQuery, reviewsQuery, rvsQuery } from "@/lib/inventory";
+import type { InventorySearch } from "@/lib/search";
 
 export const Route = createFileRoute("/")({
   head: () => ({
