@@ -36,9 +36,15 @@ function Services() {
       <section className="container-page py-14">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICE_CATEGORIES.map((service) => (
-            <div key={service} className="flex items-start gap-3 rounded-lg border border-border bg-card p-5 shadow-card">
+            <div
+              key={service.name}
+              className="flex items-start gap-3 rounded-lg border border-border bg-card p-5 shadow-card"
+            >
               <Wrench className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-              <span className="text-sm font-semibold">{service}</span>
+              <div>
+                <h2 className="font-display text-sm font-bold">{service.name}</h2>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -64,7 +70,7 @@ function Services() {
                   name: "service_type",
                   label: "Service needed",
                   type: "select",
-                  options: [...SERVICE_CATEGORIES],
+                  options: SERVICE_CATEGORIES.map((s) => s.name),
                   required: true,
                   full: true,
                 },

@@ -73,7 +73,7 @@ function Contact() {
                   {DEALER.hours.map((row) => (
                     <div key={row.days} className="flex gap-3">
                       <span className="w-32 shrink-0">{row.days}</span>
-                      <span>{row.hours}</span>
+                      <span>{row.time}</span>
                     </div>
                   ))}
                 </dd>

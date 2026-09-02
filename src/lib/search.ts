@@ -8,7 +8,7 @@ const num = (v: unknown) => {
   return Number.isFinite(n) && n > 0 ? n : 0;
 };
 
-export type InventorySearch = Filters;
+export type InventorySearch = Partial<Filters>;
 export type InventorySearchInput = Partial<Record<keyof Filters, unknown>>;
 
 export function parseInventorySearch(search: InventorySearchInput): InventorySearch {
@@ -30,7 +30,7 @@ export function parseInventorySearch(search: InventorySearchInput): InventorySea
   };
 }
 
-export const EMPTY_FILTERS: InventorySearch = {
+export const EMPTY_FILTERS: Filters = {
   q: "",
   condition: "",
   rvClass: "",
