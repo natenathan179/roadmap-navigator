@@ -95,6 +95,30 @@ function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AutoDealer",
+            name: DEALER.name,
+            description:
+              "New and used RV dealership in Bend, Oregon selling travel trailers, fifth wheels, truck campers and motorhomes with financing, service and nationwide delivery.",
+            telephone: DEALER.phone,
+            email: DEALER.email,
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: DEALER.street,
+              addressLocality: DEALER.city,
+              addressRegion: DEALER.state,
+              postalCode: DEALER.zip,
+              addressCountry: "US",
+            },
+            areaServed: "United States",
+            openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-17:00"],
+          }),
+        }}
+      />
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
         <img
@@ -363,6 +387,64 @@ function Home() {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* SEO CONTENT */}
+      <section className="bg-surface py-16 md:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-2">
+          <div>
+            <h2 className="font-display text-2xl font-bold md:text-3xl">
+              Your RV dealership in Bend, Oregon
+            </h2>
+            <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground">
+              <p>
+                Summit Ridge RV sells new and used RVs across Central Oregon and the wider Pacific Northwest. Our lot
+                on Highway 97 carries lightweight travel trailers, family bunkhouses, residential fifth wheels, truck
+                campers and diesel motorhomes from Forest River, Coachmen, Grand Design, Keystone, KZ, Lance, Newmar
+                and Winnebago.
+              </p>
+              <p>
+                Every unit is listed with real photography, complete manufacturer specifications, dry weight, GVWR,
+                tank capacities and sleeping capacity so you can size a trailer against your tow vehicle before you
+                drive out. If a spec you need isn&apos;t on the page, ask — we&apos;ll measure it and send it the same
+                day.
+              </p>
+              <p>
+                Shoppers travel to us from Redmond, Sisters, Prineville, La Pine, Madras, Eugene, Portland, Boise and
+                Spokane. Can&apos;t make the trip? We coordinate insured RV transport to all 48 states and handle
+                paperwork remotely.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h2 className="font-display text-2xl font-bold md:text-3xl">Common questions</h2>
+            <dl className="mt-4 space-y-5 text-sm">
+              {[
+                {
+                  q: "Do your listed RV prices include fees?",
+                  a: "Our posted price is the price of the unit. Tax, title, registration and any delivery are added at the desk and shown in writing before you sign — no prep, freight or documentation surprises.",
+                },
+                {
+                  q: "Can I finance a used travel trailer?",
+                  a: "Yes. We submit one application to multiple RV lenders, with terms typically from 10 to 20 years depending on loan size, age of the unit and credit profile. Approvals are usually back within one business day.",
+                },
+                {
+                  q: "How do I know a used RV is sound?",
+                  a: "Every pre-owned unit gets a multi-point technician inspection covering roof membrane and seals, sidewall delamination, brakes and bearings, tyres, appliances, 12V and shore power before it is listed.",
+                },
+                {
+                  q: "Will you take my current RV in trade?",
+                  a: "We buy outright and take trades. Send year, make, model, mileage and photos through the trade-in form and we return a real written number, usually within a business day.",
+                },
+              ].map((item) => (
+                <div key={item.q}>
+                  <dt className="font-display font-bold text-foreground">{item.q}</dt>
+                  <dd className="mt-1.5 text-muted-foreground">{item.a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </section>
 
