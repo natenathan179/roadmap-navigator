@@ -525,7 +525,15 @@ function RvEditor({ initial, onDone }: { initial: Record<string, unknown>; onDon
 
 /* ------------------------------------ Leads ------------------------------------ */
 
-function LeadsAdmin({ table }: { table: TabId }) {
+type LeadTab =
+  | "inquiries"
+  | "quote_requests"
+  | "financing_applications"
+  | "trade_in_requests"
+  | "service_requests"
+  | "delivery_quotes";
+
+function LeadsAdmin({ table }: { table: LeadTab }) {
   const qc = useQueryClient();
   const { data, isLoading } = useQuery({
     queryKey: ["admin", table],
