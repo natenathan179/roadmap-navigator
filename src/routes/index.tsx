@@ -226,7 +226,7 @@ function Home() {
         <div className="container-page">
           <SectionHeading eyebrow="Browse by RV Type" title="Pick the class that fits how you travel" />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {TYPE_CARDS.map((card) => (
+            {typeCards.map((card) => (
               <Link
                 key={card.label}
                 to="/inventory"
@@ -235,7 +235,7 @@ function Home() {
               >
                 <img
                   src={card.image}
-                  alt={`${card.label} motorhomes for sale`}
+                  alt={`${card.label} RVs for sale in Bend, Oregon at Summit Ridge RV`}
                   loading="lazy"
                   width={1600}
                   height={1067}
