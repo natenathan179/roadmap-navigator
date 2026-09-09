@@ -65,10 +65,10 @@ export function LeadForm({
       payload[field.name] = field.type === "number" ? Number(raw.replace(/[^0-9.]/g, "")) : raw;
     }
 
-    const { error } = await supabase.from(table).insert(payload as never);
+    const result = await submitLead(table, payload);
     setSubmitting(false);
 
-    if (error) {
+    if (!result.ok) {
       toast.error("We couldn't send that. Please call us and we'll take the details by phone.");
       return;
     }
