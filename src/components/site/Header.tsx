@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, Phone, ShoppingCart, X } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/lib/cart";
 import { DEALER } from "@/lib/dealership";
 
 const NAV = [
