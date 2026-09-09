@@ -8,13 +8,13 @@ export const Route = createFileRoute("/used-rvs")({
   validateSearch: (search: InventorySearchInput): InventorySearch => parseInventorySearch(search),
   head: () => ({
     meta: [
-      { title: "Used Motorhomes for Sale | Pre-Owned RVs in Bend, Oregon" },
+      { title: "Used RVs for Sale | Pre-Owned Travel Trailers & Motorhomes in Bend, Oregon" },
       {
         name: "description",
         content:
-          "Inspected, reconditioned pre-owned motorhomes for sale in Bend, Oregon. Every used RV comes with a multi-point inspection report and service history.",
+          "Inspected, reconditioned used RVs for sale in Bend, Oregon — travel trailers, fifth wheels, truck campers and motorhomes. Every used RV comes with a multi-point inspection report and service history.",
       },
-      { property: "og:title", content: "Used Motorhomes for Sale | Summit Ridge RV" },
+      { property: "og:title", content: "Used RVs for Sale | Summit Ridge RV" },
       {
         property: "og:description",
         content: "Pre-owned Class A, B, C and Super C coaches with inspection reports and service history.",
@@ -33,7 +33,7 @@ function UsedRvs() {
       <PageHeader
         eyebrow="Used RVs"
         title="Pre-owned coaches, inspected and documented"
-        description="Every used motorhome arrives with a multi-point inspection report, service history where available and fresh fluids."
+        description="Every used RV arrives with a multi-point inspection report, service history where available and fresh fluids."
       />
       <InventoryBrowser
         search={search}

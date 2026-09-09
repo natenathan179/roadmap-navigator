@@ -8,16 +8,16 @@ export const Route = createFileRoute("/inventory/")({
   validateSearch: (search: InventorySearchInput): InventorySearch => parseInventorySearch(search),
   head: () => ({
     meta: [
-      { title: "RV Inventory | Motorhomes for Sale in Bend, Oregon" },
+      { title: "RV Inventory | Travel Trailers, Fifth Wheels & Motorhomes for Sale" },
       {
         name: "description",
         content:
-          "Search our full motorhome inventory by class, manufacturer, year, price, mileage, length and sleeping capacity. Class A, B, C and Super C RVs for sale.",
+          "Search our full RV inventory by type, manufacturer, year, price, weight, length and sleeping capacity — travel trailers, fifth wheels, truck campers and motorhomes for sale in Bend, Oregon.",
       },
       { property: "og:title", content: "RV Inventory | Summit Ridge RV" },
       {
         property: "og:description",
-        content: "Filter every new and used motorhome on the lot by class, price, mileage and floorplan.",
+        content: "Filter every new and used RV on the lot by type, price, weight and floorplan.",
       },
     ],
   }),
@@ -31,7 +31,7 @@ function InventoryPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Motorhome Inventory"
+        eyebrow="RV Inventory"
         title="Every coach on the lot, in one place"
         description="Filter by class, manufacturer, price, mileage, length and floorplan. New inventory arrives weekly."
       />

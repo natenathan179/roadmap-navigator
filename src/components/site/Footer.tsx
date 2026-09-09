@@ -7,7 +7,7 @@ const COLUMNS = [
   {
     title: "Inventory",
     links: [
-      { to: "/inventory", label: "All Motorhomes" },
+      { to: "/inventory", label: "All RVs" },
       { to: "/new-rvs", label: "New RVs" },
       { to: "/used-rvs", label: "Used RVs" },
       { to: "/reviews", label: "Customer Reviews" },
@@ -46,7 +46,7 @@ export function Footer() {
             <span className="font-display text-base font-bold">{DEALER.name}</span>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-navy-foreground/70">
-            New and pre-owned motorhomes, full-service RV repair and nationwide delivery from the high desert of
+            New and pre-owned travel trailers, fifth wheels and motorhomes, full-service RV repair and nationwide delivery from the high desert of
             Central Oregon.
           </p>
           <div className="mt-5 space-y-2 text-sm text-navy-foreground/80">
