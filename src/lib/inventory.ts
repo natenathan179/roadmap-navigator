@@ -66,12 +66,22 @@ export type BlogPost = {
 
 const RV_COLUMNS = "*";
 
-function normalize(row: Record<string, unknown>): Rv {
-  const length = row["length_ft"];
+const numOrNull = (v: unknown) => (v === null || v === undefined ? null : Number(v));
+
+export function normalize(row: Record<string, unknown>): Rv {
   return {
     ...(row as unknown as Rv),
     price: Number(row["price"] ?? 0),
-    length_ft: length === null || length === undefined ? null : Number(length),
+    msrp: numOrNull(row["msrp"]),
+    length_ft: numOrNull(row["length_ft"]),
+    dry_weight: numOrNull(row["dry_weight"]),
+    gvwr: numOrNull(row["gvwr"]),
+    fresh_water: numOrNull(row["fresh_water"]),
+    highlights: (row["highlights"] as string[]) ?? [],
+    features: (row["features"] as string[]) ?? [],
+    photos: (row["photos"] as string[]) ?? [],
+    photo_alts: (row["photo_alts"] as string[]) ?? [],
+    specs: (row["specs"] as Record<string, string>) ?? {},
   };
 }
 
@@ -79,18 +89,15 @@ export async function fetchRvs(): Promise<Rv[]> {
   const { data, error } = await supabase
     .from("rvs")
     .select(RV_COLUMNS)
+    .eq("published", true)
     .order("featured", { ascending: false })
     .order("created_at", { ascending: false });
   if (error) throw error;
   return (data ?? []).map((row) => normalize(row as Record<string, unknown>));
 }
 
-export async function fetchRvByStock(stock: string): Promise<Rv | null> {
-  const { data, error } = await supabase
-    .from("rvs")
-    .select(RV_COLUMNS)
-    .eq("stock_number", stock)
-    .maybeSingle();
+export async function fetchRvBySlug(slug: string): Promise<Rv | null> {
+  const { data, error } = await supabase.from("rvs").select(RV_COLUMNS).eq("slug", slug).maybeSingle();
   if (error) throw error;
   return data ? normalize(data as Record<string, unknown>) : null;
 }
@@ -98,7 +105,8 @@ export async function fetchRvByStock(stock: string): Promise<Rv | null> {
 export async function fetchReviews(): Promise<Review[]> {
   const { data, error } = await supabase
     .from("reviews")
-    .select("id,customer_name,rating,body,reviewed_on")
+    .select("id,customer_name,rating,title,body,location,avatar_url,reviewed_on")
+    .eq("published", true)
     .order("reviewed_on", { ascending: false });
   if (error) throw error;
   return (data ?? []) as Review[];
