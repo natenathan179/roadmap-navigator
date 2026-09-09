@@ -4,27 +4,42 @@ import { supabase } from "@/integrations/supabase/client";
 
 export type Rv = {
   id: string;
+  slug: string;
   stock_number: string;
   year: number;
   make: string;
+  brand: string | null;
   model: string;
   rv_class: string;
+  rv_type: string | null;
   condition: string;
   fuel_type: string;
   engine: string | null;
   price: number;
+  msrp: number | null;
   mileage: number;
   length_ft: number | null;
   sleeps: number | null;
   slides: number | null;
+  dry_weight: number | null;
+  gvwr: number | null;
+  fresh_water: number | null;
+  ext_color: string | null;
+  int_color: string | null;
   vin: string | null;
   location: string;
   description: string | null;
+  highlights: string[];
   features: string[];
+  specs: Record<string, string>;
   photos: string[];
+  photo_alts: string[];
+  seo_title: string | null;
+  seo_description: string | null;
   video_url: string | null;
   featured: boolean;
   status: string;
+  published: boolean;
   created_at: string;
 };
 
@@ -32,7 +47,10 @@ export type Review = {
   id: string;
   customer_name: string;
   rating: number;
+  title: string | null;
   body: string;
+  location: string | null;
+  avatar_url: string | null;
   reviewed_on: string;
 };
 
@@ -46,15 +64,24 @@ export type BlogPost = {
   published_at: string;
 };
 
-const RV_COLUMNS =
-  "id,stock_number,year,make,model,rv_class,condition,fuel_type,engine,price,mileage,length_ft,sleeps,slides,vin,location,description,features,photos,video_url,featured,status,created_at";
+const RV_COLUMNS = "*";
 
-function normalize(row: Record<string, unknown>): Rv {
-  const length = row["length_ft"];
+const numOrNull = (v: unknown) => (v === null || v === undefined ? null : Number(v));
+
+export function normalize(row: Record<string, unknown>): Rv {
   return {
     ...(row as unknown as Rv),
     price: Number(row["price"] ?? 0),
-    length_ft: length === null || length === undefined ? null : Number(length),
+    msrp: numOrNull(row["msrp"]),
+    length_ft: numOrNull(row["length_ft"]),
+    dry_weight: numOrNull(row["dry_weight"]),
+    gvwr: numOrNull(row["gvwr"]),
+    fresh_water: numOrNull(row["fresh_water"]),
+    highlights: (row["highlights"] as string[]) ?? [],
+    features: (row["features"] as string[]) ?? [],
+    photos: (row["photos"] as string[]) ?? [],
+    photo_alts: (row["photo_alts"] as string[]) ?? [],
+    specs: (row["specs"] as Record<string, string>) ?? {},
   };
 }
 
@@ -62,18 +89,15 @@ export async function fetchRvs(): Promise<Rv[]> {
   const { data, error } = await supabase
     .from("rvs")
     .select(RV_COLUMNS)
+    .eq("published", true)
     .order("featured", { ascending: false })
     .order("created_at", { ascending: false });
   if (error) throw error;
   return (data ?? []).map((row) => normalize(row as Record<string, unknown>));
 }
 
-export async function fetchRvByStock(stock: string): Promise<Rv | null> {
-  const { data, error } = await supabase
-    .from("rvs")
-    .select(RV_COLUMNS)
-    .eq("stock_number", stock)
-    .maybeSingle();
+export async function fetchRvBySlug(slug: string): Promise<Rv | null> {
+  const { data, error } = await supabase.from("rvs").select(RV_COLUMNS).eq("slug", slug).maybeSingle();
   if (error) throw error;
   return data ? normalize(data as Record<string, unknown>) : null;
 }
@@ -81,7 +105,8 @@ export async function fetchRvByStock(stock: string): Promise<Rv | null> {
 export async function fetchReviews(): Promise<Review[]> {
   const { data, error } = await supabase
     .from("reviews")
-    .select("id,customer_name,rating,body,reviewed_on")
+    .select("id,customer_name,rating,title,body,location,avatar_url,reviewed_on")
+    .eq("published", true)
     .order("reviewed_on", { ascending: false });
   if (error) throw error;
   return (data ?? []) as Review[];
@@ -107,8 +132,8 @@ export async function fetchPostBySlug(slug: string): Promise<BlogPost | null> {
 }
 
 export const rvsQuery = () => queryOptions({ queryKey: ["rvs"], queryFn: fetchRvs, staleTime: 60_000 });
-export const rvQuery = (stock: string) =>
-  queryOptions({ queryKey: ["rv", stock], queryFn: () => fetchRvByStock(stock), staleTime: 60_000 });
+export const rvQuery = (slug: string) =>
+  queryOptions({ queryKey: ["rv", slug], queryFn: () => fetchRvBySlug(slug), staleTime: 60_000 });
 export const reviewsQuery = () =>
   queryOptions({ queryKey: ["reviews"], queryFn: fetchReviews, staleTime: 300_000 });
 export const postsQuery = () =>

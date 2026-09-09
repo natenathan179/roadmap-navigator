@@ -11,6 +11,8 @@ export const DEALER = {
   phone: "(541) 555-0142",
   phoneHref: "tel:+15415550142",
   email: "sales@summitridgerv.com",
+  /** Address every website form is emailed to via FormSubmit. */
+  formEmail: "sales@summitridgerv.com",
   hours: [
     { days: "Monday – Friday", time: "8:00 AM – 6:00 PM" },
     { days: "Saturday", time: "9:00 AM – 5:00 PM" },
@@ -19,8 +21,16 @@ export const DEALER = {
   mapQuery: "6420+N+Highway+97,+Bend,+OR+97701",
 } as const;
 
-export const RV_CLASSES = ["Class A", "Class B", "Class C", "Super C"] as const;
-export const FUEL_TYPES = ["Diesel", "Gas"] as const;
+export const RV_CLASSES = [
+  "Travel Trailer",
+  "Fifth Wheel",
+  "Truck Camper",
+  "Class A",
+  "Class B",
+  "Class C",
+  "Super C",
+] as const;
+export const FUEL_TYPES = ["Towable", "Diesel", "Gas"] as const;
 export const CONDITIONS = ["new", "used"] as const;
 
 export const SERVICE_CATEGORIES = [

@@ -193,57 +193,128 @@ export type Database = {
           },
         ]
       }
+      quote_requests: {
+        Row: {
+          city: string | null
+          created_at: string
+          email: string
+          financing_interest: boolean
+          id: string
+          items: Json
+          message: string | null
+          name: string
+          phone: string | null
+          state: string | null
+          status: string
+          total: number
+          trade_in: boolean
+        }
+        Insert: {
+          city?: string | null
+          created_at?: string
+          email: string
+          financing_interest?: boolean
+          id?: string
+          items?: Json
+          message?: string | null
+          name: string
+          phone?: string | null
+          state?: string | null
+          status?: string
+          total?: number
+          trade_in?: boolean
+        }
+        Update: {
+          city?: string | null
+          created_at?: string
+          email?: string
+          financing_interest?: boolean
+          id?: string
+          items?: Json
+          message?: string | null
+          name?: string
+          phone?: string | null
+          state?: string | null
+          status?: string
+          total?: number
+          trade_in?: boolean
+        }
+        Relationships: []
+      }
       reviews: {
         Row: {
+          avatar_url: string | null
           body: string
           created_at: string
           customer_name: string
           id: string
+          location: string | null
           published: boolean
           rating: number
           reviewed_on: string
+          title: string | null
         }
         Insert: {
+          avatar_url?: string | null
           body: string
           created_at?: string
           customer_name: string
           id?: string
+          location?: string | null
           published?: boolean
           rating?: number
           reviewed_on?: string
+          title?: string | null
         }
         Update: {
+          avatar_url?: string | null
           body?: string
           created_at?: string
           customer_name?: string
           id?: string
+          location?: string | null
           published?: boolean
           rating?: number
           reviewed_on?: string
+          title?: string | null
         }
         Relationships: []
       }
       rvs: {
         Row: {
+          brand: string | null
           condition: string
           created_at: string
           description: string | null
+          dry_weight: number | null
           engine: string | null
+          ext_color: string | null
           featured: boolean
           features: string[]
+          fresh_water: number | null
           fuel_type: string
+          gvwr: number | null
+          highlights: string[]
           id: string
+          int_color: string | null
           length_ft: number | null
           location: string
           make: string
           mileage: number
           model: string
+          msrp: number | null
+          photo_alts: string[]
           photos: string[]
-          price: number
+          price: number | null
           published: boolean
           rv_class: string
+          rv_type: string
+          seo_description: string | null
+          seo_title: string | null
           sleeps: number | null
           slides: number | null
+          slug: string
+          specs: Json
           status: string
           stock_number: string
           updated_at: string
@@ -252,25 +323,39 @@ export type Database = {
           year: number
         }
         Insert: {
+          brand?: string | null
           condition?: string
           created_at?: string
           description?: string | null
+          dry_weight?: number | null
           engine?: string | null
+          ext_color?: string | null
           featured?: boolean
           features?: string[]
+          fresh_water?: number | null
           fuel_type?: string
+          gvwr?: number | null
+          highlights?: string[]
           id?: string
+          int_color?: string | null
           length_ft?: number | null
           location?: string
           make: string
           mileage?: number
           model: string
+          msrp?: number | null
+          photo_alts?: string[]
           photos?: string[]
-          price: number
+          price?: number | null
           published?: boolean
           rv_class: string
+          rv_type?: string
+          seo_description?: string | null
+          seo_title?: string | null
           sleeps?: number | null
           slides?: number | null
+          slug: string
+          specs?: Json
           status?: string
           stock_number: string
           updated_at?: string
@@ -279,25 +364,39 @@ export type Database = {
           year: number
         }
         Update: {
+          brand?: string | null
           condition?: string
           created_at?: string
           description?: string | null
+          dry_weight?: number | null
           engine?: string | null
+          ext_color?: string | null
           featured?: boolean
           features?: string[]
+          fresh_water?: number | null
           fuel_type?: string
+          gvwr?: number | null
+          highlights?: string[]
           id?: string
+          int_color?: string | null
           length_ft?: number | null
           location?: string
           make?: string
           mileage?: number
           model?: string
+          msrp?: number | null
+          photo_alts?: string[]
           photos?: string[]
-          price?: number
+          price?: number | null
           published?: boolean
           rv_class?: string
+          rv_type?: string
+          seo_description?: string | null
+          seo_title?: string | null
           sleeps?: number | null
           slides?: number | null
+          slug?: string
+          specs?: Json
           status?: string
           stock_number?: string
           updated_at?: string

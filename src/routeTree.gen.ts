@@ -10,7 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CartRouteImport } from './routes/cart'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DeliveryRouteImport } from './routes/delivery'
 import { Route as FinancingRouteImport } from './routes/financing'
@@ -21,19 +24,35 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TradeInRouteImport } from './routes/trade-in'
 import { Route as UsedRvsRouteImport } from './routes/used-rvs'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as InventoryIndexRouteImport } from './routes/inventory.index'
-import { Route as InventoryStockRouteImport } from './routes/inventory.$stock'
+import { Route as InventorySlugRouteImport } from './routes/inventory.$slug'
+import { Route as ApiPublicMediaSplatRouteImport } from './routes/api/public/media.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -86,6 +105,11 @@ const UsedRvsRoute = UsedRvsRouteImport.update({
   path: '/used-rvs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const GuidesIndexRoute = GuidesIndexRouteImport.update({
   id: '/guides/',
   path: '/guides/',
@@ -101,15 +125,22 @@ const InventoryIndexRoute = InventoryIndexRouteImport.update({
   path: '/inventory/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const InventoryStockRoute = InventoryStockRouteImport.update({
-  id: '/inventory/$stock',
-  path: '/inventory/$stock',
+const InventorySlugRoute = InventorySlugRouteImport.update({
+  id: '/inventory/$slug',
+  path: '/inventory/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicMediaSplatRoute = ApiPublicMediaSplatRouteImport.update({
+  id: '/api/public/media/$',
+  path: '/api/public/media/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
   '/financing': typeof FinancingRoute
@@ -120,14 +151,18 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/guides/$slug': typeof GuidesSlugRoute
-  '/inventory/$stock': typeof InventoryStockRoute
+  '/inventory/$slug': typeof InventorySlugRoute
   '/guides/': typeof GuidesIndexRoute
   '/inventory/': typeof InventoryIndexRoute
+  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
   '/financing': typeof FinancingRoute
@@ -138,15 +173,20 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/guides/$slug': typeof GuidesSlugRoute
-  '/inventory/$stock': typeof InventoryStockRoute
+  '/inventory/$slug': typeof InventorySlugRoute
   '/guides': typeof GuidesIndexRoute
   '/inventory': typeof InventoryIndexRoute
+  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
   '/financing': typeof FinancingRoute
@@ -157,16 +197,20 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/guides/$slug': typeof GuidesSlugRoute
-  '/inventory/$stock': typeof InventoryStockRoute
+  '/inventory/$slug': typeof InventorySlugRoute
   '/guides/': typeof GuidesIndexRoute
   '/inventory/': typeof InventoryIndexRoute
+  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
+    | '/cart'
     | '/contact'
     | '/delivery'
     | '/financing'
@@ -177,14 +221,18 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trade-in'
     | '/used-rvs'
+    | '/admin'
     | '/guides/$slug'
-    | '/inventory/$stock'
+    | '/inventory/$slug'
     | '/guides/'
     | '/inventory/'
+    | '/api/public/media/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/auth'
+    | '/cart'
     | '/contact'
     | '/delivery'
     | '/financing'
@@ -195,14 +243,19 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trade-in'
     | '/used-rvs'
+    | '/admin'
     | '/guides/$slug'
-    | '/inventory/$stock'
+    | '/inventory/$slug'
     | '/guides'
     | '/inventory'
+    | '/api/public/media/$'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
+    | '/auth'
+    | '/cart'
     | '/contact'
     | '/delivery'
     | '/financing'
@@ -213,15 +266,20 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trade-in'
     | '/used-rvs'
+    | '/_authenticated/admin'
     | '/guides/$slug'
-    | '/inventory/$stock'
+    | '/inventory/$slug'
     | '/guides/'
     | '/inventory/'
+    | '/api/public/media/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
+  CartRoute: typeof CartRoute
   ContactRoute: typeof ContactRoute
   DeliveryRoute: typeof DeliveryRoute
   FinancingRoute: typeof FinancingRoute
@@ -233,9 +291,10 @@ export interface RootRouteChildren {
   TradeInRoute: typeof TradeInRoute
   UsedRvsRoute: typeof UsedRvsRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
-  InventoryStockRoute: typeof InventoryStockRoute
+  InventorySlugRoute: typeof InventorySlugRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   InventoryIndexRoute: typeof InventoryIndexRoute
+  ApiPublicMediaSplatRoute: typeof ApiPublicMediaSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -247,11 +306,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -324,6 +404,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsedRvsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/guides/': {
       id: '/guides/'
       path: '/guides'
@@ -345,19 +432,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventoryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/inventory/$stock': {
-      id: '/inventory/$stock'
-      path: '/inventory/$stock'
-      fullPath: '/inventory/$stock'
-      preLoaderRoute: typeof InventoryStockRouteImport
+    '/inventory/$slug': {
+      id: '/inventory/$slug'
+      path: '/inventory/$slug'
+      fullPath: '/inventory/$slug'
+      preLoaderRoute: typeof InventorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/media/$': {
+      id: '/api/public/media/$'
+      path: '/api/public/media/$'
+      fullPath: '/api/public/media/$'
+      preLoaderRoute: typeof ApiPublicMediaSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
+  CartRoute: CartRoute,
   ContactRoute: ContactRoute,
   DeliveryRoute: DeliveryRoute,
   FinancingRoute: FinancingRoute,
@@ -369,9 +477,10 @@ const rootRouteChildren: RootRouteChildren = {
   TradeInRoute: TradeInRoute,
   UsedRvsRoute: UsedRvsRoute,
   GuidesSlugRoute: GuidesSlugRoute,
-  InventoryStockRoute: InventoryStockRoute,
+  InventorySlugRoute: InventorySlugRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   InventoryIndexRoute: InventoryIndexRoute,
+  ApiPublicMediaSplatRoute: ApiPublicMediaSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
