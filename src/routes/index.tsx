@@ -27,37 +27,38 @@ import type { InventorySearch } from "@/lib/search";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Motorhomes for Sale in Bend, Oregon | Summit Ridge RV" },
+      { title: "RVs & Travel Trailers for Sale in Bend, Oregon | Summit Ridge RV" },
       {
         name: "description",
         content:
-          "Browse new and used Class A, Class B, Class C and Super C motorhomes for sale at Summit Ridge RV in Bend, Oregon. Financing, trade-ins and nationwide delivery.",
+          "New and used RVs for sale in Bend, Oregon — travel trailers, fifth wheels, truck campers and motorhomes from Forest River, Coachmen, Grand Design, Keystone, Winnebago and more. RV financing, trade-ins, service and nationwide delivery.",
       },
-      { property: "og:title", content: "Motorhomes for Sale in Bend, Oregon | Summit Ridge RV" },
+      { property: "og:title", content: "RVs & Travel Trailers for Sale in Bend, Oregon | Summit Ridge RV" },
       {
         property: "og:description",
         content:
-          "Quality new and pre-owned motorhomes backed by knowledgeable service and full dealership support.",
+          "Shop new and used travel trailers, fifth wheels and motorhomes with honest out-the-door pricing, RV financing and nationwide delivery.",
       },
     ],
   }),
   component: Home,
 });
 
-const TYPE_CARDS = [
-  { label: "Class A", image: "/rv/class-a-ext.jpg", copy: "Full-size luxury coaches, 29–45 ft" },
-  { label: "Class B", image: "/rv/class-b-ext.jpg", copy: "Agile touring vans, 17–24 ft" },
-  { label: "Class C", image: "/rv/class-c-ext.jpg", copy: "Family coaches with cab-over bunks" },
-  { label: "Super C", image: "/rv/super-c-ext.jpg", copy: "Heavy-duty chassis, serious towing" },
-];
+const TYPE_COPY: Record<string, string> = {
+  "Travel Trailer": "Lightweight bunkhouse and couples floorplans, 17–33 ft",
+  "Fifth Wheel": "Residential living space with rear kitchens and lofts",
+  "Truck Camper": "Go-anywhere camping on a single-rear-wheel truck",
+  "Class A": "Full-size luxury coaches, 29–45 ft",
+  "Class C": "Family coaches with cab-over bunks",
+};
 
 const WHY_US = [
-  { icon: BadgeCheck, title: "Quality Inventory", copy: "Every coach is road-tested and reconditioned before it hits the lot." },
-  { icon: ClipboardCheck, title: "Professional Inspections", copy: "A multi-point inspection report comes with every used unit." },
-  { icon: BadgeDollarSign, title: "Transparent Pricing", copy: "One price, posted publicly. No surprise fees at the desk." },
-  { icon: Handshake, title: "Trade-In Options", copy: "Real numbers on your current RV, applied the same day." },
-  { icon: Truck, title: "Delivery Assistance", copy: "Local drop-off or nationwide transport coordination." },
-  { icon: Wrench, title: "Experienced Specialists", copy: "An in-house service department that knows these coaches." },
+  { icon: BadgeCheck, title: "Quality RV Inventory", copy: "Every travel trailer, fifth wheel and motorhome is inspected and reconditioned before it hits the lot." },
+  { icon: ClipboardCheck, title: "Professional Inspections", copy: "A multi-point inspection report covering roof, seals, brakes and appliances comes with every used RV." },
+  { icon: BadgeDollarSign, title: "Transparent Pricing", copy: "One out-the-door price, posted publicly. No surprise prep or freight fees at the desk." },
+  { icon: Handshake, title: "Trade-In Options", copy: "Real written numbers on your current RV, applied the same day." },
+  { icon: Truck, title: "Nationwide Delivery", copy: "Local drop-off across Central Oregon or insured transport to all 48 states." },
+  { icon: Wrench, title: "Experienced RV Specialists", copy: "An in-house service department that works on these units every day." },
 ];
 
 function Home() {
@@ -68,8 +69,20 @@ function Home() {
 
   const [quick, setQuick] = useState({ rvClass: "", make: "", condition: "", priceMax: "" });
 
-  const featured = (rvs.data ?? []).filter((rv) => rv.status !== "sold").slice(0, 6);
-  const makes = Array.from(new Set((rvs.data ?? []).map((rv) => rv.make))).sort();
+  const all = rvs.data ?? [];
+  const featured = all.filter((rv) => rv.status !== "sold").slice(0, 6);
+  const makes = Array.from(new Set(all.map((rv) => rv.make))).sort();
+
+  const typeCards = Array.from(new Set(all.map((rv) => rv.rv_class)))
+    .slice(0, 4)
+    .map((label) => {
+      const example = all.find((rv) => rv.rv_class === label && rv.photos.length);
+      return {
+        label,
+        image: example?.photos[0] ?? "/rv/hero.jpg",
+        copy: TYPE_COPY[label] ?? `${all.filter((rv) => rv.rv_class === label).length} units in stock`,
+      };
+    });
 
   function runQuickSearch() {
     const search: InventorySearch = {};
@@ -82,6 +95,30 @@ function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AutoDealer",
+            name: DEALER.name,
+            description:
+              "New and used RV dealership in Bend, Oregon selling travel trailers, fifth wheels, truck campers and motorhomes with financing, service and nationwide delivery.",
+            telephone: DEALER.phone,
+            email: DEALER.email,
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: DEALER.street,
+              addressLocality: DEALER.city,
+              addressRegion: DEALER.state,
+              postalCode: DEALER.zip,
+              addressCountry: "US",
+            },
+            areaServed: "United States",
+            openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-17:00"],
+          }),
+        }}
+      />
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
         <img
@@ -213,7 +250,7 @@ function Home() {
         <div className="container-page">
           <SectionHeading eyebrow="Browse by RV Type" title="Pick the class that fits how you travel" />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {TYPE_CARDS.map((card) => (
+            {typeCards.map((card) => (
               <Link
                 key={card.label}
                 to="/inventory"
@@ -222,7 +259,7 @@ function Home() {
               >
                 <img
                   src={card.image}
-                  alt={`${card.label} motorhomes for sale`}
+                  alt={`${card.label} RVs for sale in Bend, Oregon at Summit Ridge RV`}
                   loading="lazy"
                   width={1600}
                   height={1067}
@@ -350,6 +387,64 @@ function Home() {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* SEO CONTENT */}
+      <section className="bg-surface py-16 md:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-2">
+          <div>
+            <h2 className="font-display text-2xl font-bold md:text-3xl">
+              Your RV dealership in Bend, Oregon
+            </h2>
+            <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground">
+              <p>
+                Summit Ridge RV sells new and used RVs across Central Oregon and the wider Pacific Northwest. Our lot
+                on Highway 97 carries lightweight travel trailers, family bunkhouses, residential fifth wheels, truck
+                campers and diesel motorhomes from Forest River, Coachmen, Grand Design, Keystone, KZ, Lance, Newmar
+                and Winnebago.
+              </p>
+              <p>
+                Every unit is listed with real photography, complete manufacturer specifications, dry weight, GVWR,
+                tank capacities and sleeping capacity so you can size a trailer against your tow vehicle before you
+                drive out. If a spec you need isn&apos;t on the page, ask — we&apos;ll measure it and send it the same
+                day.
+              </p>
+              <p>
+                Shoppers travel to us from Redmond, Sisters, Prineville, La Pine, Madras, Eugene, Portland, Boise and
+                Spokane. Can&apos;t make the trip? We coordinate insured RV transport to all 48 states and handle
+                paperwork remotely.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h2 className="font-display text-2xl font-bold md:text-3xl">Common questions</h2>
+            <dl className="mt-4 space-y-5 text-sm">
+              {[
+                {
+                  q: "Do your listed RV prices include fees?",
+                  a: "Our posted price is the price of the unit. Tax, title, registration and any delivery are added at the desk and shown in writing before you sign — no prep, freight or documentation surprises.",
+                },
+                {
+                  q: "Can I finance a used travel trailer?",
+                  a: "Yes. We submit one application to multiple RV lenders, with terms typically from 10 to 20 years depending on loan size, age of the unit and credit profile. Approvals are usually back within one business day.",
+                },
+                {
+                  q: "How do I know a used RV is sound?",
+                  a: "Every pre-owned unit gets a multi-point technician inspection covering roof membrane and seals, sidewall delamination, brakes and bearings, tyres, appliances, 12V and shore power before it is listed.",
+                },
+                {
+                  q: "Will you take my current RV in trade?",
+                  a: "We buy outright and take trades. Send year, make, model, mileage and photos through the trade-in form and we return a real written number, usually within a business day.",
+                },
+              ].map((item) => (
+                <div key={item.q}>
+                  <dt className="font-display font-bold text-foreground">{item.q}</dt>
+                  <dd className="mt-1.5 text-muted-foreground">{item.a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </section>
 

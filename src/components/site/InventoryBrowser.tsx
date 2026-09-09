@@ -262,7 +262,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
           <p className="text-sm text-muted-foreground">
             <span className="font-display text-lg font-bold text-foreground">{list.length}</span>{" "}
-            {list.length === 1 ? "motorhome" : "motorhomes"} available
+            {list.length === 1 ? "RV" : "RVs"} available
           </p>
           <div className="flex items-center gap-2">
             <Button
@@ -300,7 +300,7 @@ export function InventoryBrowser({ search, onChange, lockedCondition }: Props) {
           </div>
         ) : list.length === 0 ? (
           <div className="mt-16 rounded-lg border border-dashed border-border p-12 text-center">
-            <h3 className="font-display text-lg font-bold">No motorhomes match those filters</h3>
+            <h3 className="font-display text-lg font-bold">No RVs match those filters</h3>
             <p className="mt-2 text-sm text-muted-foreground">
               Try widening your price or mileage range — new units arrive weekly.
             </p>

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { supabase } from "@/integrations/supabase/client";
+import { submitLead, type LeadTable } from "@/lib/leads";
 
 export type FieldDef = {
   name: string;
@@ -18,7 +18,7 @@ export type FieldDef = {
 };
 
 type Props = {
-  table: "inquiries" | "financing_applications" | "trade_in_requests" | "service_requests" | "delivery_quotes";
+  table: LeadTable;
   fields: FieldDef[];
   submitLabel: string;
   successMessage: string;
@@ -65,10 +65,10 @@ export function LeadForm({
       payload[field.name] = field.type === "number" ? Number(raw.replace(/[^0-9.]/g, "")) : raw;
     }
 
-    const { error } = await supabase.from(table).insert(payload as never);
+    const result = await submitLead(table, payload);
     setSubmitting(false);
 
-    if (error) {
+    if (!result.ok) {
       toast.error("We couldn't send that. Please call us and we'll take the details by phone.");
       return;
     }

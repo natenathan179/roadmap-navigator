@@ -1,6 +1,6 @@
 export const DEALER = {
   name: "Summit Ridge RV",
-  tagline: "Motorhome Sales, Service & Delivery",
+  tagline: "RV Sales, Service & Delivery",
   street: "6420 N Highway 97",
   city: "Bend",
   state: "OR",
