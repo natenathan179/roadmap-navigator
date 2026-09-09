@@ -69,8 +69,20 @@ function Home() {
 
   const [quick, setQuick] = useState({ rvClass: "", make: "", condition: "", priceMax: "" });
 
-  const featured = (rvs.data ?? []).filter((rv) => rv.status !== "sold").slice(0, 6);
-  const makes = Array.from(new Set((rvs.data ?? []).map((rv) => rv.make))).sort();
+  const all = rvs.data ?? [];
+  const featured = all.filter((rv) => rv.status !== "sold").slice(0, 6);
+  const makes = Array.from(new Set(all.map((rv) => rv.make))).sort();
+
+  const typeCards = Array.from(new Set(all.map((rv) => rv.rv_class)))
+    .slice(0, 4)
+    .map((label) => {
+      const example = all.find((rv) => rv.rv_class === label && rv.photos.length);
+      return {
+        label,
+        image: example?.photos[0] ?? "/rv/hero.jpg",
+        copy: TYPE_COPY[label] ?? `${all.filter((rv) => rv.rv_class === label).length} units in stock`,
+      };
+    });
 
   function runQuickSearch() {
     const search: InventorySearch = {};
