@@ -24,6 +24,7 @@ import { Route as UsedRvsRouteImport } from './routes/used-rvs'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as InventoryIndexRouteImport } from './routes/inventory.index'
+import { Route as InventorySlugRouteImport } from './routes/inventory.$slug'
 import { Route as ApiPublicMediaSplatRouteImport } from './routes/api/public/media.$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -101,6 +102,11 @@ const InventoryIndexRoute = InventoryIndexRouteImport.update({
   path: '/inventory/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InventorySlugRoute = InventorySlugRouteImport.update({
+  id: '/inventory/$slug',
+  path: '/inventory/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicMediaSplatRoute = ApiPublicMediaSplatRouteImport.update({
   id: '/api/public/media/$',
   path: '/api/public/media/$',
@@ -121,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/inventory/$slug': typeof InventorySlugRoute
   '/guides/': typeof GuidesIndexRoute
   '/inventory/': typeof InventoryIndexRoute
   '/api/public/media/$': typeof ApiPublicMediaSplatRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/inventory/$slug': typeof InventorySlugRoute
   '/guides': typeof GuidesIndexRoute
   '/inventory': typeof InventoryIndexRoute
   '/api/public/media/$': typeof ApiPublicMediaSplatRoute
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/inventory/$slug': typeof InventorySlugRoute
   '/guides/': typeof GuidesIndexRoute
   '/inventory/': typeof InventoryIndexRoute
   '/api/public/media/$': typeof ApiPublicMediaSplatRoute
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/used-rvs'
     | '/guides/$slug'
+    | '/inventory/$slug'
     | '/guides/'
     | '/inventory/'
     | '/api/public/media/$'
@@ -196,6 +206,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/used-rvs'
     | '/guides/$slug'
+    | '/inventory/$slug'
     | '/guides'
     | '/inventory'
     | '/api/public/media/$'
@@ -214,6 +225,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/used-rvs'
     | '/guides/$slug'
+    | '/inventory/$slug'
     | '/guides/'
     | '/inventory/'
     | '/api/public/media/$'
@@ -233,6 +245,7 @@ export interface RootRouteChildren {
   TradeInRoute: typeof TradeInRoute
   UsedRvsRoute: typeof UsedRvsRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
+  InventorySlugRoute: typeof InventorySlugRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   InventoryIndexRoute: typeof InventoryIndexRoute
   ApiPublicMediaSplatRoute: typeof ApiPublicMediaSplatRoute
@@ -345,6 +358,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventoryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inventory/$slug': {
+      id: '/inventory/$slug'
+      path: '/inventory/$slug'
+      fullPath: '/inventory/$slug'
+      preLoaderRoute: typeof InventorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/media/$': {
       id: '/api/public/media/$'
       path: '/api/public/media/$'
@@ -369,6 +389,7 @@ const rootRouteChildren: RootRouteChildren = {
   TradeInRoute: TradeInRoute,
   UsedRvsRoute: UsedRvsRoute,
   GuidesSlugRoute: GuidesSlugRoute,
+  InventorySlugRoute: InventorySlugRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   InventoryIndexRoute: InventoryIndexRoute,
   ApiPublicMediaSplatRoute: ApiPublicMediaSplatRoute,
