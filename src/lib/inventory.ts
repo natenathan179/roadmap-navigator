@@ -132,8 +132,8 @@ export async function fetchPostBySlug(slug: string): Promise<BlogPost | null> {
 }
 
 export const rvsQuery = () => queryOptions({ queryKey: ["rvs"], queryFn: fetchRvs, staleTime: 60_000 });
-export const rvQuery = (stock: string) =>
-  queryOptions({ queryKey: ["rv", stock], queryFn: () => fetchRvByStock(stock), staleTime: 60_000 });
+export const rvQuery = (slug: string) =>
+  queryOptions({ queryKey: ["rv", slug], queryFn: () => fetchRvBySlug(slug), staleTime: 60_000 });
 export const reviewsQuery = () =>
   queryOptions({ queryKey: ["reviews"], queryFn: fetchReviews, staleTime: 300_000 });
 export const postsQuery = () =>
