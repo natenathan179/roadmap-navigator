@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DeliveryRouteImport } from './routes/delivery'
@@ -22,6 +24,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TradeInRouteImport } from './routes/trade-in'
 import { Route as UsedRvsRouteImport } from './routes/used-rvs'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as InventoryIndexRouteImport } from './routes/inventory.index'
@@ -33,9 +36,18 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CartRoute = CartRouteImport.update({
@@ -93,6 +105,11 @@ const UsedRvsRoute = UsedRvsRouteImport.update({
   path: '/used-rvs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const GuidesIndexRoute = GuidesIndexRouteImport.update({
   id: '/guides/',
   path: '/guides/',
@@ -122,6 +139,7 @@ const ApiPublicMediaSplatRoute = ApiPublicMediaSplatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
@@ -133,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/inventory/$slug': typeof InventorySlugRoute
   '/guides/': typeof GuidesIndexRoute
@@ -142,6 +161,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
@@ -153,6 +173,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/inventory/$slug': typeof InventorySlugRoute
   '/guides': typeof GuidesIndexRoute
@@ -162,7 +183,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
@@ -174,6 +197,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/inventory/$slug': typeof InventorySlugRoute
   '/guides/': typeof GuidesIndexRoute
@@ -185,6 +209,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
     | '/cart'
     | '/contact'
     | '/delivery'
@@ -196,6 +221,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trade-in'
     | '/used-rvs'
+    | '/admin'
     | '/guides/$slug'
     | '/inventory/$slug'
     | '/guides/'
@@ -205,6 +231,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/auth'
     | '/cart'
     | '/contact'
     | '/delivery'
@@ -216,6 +243,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trade-in'
     | '/used-rvs'
+    | '/admin'
     | '/guides/$slug'
     | '/inventory/$slug'
     | '/guides'
@@ -224,7 +252,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
+    | '/auth'
     | '/cart'
     | '/contact'
     | '/delivery'
@@ -236,6 +266,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trade-in'
     | '/used-rvs'
+    | '/_authenticated/admin'
     | '/guides/$slug'
     | '/inventory/$slug'
     | '/guides/'
@@ -245,7 +276,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
   CartRoute: typeof CartRoute
   ContactRoute: typeof ContactRoute
   DeliveryRoute: typeof DeliveryRoute
@@ -273,11 +306,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cart': {
@@ -357,6 +404,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsedRvsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/guides/': {
       id: '/guides/'
       path: '/guides'
@@ -395,9 +449,22 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
   CartRoute: CartRoute,
   ContactRoute: ContactRoute,
   DeliveryRoute: DeliveryRoute,
