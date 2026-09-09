@@ -19,6 +19,7 @@ const NAV = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const cart = useCart();
 
   return (
     <header className="sticky top-0 z-50 bg-navy text-navy-foreground shadow-lift">
@@ -70,6 +71,18 @@ export function Header() {
             <Phone className="h-4 w-4" />
             {DEALER.phone}
           </a>
+          <Link
+            to="/cart"
+            aria-label={`Quote list, ${cart.count} ${cart.count === 1 ? "unit" : "units"}`}
+            className="relative inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/15 hover:bg-white/5"
+          >
+            <ShoppingCart className="h-5 w-5" />
+            {cart.count ? (
+              <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-[11px] font-bold text-accent-foreground">
+                {cart.count}
+              </span>
+            ) : null}
+          </Link>
           <Button asChild className="hidden bg-accent text-accent-foreground hover:bg-accent/90 sm:inline-flex">
             <Link to="/inventory">View Inventory</Link>
           </Button>
