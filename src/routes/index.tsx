@@ -27,37 +27,38 @@ import type { InventorySearch } from "@/lib/search";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Motorhomes for Sale in Bend, Oregon | Summit Ridge RV" },
+      { title: "RVs & Travel Trailers for Sale in Bend, Oregon | Summit Ridge RV" },
       {
         name: "description",
         content:
-          "Browse new and used Class A, Class B, Class C and Super C motorhomes for sale at Summit Ridge RV in Bend, Oregon. Financing, trade-ins and nationwide delivery.",
+          "New and used RVs for sale in Bend, Oregon — travel trailers, fifth wheels, truck campers and motorhomes from Forest River, Coachmen, Grand Design, Keystone, Winnebago and more. RV financing, trade-ins, service and nationwide delivery.",
       },
-      { property: "og:title", content: "Motorhomes for Sale in Bend, Oregon | Summit Ridge RV" },
+      { property: "og:title", content: "RVs & Travel Trailers for Sale in Bend, Oregon | Summit Ridge RV" },
       {
         property: "og:description",
         content:
-          "Quality new and pre-owned motorhomes backed by knowledgeable service and full dealership support.",
+          "Shop new and used travel trailers, fifth wheels and motorhomes with honest out-the-door pricing, RV financing and nationwide delivery.",
       },
     ],
   }),
   component: Home,
 });
 
-const TYPE_CARDS = [
-  { label: "Class A", image: "/rv/class-a-ext.jpg", copy: "Full-size luxury coaches, 29–45 ft" },
-  { label: "Class B", image: "/rv/class-b-ext.jpg", copy: "Agile touring vans, 17–24 ft" },
-  { label: "Class C", image: "/rv/class-c-ext.jpg", copy: "Family coaches with cab-over bunks" },
-  { label: "Super C", image: "/rv/super-c-ext.jpg", copy: "Heavy-duty chassis, serious towing" },
-];
+const TYPE_COPY: Record<string, string> = {
+  "Travel Trailer": "Lightweight bunkhouse and couples floorplans, 17–33 ft",
+  "Fifth Wheel": "Residential living space with rear kitchens and lofts",
+  "Truck Camper": "Go-anywhere camping on a single-rear-wheel truck",
+  "Class A": "Full-size luxury coaches, 29–45 ft",
+  "Class C": "Family coaches with cab-over bunks",
+};
 
 const WHY_US = [
-  { icon: BadgeCheck, title: "Quality Inventory", copy: "Every coach is road-tested and reconditioned before it hits the lot." },
-  { icon: ClipboardCheck, title: "Professional Inspections", copy: "A multi-point inspection report comes with every used unit." },
-  { icon: BadgeDollarSign, title: "Transparent Pricing", copy: "One price, posted publicly. No surprise fees at the desk." },
-  { icon: Handshake, title: "Trade-In Options", copy: "Real numbers on your current RV, applied the same day." },
-  { icon: Truck, title: "Delivery Assistance", copy: "Local drop-off or nationwide transport coordination." },
-  { icon: Wrench, title: "Experienced Specialists", copy: "An in-house service department that knows these coaches." },
+  { icon: BadgeCheck, title: "Quality RV Inventory", copy: "Every travel trailer, fifth wheel and motorhome is inspected and reconditioned before it hits the lot." },
+  { icon: ClipboardCheck, title: "Professional Inspections", copy: "A multi-point inspection report covering roof, seals, brakes and appliances comes with every used RV." },
+  { icon: BadgeDollarSign, title: "Transparent Pricing", copy: "One out-the-door price, posted publicly. No surprise prep or freight fees at the desk." },
+  { icon: Handshake, title: "Trade-In Options", copy: "Real written numbers on your current RV, applied the same day." },
+  { icon: Truck, title: "Nationwide Delivery", copy: "Local drop-off across Central Oregon or insured transport to all 48 states." },
+  { icon: Wrench, title: "Experienced RV Specialists", copy: "An in-house service department that works on these units every day." },
 ];
 
 function Home() {
