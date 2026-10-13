@@ -24,7 +24,9 @@ export const DEALER = {
 export const RV_CLASSES = [
   "Travel Trailer",
   "Fifth Wheel",
+  "Toy Hauler",
   "Truck Camper",
+  "Pop-Up Camper",
   "Class A",
   "Class B",
   "Class C",
