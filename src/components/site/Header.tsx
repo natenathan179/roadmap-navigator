@@ -38,7 +38,7 @@ export function Header() {
 
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Link to="/" aria-label={`${DEALER.name} home`} onClick={() => setOpen(false)}>
-          <Logo subtitle="Bend, Oregon" />
+          <Logo />
         </Link>
 
         <nav className="hidden items-center gap-6 xl:flex">
@@ -49,7 +49,7 @@ export function Header() {
               activeProps={{ className: "text-accent" }}
               inactiveProps={{ className: "text-navy-foreground/80" }}
               activeOptions={{ exact: item.to === "/" }}
-              className="text-sm font-medium transition-colors hover:text-accent"
+              className="whitespace-nowrap text-sm font-medium transition-colors hover:text-accent"
             >
               {item.label}
             </Link>
@@ -59,7 +59,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <a
             href={DEALER.phoneHref}
-            className="hidden items-center gap-2 text-sm font-semibold hover:text-accent md:flex"
+            className="hidden items-center gap-2 whitespace-nowrap text-sm font-semibold hover:text-accent md:flex"
           >
             <Phone className="h-4 w-4" />
             {DEALER.phone}

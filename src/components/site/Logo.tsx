@@ -1,40 +1,57 @@
+import { useId } from "react";
+
 import { cn } from "@/lib/utils";
 
-/** Brand mark: Cascade peaks with the open road leading toward them. Mirrors public/favicon.svg. */
+/** Brand mark: chrome italic "RV" with a road running through the V. Mirrors public/favicon.svg and public/logo.svg. */
 export function LogoMark({ className }: { className?: string }) {
+  // Header and footer both render the mark, so gradient/mask ids must be unique per instance.
+  const id = useId().replace(/:/g, "");
+  const chrome = `chrome-${id}`;
+  const road = `road-${id}`;
+
   return (
-    <svg viewBox="0 0 40 40" aria-hidden="true" className={cn("h-9 w-9 shrink-0", className)}>
-      <rect width="40" height="40" rx="9" className="fill-accent" />
-      <path d="M3 27 15 8l6 9 5-6 11 16Z" className="fill-navy" />
-      <path d="M15 8l3.67 5.5-1.97-1.1-1.7 1.8-1.7-1.8-1.77 1.1Z" fill="#fff" />
-      <path d="M26 11l2.41 3.5-1.31-.8-1.1 1.2-1.3-1.2-1.62.8Z" fill="#fff" />
-      <path d="M19.4 27c1.8 4-7.9 7-9.4 13h18c-7.5-6-5.2-9-7.4-13Z" fill="#fff" />
-      <path
-        d="M20 27.8c1.6 3.4-4.2 6.4-.8 12.2"
-        fill="none"
-        className="stroke-accent"
-        strokeWidth="1.1"
-        strokeDasharray="1.8 1.6"
-      />
+    <svg viewBox="0 0 90 40" aria-hidden="true" className={cn("h-7 w-auto shrink-0", className)}>
+      <defs>
+        <linearGradient id={chrome} x1="0" y1="0" x2="0" y2="40" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#FFFFFF" />
+          <stop offset=".42" stopColor="#D5DADF" />
+          <stop offset=".5" stopColor="#9AA2AA" />
+          <stop offset=".62" stopColor="#C3C9CF" />
+          <stop offset="1" stopColor="#EEF1F3" />
+        </linearGradient>
+        <mask id={road} maskUnits="userSpaceOnUse" x="0" y="0" width="90" height="40">
+          <rect width="90" height="40" fill="#fff" />
+          <path d="M51 41C58 31 67 15 79 -1" fill="none" stroke="#000" strokeWidth="2.4" />
+          <path d="M58.5 41C63 33 70 20 80 6" fill="none" stroke="#000" strokeWidth="1.2" strokeDasharray="3 2.4" />
+        </mask>
+      </defs>
+      <g mask={`url(#${road})`}>
+        <g transform="translate(10 0) skewX(-14)" fill={`url(#${chrome})`}>
+          <path
+            fillRule="evenodd"
+            d="M0 0H26C33 0 37 4 37 11C37 17 34 21 28 22.5L36 40H25L18 24H10V40H0ZM10 8H25C27 8 28 9 28 11.5C28 14 27 15.5 25 15.5H10Z"
+          />
+          <path d="M39 0H50.5L58 24L66 0H78L63 40H52Z" />
+        </g>
+      </g>
     </svg>
   );
 }
 
 /**
- * Full logo lockup for dark (navy) surfaces: mark + "RV MOTORHOMES / DEALERSHIP" wordmark.
- * The optional subtitle (e.g. location) joins the second line from the sm breakpoint up.
+ * Full logo lockup for dark (navy) surfaces: "RV" mark + "MOTORHOMES" wordmark + tagline (sm and up).
+ * `stacked` puts the mark above the wordmark, like the original logo, for narrow columns such as the footer.
  */
-export function Logo({ subtitle, className }: { subtitle?: string; className?: string }) {
+export function Logo({ stacked = false, className }: { stacked?: boolean; className?: string }) {
   return (
-    <span className={cn("flex items-center gap-3", className)}>
-      <LogoMark />
-      <span className="leading-tight">
-        <span className="block whitespace-nowrap font-display text-base font-extrabold uppercase tracking-[0.06em]">
-          <span className="text-accent">RV</span> MotorHomes
+    <span className={cn("flex", stacked ? "flex-col items-start gap-2" : "items-center gap-2.5", className)}>
+      <LogoMark className={stacked ? "h-10" : undefined} />
+      <span className="leading-none">
+        <span className="block whitespace-nowrap bg-gradient-to-b from-white via-[#C3C9CF] to-[#EEF1F3] bg-clip-text font-display text-[15px] font-extrabold uppercase tracking-[0.16em] text-transparent">
+          MotorHomes
         </span>
-        <span className="block whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-foreground/70">
-          Dealership
-          {subtitle ? <span className="hidden font-normal text-navy-foreground/60 sm:inline"> · {subtitle}</span> : null}
+        <span className="mt-1.5 hidden whitespace-nowrap text-[8px] font-semibold uppercase tracking-[0.14em] text-navy-foreground/65 sm:block">
+          Freedom · Adventure · Your Way
         </span>
       </span>
     </span>

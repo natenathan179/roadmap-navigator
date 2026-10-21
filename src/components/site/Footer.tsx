@@ -40,7 +40,7 @@ export function Footer() {
     <footer className="mt-20 bg-navy text-navy-foreground">
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Logo />
+          <Logo stacked />
           <p className="mt-4 text-sm leading-relaxed text-navy-foreground/70">
             New and pre-owned travel trailers, fifth wheels and motorhomes, full-service RV repair and nationwide delivery from the high desert of
             Central Oregon.
