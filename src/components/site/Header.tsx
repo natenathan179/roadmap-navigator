@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, Phone, ShoppingCart, X } from "lucide-react";
 import { useState } from "react";
 
+import { Logo } from "@/components/site/Logo";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
 import { DEALER } from "@/lib/dealership";
@@ -36,16 +37,8 @@ export function Header() {
       </div>
 
       <div className="container-page flex h-16 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="flex h-9 w-9 items-center justify-center rounded-sm bg-accent font-display text-sm font-bold text-accent-foreground">
-            SR
-          </span>
-          <span className="leading-tight">
-            <span className="block font-display text-base font-bold tracking-tight">{DEALER.name}</span>
-            <span className="hidden text-[10px] uppercase tracking-[0.18em] text-navy-foreground/60 sm:block">
-              Bend, Oregon
-            </span>
-          </span>
+        <Link to="/" aria-label={`${DEALER.name} home`} onClick={() => setOpen(false)}>
+          <Logo subtitle="Bend, Oregon" />
         </Link>
 
         <nav className="hidden items-center gap-6 xl:flex">

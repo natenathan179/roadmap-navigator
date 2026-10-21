@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 
+import { Logo } from "@/components/site/Logo";
 import { DEALER } from "@/lib/dealership";
 
 const COLUMNS = [
@@ -39,12 +40,7 @@ export function Footer() {
     <footer className="mt-20 bg-navy text-navy-foreground">
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-sm bg-accent font-display text-sm font-bold text-accent-foreground">
-              SR
-            </span>
-            <span className="font-display text-base font-bold">{DEALER.name}</span>
-          </div>
+          <Logo subtitle={DEALER.tagline} />
           <p className="mt-4 text-sm leading-relaxed text-navy-foreground/70">
             New and pre-owned travel trailers, fifth wheels and motorhomes, full-service RV repair and nationwide delivery from the high desert of
             Central Oregon.
