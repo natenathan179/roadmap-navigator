@@ -1,6 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createClient } from "@supabase/supabase-js";
 
 const BUCKET = "rv-photos";
+
+// New Supabase API keys are opaque strings, not bearer JWTs — send them as
+// `apikey` only, never as `Authorization: Bearer <key>`.
+function isNewSupabaseApiKey(value: string): boolean {
+  return value.startsWith("sb_publishable_") || value.startsWith("sb_secret_");
+}
+
+function createSupabaseFetch(supabaseKey: string): typeof fetch {
+  return (input, init) => {
+    const headers = new Headers(
+      typeof Request !== "undefined" && input instanceof Request ? input.headers : undefined,
+    );
+    if (init?.headers) {
+      new Headers(init.headers).forEach((value, key) => headers.set(key, value));
+    }
+    if (isNewSupabaseApiKey(supabaseKey) && headers.get("Authorization") === `Bearer ${supabaseKey}`) {
+      headers.delete("Authorization");
+    }
+    headers.set("apikey", supabaseKey);
+    return fetch(input, { ...init, headers });
+  };
+}
 
 export const Route = createFileRoute("/api/public/media/$")({
   server: {
@@ -9,8 +32,19 @@ export const Route = createFileRoute("/api/public/media/$")({
         const path = decodeURIComponent((params as { _splat?: string })._splat ?? "");
         if (!path || path.includes("..")) return new Response("Not found", { status: 404 });
 
-        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-        const { data, error } = await supabaseAdmin.storage.from(BUCKET).download(path);
+        // Read-only public client: the bucket stays private, an anon SELECT
+        // policy on storage.objects allows downloads. No service-role key
+        // needed, so this works in every deployed environment.
+        const url = process.env["SUPABASE_URL"];
+        const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
+        if (!url || !key) return new Response("Not found", { status: 404 });
+
+        const supabase = createClient(url, key, {
+          global: { fetch: createSupabaseFetch(key) },
+          auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
+        });
+
+        const { data, error } = await supabase.storage.from(BUCKET).download(path);
         if (error || !data) return new Response("Not found", { status: 404 });
 
         const ext = path.split(".").pop()?.toLowerCase();
