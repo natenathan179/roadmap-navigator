@@ -29,10 +29,10 @@ export function Logo({ subtitle, className }: { subtitle?: string; className?: s
     <span className={cn("flex items-center gap-3", className)}>
       <LogoMark />
       <span className="leading-tight">
-        <span className="block font-display text-base font-extrabold uppercase tracking-[0.06em]">
+        <span className="block whitespace-nowrap font-display text-base font-extrabold uppercase tracking-[0.06em]">
           <span className="text-accent">RV</span> MotorHomes
         </span>
-        <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-foreground/70">
+        <span className="block whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-foreground/70">
           Dealership
           {subtitle ? <span className="hidden font-normal text-navy-foreground/60 sm:inline"> · {subtitle}</span> : null}
         </span>

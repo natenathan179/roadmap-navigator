@@ -40,7 +40,7 @@ export function Footer() {
     <footer className="mt-20 bg-navy text-navy-foreground">
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Logo subtitle="Bend, Oregon" />
+          <Logo />
           <p className="mt-4 text-sm leading-relaxed text-navy-foreground/70">
             New and pre-owned travel trailers, fifth wheels and motorhomes, full-service RV repair and nationwide delivery from the high desert of
             Central Oregon.
@@ -58,7 +58,7 @@ export function Footer() {
             </p>
             <p className="flex items-center gap-2">
               <Mail className="h-4 w-4 shrink-0 text-accent" />
-              <a href={`mailto:${DEALER.email}`} className="hover:text-accent">
+              <a href={`mailto:${DEALER.email}`} className="min-w-0 wrap-anywhere hover:text-accent">
                 {DEALER.email}
               </a>
             </p>

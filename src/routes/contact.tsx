@@ -59,7 +59,7 @@ function Contact() {
               <div>
                 <dt className="font-display font-bold">Email</dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${DEALER.email}`} className="text-muted-foreground hover:text-accent">
+                  <a href={`mailto:${DEALER.email}`} className="wrap-anywhere text-muted-foreground hover:text-accent">
                     {DEALER.email}
                   </a>
                 </dd>

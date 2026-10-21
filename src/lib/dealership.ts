@@ -10,9 +10,9 @@ export const DEALER = {
   },
   phone: "(541) 555-0142",
   phoneHref: "tel:+15415550142",
-  email: "sales@summitridgerv.com",
+  email: "sales@rvmotorhomesdealership.com",
   /** Address every website form is emailed to via FormSubmit. */
-  formEmail: "sales@summitridgerv.com",
+  formEmail: "sales@rvmotorhomesdealership.com",
   hours: [
     { days: "Monday – Friday", time: "8:00 AM – 6:00 PM" },
     { days: "Saturday", time: "9:00 AM – 5:00 PM" },

@@ -12,4 +12,4 @@
 - E2E verified 2026-10-21: 22/22 public checks (home, inventory, detail, JSON-LD, galleries, inquiry modal, cart, reviews, media route, all content pages, zero console errors); 7/7 admin checks (login, dashboard, create/delete RV, checkout modal); photo upload + removal; leads confirmed saved in DB; typecheck + build OK
 
 ## Pending (blocked on user)
-- [ ] Real FormSubmit recipient email (currently placeholder sales@summitridgerv.com)
+- [x] Real FormSubmit recipient email (sales@rvmotorhomesdealership.com — confirm FormSubmit activation email on first submission)
