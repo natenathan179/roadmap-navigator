@@ -8,13 +8,13 @@ import { postsQuery } from "@/lib/inventory";
 export const Route = createFileRoute("/guides/")({
   head: () => ({
     meta: [
-      { title: "RV Buying Guide | How to Choose a Motorhome | Summit Ridge RV" },
+      { title: "RV Buying Guide | How to Choose a Motorhome | RV MotorHomes Dealership" },
       {
         name: "description",
         content:
           "Class A vs B vs C, what motorhomes really cost, diesel vs gas, used RV inspection checklists and financing basics — practical guides from working RV dealers.",
       },
-      { property: "og:title", content: "RV Buying Guide | Summit Ridge RV" },
+      { property: "og:title", content: "RV Buying Guide | RV MotorHomes Dealership" },
       {
         property: "og:description",
         content: "Practical motorhome buying advice from a dealership that inspects coaches every day.",

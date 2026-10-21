@@ -6,13 +6,13 @@ import { LeadForm } from "@/components/site/LeadForm";
 export const Route = createFileRoute("/financing")({
   head: () => ({
     meta: [
-      { title: "RV Financing | Apply for a Motorhome Loan | Summit Ridge RV" },
+      { title: "RV Financing | Apply for a Motorhome Loan | RV MotorHomes Dealership" },
       {
         name: "description",
         content:
-          "Apply for RV financing at Summit Ridge RV. Terms from 10 to 20 years, full-timer programs and competitive rates through multiple motorhome lenders.",
+          "Apply for RV financing at RV MotorHomes Dealership. Terms from 10 to 20 years, full-timer programs and competitive rates through multiple motorhome lenders.",
       },
-      { property: "og:title", content: "RV Financing | Summit Ridge RV" },
+      { property: "og:title", content: "RV Financing | RV MotorHomes Dealership" },
       {
         property: "og:description",
         content: "One application, multiple RV lenders. Get pre-qualified for your motorhome.",

@@ -27,13 +27,13 @@ import type { InventorySearch } from "@/lib/search";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "RVs & Travel Trailers for Sale in Bend, Oregon | Summit Ridge RV" },
+      { title: "RVs & Travel Trailers for Sale in Bend, Oregon | RV MotorHomes Dealership" },
       {
         name: "description",
         content:
           "New and used RVs for sale in Bend, Oregon — travel trailers, fifth wheels, truck campers and motorhomes from Forest River, Coachmen, Grand Design, Keystone, Winnebago and more. RV financing, trade-ins, service and nationwide delivery.",
       },
-      { property: "og:title", content: "RVs & Travel Trailers for Sale in Bend, Oregon | Summit Ridge RV" },
+      { property: "og:title", content: "RVs & Travel Trailers for Sale in Bend, Oregon | RV MotorHomes Dealership" },
       {
         property: "og:description",
         content:
@@ -259,7 +259,7 @@ function Home() {
               >
                 <img
                   src={card.image}
-                  alt={`${card.label} RVs for sale in Bend, Oregon at Summit Ridge RV`}
+                  alt={`${card.label} RVs for sale in Bend, Oregon at RV MotorHomes Dealership`}
                   loading="lazy"
                   width={1600}
                   height={1067}
@@ -399,7 +399,7 @@ function Home() {
             </h2>
             <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground">
               <p>
-                Summit Ridge RV sells new and used RVs across Central Oregon and the wider Pacific Northwest. Our lot
+                RV MotorHomes Dealership sells new and used RVs across Central Oregon and the wider Pacific Northwest. Our lot
                 on Highway 97 carries lightweight travel trailers, family bunkhouses, residential fifth wheels, truck
                 campers and diesel motorhomes from Forest River, Coachmen, Grand Design, Keystone, KZ, Lance, Newmar
                 and Winnebago.
@@ -501,7 +501,7 @@ function Home() {
           </div>
           <img
             src="/rv/dealership.jpg"
-            alt="Summit Ridge RV dealership lot with rows of motorhomes"
+            alt="RV MotorHomes Dealership dealership lot with rows of motorhomes"
             loading="lazy"
             width={1600}
             height={900}

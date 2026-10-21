@@ -15,10 +15,10 @@ import { money, normalize, rvTitle, type Rv } from "@/lib/inventory";
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
     meta: [
-      { title: "Dealership Admin | Summit Ridge RV" },
+      { title: "Dealership Admin | RV MotorHomes Dealership" },
       { name: "description", content: "Manage RV inventory, photos, enquiries and reviews." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Dealership Admin | Summit Ridge RV" },
+      { property: "og:title", content: "Dealership Admin | RV MotorHomes Dealership" },
       { property: "og:description", content: "Internal dealership management dashboard." },
     ],
   }),

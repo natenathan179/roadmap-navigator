@@ -8,13 +8,13 @@ export const Route = createFileRoute("/new-rvs")({
   validateSearch: (search: InventorySearchInput): InventorySearch => parseInventorySearch(search),
   head: () => ({
     meta: [
-      { title: "New RVs & Travel Trailers for Sale | Summit Ridge RV, Bend Oregon" },
+      { title: "New RVs & Travel Trailers for Sale | RV MotorHomes Dealership, Bend Oregon" },
       {
         name: "description",
         content:
-          "Shop brand-new travel trailers, fifth wheels, truck campers and motorhomes with full factory warranty at Summit Ridge RV in Bend, Oregon.",
+          "Shop brand-new travel trailers, fifth wheels, truck campers and motorhomes with full factory warranty at RV MotorHomes Dealership in Bend, Oregon.",
       },
-      { property: "og:title", content: "New RVs for Sale | Summit Ridge RV" },
+      { property: "og:title", content: "New RVs for Sale | RV MotorHomes Dealership" },
       {
         property: "og:description",
         content: "Brand-new coaches with full factory warranty, PDI completed before delivery.",

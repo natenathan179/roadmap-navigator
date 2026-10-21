@@ -1,5 +1,5 @@
 export const DEALER = {
-  name: "Summit Ridge RV",
+  name: "RV MotorHomes Dealership",
   tagline: "RV Sales, Service & Delivery",
   street: "6420 N Highway 97",
   city: "Bend",

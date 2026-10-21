@@ -20,20 +20,22 @@ export function LogoMark({ className }: { className?: string }) {
   );
 }
 
-/** Full logo lockup for dark (navy) surfaces: mark + "SUMMIT RIDGE RV" wordmark + optional subtitle. */
+/**
+ * Full logo lockup for dark (navy) surfaces: mark + "RV MOTORHOMES / DEALERSHIP" wordmark.
+ * The optional subtitle (e.g. location) joins the second line from the sm breakpoint up.
+ */
 export function Logo({ subtitle, className }: { subtitle?: string; className?: string }) {
   return (
     <span className={cn("flex items-center gap-3", className)}>
       <LogoMark />
       <span className="leading-tight">
         <span className="block font-display text-base font-extrabold uppercase tracking-[0.06em]">
-          Summit Ridge <span className="text-accent">RV</span>
+          <span className="text-accent">RV</span> MotorHomes
         </span>
-        {subtitle ? (
-          <span className="hidden text-[10px] uppercase tracking-[0.18em] text-navy-foreground/60 sm:block">
-            {subtitle}
-          </span>
-        ) : null}
+        <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-foreground/70">
+          Dealership
+          {subtitle ? <span className="hidden font-normal text-navy-foreground/60 sm:inline"> · {subtitle}</span> : null}
+        </span>
       </span>
     </span>
   );

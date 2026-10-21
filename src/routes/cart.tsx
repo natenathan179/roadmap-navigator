@@ -11,13 +11,13 @@ import { money } from "@/lib/inventory";
 export const Route = createFileRoute("/cart")({
   head: () => ({
     meta: [
-      { title: "Your RV Quote List | Summit Ridge RV Bend, Oregon" },
+      { title: "Your RV Quote List | RV MotorHomes Dealership Bend, Oregon" },
       {
         name: "description",
         content:
           "Review the motorhomes and travel trailers on your quote list and send one request for out-the-door pricing, financing options and delivery costs.",
       },
-      { property: "og:title", content: "Your RV Quote List | Summit Ridge RV" },
+      { property: "og:title", content: "Your RV Quote List | RV MotorHomes Dealership" },
       {
         property: "og:description",
         content: "Send a single enquiry covering every RV you're considering — pricing, financing and delivery.",
@@ -63,7 +63,7 @@ function CartPage() {
                   <Link to="/inventory/$slug" params={{ slug: item.slug }} className="sm:w-48">
                     <img
                       src={item.photo ?? "/rv/hero.jpg"}
-                      alt={`${item.title} for sale at Summit Ridge RV`}
+                      alt={`${item.title} for sale at RV MotorHomes Dealership`}
                       loading="lazy"
                       className="aspect-[3/2] w-full rounded-md object-cover"
                     />

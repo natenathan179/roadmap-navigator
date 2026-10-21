@@ -8,13 +8,13 @@ import { DEALER } from "@/lib/dealership";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Summit Ridge RV | Motorhome Dealership in Bend, Oregon" },
+      { title: "Contact RV MotorHomes Dealership | Motorhome Dealership in Bend, Oregon" },
       {
         name: "description",
         content:
-          "Call, email or visit Summit Ridge RV in Bend, Oregon. Sales and service hours, directions and a direct inquiry form for any motorhome in our inventory.",
+          "Call, email or visit RV MotorHomes Dealership in Bend, Oregon. Sales and service hours, directions and a direct inquiry form for any motorhome in our inventory.",
       },
-      { property: "og:title", content: "Contact Summit Ridge RV" },
+      { property: "og:title", content: "Contact RV MotorHomes Dealership" },
       {
         property: "og:description",
         content: "Hours, directions and a direct line to our sales and service teams in Bend, Oregon.",

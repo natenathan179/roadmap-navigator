@@ -82,14 +82,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Summit Ridge RV | RV Dealership in Bend, Oregon" },
+      { title: "RV MotorHomes Dealership | RV Dealership in Bend, Oregon" },
       {
         name: "description",
         content:
           "New and used RVs for sale in Bend, Oregon — travel trailers, fifth wheels, truck campers and motorhomes with financing, trade-ins, service and nationwide delivery.",
       },
-      { name: "author", content: "Summit Ridge RV" },
-      { property: "og:site_name", content: "Summit Ridge RV" },
+      { name: "author", content: "RV MotorHomes Dealership" },
+      { property: "og:site_name", content: "RV MotorHomes Dealership" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

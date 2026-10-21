@@ -1,4 +1,4 @@
-# Summit Ridge RV — roadmap
+# RV MotorHomes Dealership — roadmap
 
 ## Done
 - Design system (navy/charcoal/green, Montserrat + Inter), header, footer, mobile sticky CTAs

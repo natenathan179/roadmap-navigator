@@ -6,13 +6,13 @@ import { DEALER } from "@/lib/dealership";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms & Conditions | Summit Ridge RV" },
+      { title: "Terms & Conditions | RV MotorHomes Dealership" },
       {
         name: "description",
         content:
-          "Terms and conditions for using the Summit Ridge RV website, including pricing accuracy, inventory availability, financing disclaimers and warranty terms.",
+          "Terms and conditions for using the RV MotorHomes Dealership website, including pricing accuracy, inventory availability, financing disclaimers and warranty terms.",
       },
-      { property: "og:title", content: "Terms & Conditions | Summit Ridge RV" },
+      { property: "og:title", content: "Terms & Conditions | RV MotorHomes Dealership" },
       { property: "og:description", content: "Website terms, pricing accuracy and financing disclaimers." },
     ],
   }),
@@ -26,7 +26,7 @@ const SECTIONS = [
   },
   {
     title: "Pricing accuracy",
-    body: "We make every effort to post accurate prices, specifications, mileage and equipment. Errors do occur. Advertised prices exclude tax, title, registration and any documentary fee, and Summit Ridge RV reserves the right to correct pricing or specification errors at any time.",
+    body: "We make every effort to post accurate prices, specifications, mileage and equipment. Errors do occur. Advertised prices exclude tax, title, registration and any documentary fee, and RV MotorHomes Dealership reserves the right to correct pricing or specification errors at any time.",
   },
   {
     title: "Photos and specifications",

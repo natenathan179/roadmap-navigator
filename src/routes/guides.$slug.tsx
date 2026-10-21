@@ -11,10 +11,10 @@ export const Route = createFileRoute("/guides/$slug")({
     const readable = params.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
     return {
       meta: [
-        { title: `${readable} | RV Buying Guide | Summit Ridge RV` },
+        { title: `${readable} | RV Buying Guide | RV MotorHomes Dealership` },
         {
           name: "description",
-          content: `${readable} — practical motorhome buying advice from the team at Summit Ridge RV in Bend, Oregon.`,
+          content: `${readable} — practical motorhome buying advice from the team at RV MotorHomes Dealership in Bend, Oregon.`,
         },
         { property: "og:title", content: `${readable} | RV Buying Guide` },
         { property: "og:type", content: "article" },

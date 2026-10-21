@@ -14,7 +14,7 @@ export const Route = createFileRoute("/used-rvs")({
         content:
           "Inspected, reconditioned used RVs for sale in Bend, Oregon — travel trailers, fifth wheels, truck campers and motorhomes. Every used RV comes with a multi-point inspection report and service history.",
       },
-      { property: "og:title", content: "Used RVs for Sale | Summit Ridge RV" },
+      { property: "og:title", content: "Used RVs for Sale | RV MotorHomes Dealership" },
       {
         property: "og:description",
         content: "Pre-owned Class A, B, C and Super C coaches with inspection reports and service history.",

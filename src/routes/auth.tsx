@@ -12,11 +12,11 @@ export const Route = createFileRoute("/auth")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Staff Login | Summit Ridge RV" },
-      { name: "description", content: "Secure staff login for the Summit Ridge RV inventory management dashboard." },
+      { title: "Staff Login | RV MotorHomes Dealership" },
+      { name: "description", content: "Secure staff login for the RV MotorHomes Dealership inventory management dashboard." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Staff Login | Summit Ridge RV" },
-      { property: "og:description", content: "Secure staff login for Summit Ridge RV." },
+      { property: "og:title", content: "Staff Login | RV MotorHomes Dealership" },
+      { property: "og:description", content: "Secure staff login for RV MotorHomes Dealership." },
     ],
   }),
   component: AuthPage,

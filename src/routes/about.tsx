@@ -8,13 +8,13 @@ import { DEALER } from "@/lib/dealership";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Summit Ridge RV | Motorhome Dealership in Bend, Oregon" },
+      { title: "About RV MotorHomes Dealership | Motorhome Dealership in Bend, Oregon" },
       {
         name: "description",
         content:
-          "Summit Ridge RV has sold and serviced motorhomes in Bend, Oregon since 2004. Meet the team, see our inspection standards and learn why buyers travel here.",
+          "RV MotorHomes Dealership has sold and serviced motorhomes in Bend, Oregon since 2004. Meet the team, see our inspection standards and learn why buyers travel here.",
       },
-      { property: "og:title", content: "About Summit Ridge RV" },
+      { property: "og:title", content: "About RV MotorHomes Dealership" },
       {
         property: "og:description",
         content: "Family-owned motorhome dealership in Central Oregon, selling and servicing coaches since 2004.",
@@ -52,7 +52,7 @@ function About() {
       <section className="container-page grid gap-12 py-14 lg:grid-cols-2 lg:items-center">
         <img
           src="/rv/dealership.jpg"
-          alt="The Summit Ridge RV dealership lot in Bend, Oregon"
+          alt="The RV MotorHomes Dealership dealership lot in Bend, Oregon"
           loading="lazy"
           width={1600}
           height={900}

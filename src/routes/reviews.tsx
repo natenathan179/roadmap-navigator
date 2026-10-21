@@ -11,16 +11,16 @@ import { reviewsQuery } from "@/lib/inventory";
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
-      { title: "RV Dealership Reviews | Summit Ridge RV, Bend Oregon" },
+      { title: "RV Dealership Reviews | RV MotorHomes Dealership, Bend Oregon" },
       {
         name: "description",
         content:
-          "Read 35 verified customer reviews of Summit Ridge RV in Bend, Oregon — travel trailer and motorhome sales, honest out-the-door pricing, financing, trade-ins, service and nationwide RV delivery.",
+          "Read 35 verified customer reviews of RV MotorHomes Dealership in Bend, Oregon — travel trailer and motorhome sales, honest out-the-door pricing, financing, trade-ins, service and nationwide RV delivery.",
       },
-      { property: "og:title", content: "Customer Reviews | Summit Ridge RV, Bend Oregon" },
+      { property: "og:title", content: "Customer Reviews | RV MotorHomes Dealership, Bend Oregon" },
       {
         property: "og:description",
-        content: "What RV owners across the Pacific Northwest say about buying and servicing with Summit Ridge RV.",
+        content: "What RV owners across the Pacific Northwest say about buying and servicing with RV MotorHomes Dealership.",
       },
     ],
   }),
@@ -98,7 +98,7 @@ function Reviews() {
                 <div className="flex items-center gap-3">
                   <img
                     src={review.avatar_url ?? "/favicon.ico"}
-                    alt={`${review.customer_name}, verified Summit Ridge RV customer`}
+                    alt={`${review.customer_name}, verified RV MotorHomes Dealership customer`}
                     loading="lazy"
                     width={48}
                     height={48}

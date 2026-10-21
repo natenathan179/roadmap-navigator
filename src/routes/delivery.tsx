@@ -12,7 +12,7 @@ export const Route = createFileRoute("/delivery")({
         content:
           "Local delivery, nationwide motorhome transport or customer pickup at our Bend, Oregon lot. Request a delivery quote for your RV purchase.",
       },
-      { property: "og:title", content: "RV Delivery & Pickup | Summit Ridge RV" },
+      { property: "og:title", content: "RV Delivery & Pickup | RV MotorHomes Dealership" },
       {
         property: "og:description",
         content: "Local drop-off, nationwide transport or pickup with a full orientation walkthrough.",

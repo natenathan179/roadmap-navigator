@@ -6,13 +6,13 @@ import { DEALER } from "@/lib/dealership";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy | Summit Ridge RV" },
+      { title: "Privacy Policy | RV MotorHomes Dealership" },
       {
         name: "description",
         content:
-          "How Summit Ridge RV collects, uses, stores and protects the personal information you submit through our inventory, financing and service forms.",
+          "How RV MotorHomes Dealership collects, uses, stores and protects the personal information you submit through our inventory, financing and service forms.",
       },
-      { property: "og:title", content: "Privacy Policy | Summit Ridge RV" },
+      { property: "og:title", content: "Privacy Policy | RV MotorHomes Dealership" },
       { property: "og:description", content: "How we handle and protect your personal information." },
     ],
   }),

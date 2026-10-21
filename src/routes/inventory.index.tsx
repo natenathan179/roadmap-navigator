@@ -14,7 +14,7 @@ export const Route = createFileRoute("/inventory/")({
         content:
           "Search our full RV inventory by type, manufacturer, year, price, weight, length and sleeping capacity — travel trailers, fifth wheels, truck campers and motorhomes for sale in Bend, Oregon.",
       },
-      { property: "og:title", content: "RV Inventory | Summit Ridge RV" },
+      { property: "og:title", content: "RV Inventory | RV MotorHomes Dealership" },
       {
         property: "og:description",
         content: "Filter every new and used RV on the lot by type, price, weight and floorplan.",

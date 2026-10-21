@@ -7,13 +7,13 @@ import { CONDITIONS } from "@/lib/dealership";
 export const Route = createFileRoute("/trade-in")({
   head: () => ({
     meta: [
-      { title: "Trade In or Sell Your RV | Summit Ridge RV, Bend Oregon" },
+      { title: "Trade In or Sell Your RV | RV MotorHomes Dealership, Bend Oregon" },
       {
         name: "description",
         content:
-          "Get a written trade-in value for your motorhome from Summit Ridge RV in Bend, Oregon. We buy quality used RVs outright or apply your equity to your next coach.",
+          "Get a written trade-in value for your motorhome from RV MotorHomes Dealership in Bend, Oregon. We buy quality used RVs outright or apply your equity to your next coach.",
       },
-      { property: "og:title", content: "Trade In or Sell Your RV | Summit Ridge RV" },
+      { property: "og:title", content: "Trade In or Sell Your RV | RV MotorHomes Dealership" },
       {
         property: "og:description",
         content: "Send us the details and photos — we come back with a real number, usually within a business day.",

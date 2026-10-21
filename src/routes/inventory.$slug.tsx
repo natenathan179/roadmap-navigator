@@ -18,15 +18,15 @@ export const Route = createFileRoute("/inventory/$slug")({
     const words = params.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
     return {
       meta: [
-        { title: `${words} for Sale | Summit Ridge RV Bend, Oregon` },
+        { title: `${words} for Sale | RV MotorHomes Dealership Bend, Oregon` },
         {
           name: "description",
-          content: `${words} for sale at Summit Ridge RV in Bend, Oregon. Full specifications, floorplan details, HD photos, financing and nationwide RV delivery.`,
+          content: `${words} for sale at RV MotorHomes Dealership in Bend, Oregon. Full specifications, floorplan details, HD photos, financing and nationwide RV delivery.`,
         },
-        { property: "og:title", content: `${words} for Sale | Summit Ridge RV` },
+        { property: "og:title", content: `${words} for Sale | RV MotorHomes Dealership` },
         {
           property: "og:description",
-          content: `Photos, specifications and pricing for this ${words} at Summit Ridge RV, Bend, Oregon.`,
+          content: `Photos, specifications and pricing for this ${words} at RV MotorHomes Dealership, Bend, Oregon.`,
         },
         { property: "og:type", content: "product" },
         { name: "twitter:card", content: "summary_large_image" },

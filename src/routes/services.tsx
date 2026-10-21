@@ -8,13 +8,13 @@ import { SERVICE_CATEGORIES } from "@/lib/dealership";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "RV Service &amp; Inspection | Summit Ridge RV, Bend Oregon" },
+      { title: "RV Service &amp; Inspection | RV MotorHomes Dealership, Bend Oregon" },
       {
         name: "description",
         content:
           "RV inspection, preventive maintenance, generator, electrical, HVAC, plumbing, roof, detailing and winterization service in Bend, Oregon. Schedule your motorhome service.",
       },
-      { property: "og:title", content: "RV Service & Inspection | Summit Ridge RV" },
+      { property: "og:title", content: "RV Service & Inspection | RV MotorHomes Dealership" },
       {
         property: "og:description",
         content: "An in-house service department that works on coaches every day, not once in a while.",
