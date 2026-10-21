@@ -35,8 +35,11 @@ export const Route = createFileRoute("/api/public/media/$")({
         // Read-only public client: the bucket stays private, an anon SELECT
         // policy on storage.objects allows downloads. No service-role key
         // needed, so this works in every deployed environment.
-        const url = process.env["SUPABASE_URL"];
-        const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
+        // Prefer runtime server env; fall back to the build-time public
+        // values so this also works on self-hosted builds (e.g. Cloudflare)
+        // where only the VITE_* variables are configured.
+        const url = process.env["SUPABASE_URL"] ?? import.meta.env["VITE_SUPABASE_URL"];
+        const key = process.env["SUPABASE_PUBLISHABLE_KEY"] ?? import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
         if (!url || !key) return new Response("Not found", { status: 404 });
 
         const supabase = createClient(url, key, {
