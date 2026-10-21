@@ -21,7 +21,7 @@ export function RvCard({ rv }: { rv: Rv }) {
       >
         <img
           src={rv.photos[0] ?? "/rv/hero.jpg"}
-          alt={rv.photo_alts[0] ?? `${title} ${rv.rv_class} for sale in Bend, Oregon`}
+          alt={rv.photo_alts[0] ?? `${title} ${rv.rv_class} for sale in Michigan`}
           loading="lazy"
           width={1600}
           height={1067}

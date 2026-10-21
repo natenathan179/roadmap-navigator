@@ -18,15 +18,15 @@ export const Route = createFileRoute("/inventory/$slug")({
     const words = params.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
     return {
       meta: [
-        { title: `${words} for Sale | RV MotorHomes Dealership Bend, Oregon` },
+        { title: `${words} for Sale | RV MotorHomes Dealership, Michigan` },
         {
           name: "description",
-          content: `${words} for sale at RV MotorHomes Dealership in Bend, Oregon. Full specifications, floorplan details, HD photos, financing and nationwide RV delivery.`,
+          content: `${words} for sale at RV MotorHomes Dealership in Michigan. Full specifications, floorplan details, HD photos, financing and nationwide RV delivery.`,
         },
         { property: "og:title", content: `${words} for Sale | RV MotorHomes Dealership` },
         {
           property: "og:description",
-          content: `Photos, specifications and pricing for this ${words} at RV MotorHomes Dealership, Bend, Oregon.`,
+          content: `Photos, specifications and pricing for this ${words} at RV MotorHomes Dealership, Michigan.`,
         },
         { property: "og:type", content: "product" },
         { name: "twitter:card", content: "summary_large_image" },
@@ -51,7 +51,7 @@ function Gallery({ rv }: { rv: Rv }) {
   const current = photos[Math.min(index, photos.length - 1)];
   const alt =
     rv.photo_alts[Math.min(index, photos.length - 1)] ??
-    `${rvTitle(rv)} ${rv.rv_class} for sale in Bend Oregon — photo ${index + 1}`;
+    `${rvTitle(rv)} ${rv.rv_class} for sale in Michigan — photo ${index + 1}`;
 
   return (
     <div>
@@ -280,8 +280,8 @@ function RvDetail() {
               <Truck className="h-6 w-6 text-accent" />
               <h3 className="mt-3 font-display font-bold">Nationwide RV delivery</h3>
               <p className="mt-1.5 text-sm text-muted-foreground">
-                Can&apos;t reach Bend? We coordinate insured transport to all 48 states, plus local delivery across
-                Central Oregon.
+                Can&apos;t make the trip? We coordinate insured transport to all 48 states, plus local delivery across
+                Michigan.
               </p>
             </div>
           </section>

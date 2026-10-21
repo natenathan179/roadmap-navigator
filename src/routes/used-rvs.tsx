@@ -8,11 +8,11 @@ export const Route = createFileRoute("/used-rvs")({
   validateSearch: (search: InventorySearchInput): InventorySearch => parseInventorySearch(search),
   head: () => ({
     meta: [
-      { title: "Used RVs for Sale | Pre-Owned Travel Trailers & Motorhomes in Bend, Oregon" },
+      { title: "Used RVs for Sale | Pre-Owned Travel Trailers & Motorhomes in Michigan" },
       {
         name: "description",
         content:
-          "Inspected, reconditioned used RVs for sale in Bend, Oregon — travel trailers, fifth wheels, truck campers and motorhomes. Every used RV comes with a multi-point inspection report and service history.",
+          "Inspected, reconditioned used RVs for sale in Michigan — travel trailers, fifth wheels, truck campers and motorhomes. Every used RV comes with a multi-point inspection report and service history.",
       },
       { property: "og:title", content: "Used RVs for Sale | RV MotorHomes Dealership" },
       {

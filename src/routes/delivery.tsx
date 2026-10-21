@@ -10,7 +10,7 @@ export const Route = createFileRoute("/delivery")({
       {
         name: "description",
         content:
-          "Local delivery, nationwide motorhome transport or customer pickup at our Bend, Oregon lot. Request a delivery quote for your RV purchase.",
+          "Local delivery, nationwide motorhome transport or customer pickup at our Michigan lot. Request a delivery quote for your RV purchase.",
       },
       { property: "og:title", content: "RV Delivery & Pickup | RV MotorHomes Dealership" },
       {
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/delivery")({
 const OPTIONS = [
   {
     title: "Local delivery",
-    copy: "Within 150 miles of Bend we deliver the coach to your driveway or storage lot, walk you through every system and make sure it's level and hooked up before we leave.",
+    copy: "Within 150 miles of the dealership we deliver the coach to your driveway or storage lot, walk you through every system and make sure it's level and hooked up before we leave.",
   },
   {
     title: "Nationwide delivery",
@@ -33,7 +33,7 @@ const OPTIONS = [
   },
   {
     title: "Customer pickup",
-    copy: "Fly into Redmond (RDM), we'll pick you up. Plan on two to three hours at the dealership for orientation, paperwork and a shakedown drive.",
+    copy: "Flying in? Tell us your airport and we'll help arrange pickup. Plan on two to three hours at the dealership for orientation, paperwork and a shakedown drive.",
   },
   {
     title: "Transport coordination",
@@ -47,7 +47,7 @@ function Delivery() {
       <PageHeader
         eyebrow="Delivery &amp; Pickup"
         title="However far you are, the coach gets to you"
-        description="Roughly a third of our buyers live outside Oregon. Here's exactly how the handoff works."
+        description="Roughly a third of our buyers live outside Michigan. Here's exactly how the handoff works."
       />
 
       <section className="container-page grid gap-12 py-14 lg:grid-cols-[1fr_1fr]">

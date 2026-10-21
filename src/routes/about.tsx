@@ -8,16 +8,16 @@ import { DEALER } from "@/lib/dealership";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About RV MotorHomes Dealership | Motorhome Dealership in Bend, Oregon" },
+      { title: "About RV MotorHomes Dealership | Motorhome Dealership in Michigan" },
       {
         name: "description",
         content:
-          "RV MotorHomes Dealership has sold and serviced motorhomes in Bend, Oregon since 2004. Meet the team, see our inspection standards and learn why buyers travel here.",
+          "RV MotorHomes Dealership has sold and serviced motorhomes in Michigan since 2004. Meet the team, see our inspection standards and learn why buyers travel here.",
       },
       { property: "og:title", content: "About RV MotorHomes Dealership" },
       {
         property: "og:description",
-        content: "Family-owned motorhome dealership in Central Oregon, selling and servicing coaches since 2004.",
+        content: "Family-owned motorhome dealership in Michigan, selling and servicing coaches since 2004.",
       },
     ],
   }),
@@ -45,14 +45,14 @@ function About() {
     <>
       <PageHeader
         eyebrow="About Us"
-        title="Central Oregon's motorhome specialists"
-        description={`${DEALER.name} has been selling, servicing and delivering motorhomes from ${DEALER.city}, ${DEALER.state} since 2004.`}
+        title="Michigan's motorhome specialists"
+        description={`${DEALER.name} has been selling, servicing and delivering motorhomes from ${DEALER.location} since 2004.`}
       />
 
       <section className="container-page grid gap-12 py-14 lg:grid-cols-2 lg:items-center">
         <img
           src="/rv/dealership.jpg"
-          alt="The RV MotorHomes Dealership dealership lot in Bend, Oregon"
+          alt="The RV MotorHomes Dealership dealership lot in Michigan"
           loading="lazy"
           width={1600}
           height={900}
@@ -62,7 +62,7 @@ function About() {
           <h2 className="font-display text-2xl font-bold">Our story</h2>
           <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground">
             <p>
-              We started with four coaches on a gravel lot off Highway 97 and a simple idea: sell RVs the way we'd
+              We started with four coaches on a gravel lot and a simple idea: sell RVs the way we'd
               want one sold to us. That meant posting real prices, disclosing every flaw we found, and making sure
               the service department could stand behind whatever went out the gate.
             </p>
@@ -72,7 +72,7 @@ function About() {
               tires are dated, it's in the listing.
             </p>
             <p>
-              Most of our buyers are heading somewhere specific — the Oregon coast, the Cascades loop, a full-time
+              Most of our buyers are heading somewhere specific — the Lake Michigan shoreline, the Upper Peninsula, a full-time
               life on the road. Our job is to hand you a coach that gets you there and a shop that keeps it going.
             </p>
           </div>

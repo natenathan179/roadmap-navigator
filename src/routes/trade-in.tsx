@@ -7,11 +7,11 @@ import { CONDITIONS } from "@/lib/dealership";
 export const Route = createFileRoute("/trade-in")({
   head: () => ({
     meta: [
-      { title: "Trade In or Sell Your RV | RV MotorHomes Dealership, Bend Oregon" },
+      { title: "Trade In or Sell Your RV | RV MotorHomes Dealership, Michigan" },
       {
         name: "description",
         content:
-          "Get a written trade-in value for your motorhome from RV MotorHomes Dealership in Bend, Oregon. We buy quality used RVs outright or apply your equity to your next coach.",
+          "Get a written trade-in value for your motorhome from RV MotorHomes Dealership in Michigan. We buy quality used RVs outright or apply your equity to your next coach.",
       },
       { property: "og:title", content: "Trade In or Sell Your RV | RV MotorHomes Dealership" },
       {

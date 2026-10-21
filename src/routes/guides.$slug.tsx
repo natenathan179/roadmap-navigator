@@ -14,7 +14,7 @@ export const Route = createFileRoute("/guides/$slug")({
         { title: `${readable} | RV Buying Guide | RV MotorHomes Dealership` },
         {
           name: "description",
-          content: `${readable} — practical motorhome buying advice from the team at RV MotorHomes Dealership in Bend, Oregon.`,
+          content: `${readable} — practical motorhome buying advice from the team at RV MotorHomes Dealership in Michigan.`,
         },
         { property: "og:title", content: `${readable} | RV Buying Guide` },
         { property: "og:type", content: "article" },

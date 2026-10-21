@@ -11,16 +11,16 @@ import { reviewsQuery } from "@/lib/inventory";
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
-      { title: "RV Dealership Reviews | RV MotorHomes Dealership, Bend Oregon" },
+      { title: "RV Dealership Reviews | RV MotorHomes Dealership, Michigan" },
       {
         name: "description",
         content:
-          "Read 35 verified customer reviews of RV MotorHomes Dealership in Bend, Oregon — travel trailer and motorhome sales, honest out-the-door pricing, financing, trade-ins, service and nationwide RV delivery.",
+          "Read 35 verified customer reviews of RV MotorHomes Dealership in Michigan — travel trailer and motorhome sales, honest out-the-door pricing, financing, trade-ins, service and nationwide RV delivery.",
       },
-      { property: "og:title", content: "Customer Reviews | RV MotorHomes Dealership, Bend Oregon" },
+      { property: "og:title", content: "Customer Reviews | RV MotorHomes Dealership, Michigan" },
       {
         property: "og:description",
-        content: "What RV owners across the Pacific Northwest say about buying and servicing with RV MotorHomes Dealership.",
+        content: "What RV owners across Michigan and the Midwest say about buying and servicing with RV MotorHomes Dealership.",
       },
     ],
   }),
@@ -40,10 +40,10 @@ function Reviews() {
         name: DEALER.name,
         address: {
           "@type": "PostalAddress",
-          streetAddress: DEALER.street,
-          addressLocality: DEALER.city,
+          streetAddress: DEALER.street || undefined,
+          addressLocality: DEALER.city || undefined,
           addressRegion: DEALER.state,
-          postalCode: DEALER.zip,
+          postalCode: DEALER.zip || undefined,
           addressCountry: "US",
         },
         telephone: DEALER.phone,
@@ -106,7 +106,7 @@ function Reviews() {
                   />
                   <div>
                     <p className="font-display text-sm font-bold">{review.customer_name}</p>
-                    <p className="text-xs text-muted-foreground">{review.location ?? DEALER.city}</p>
+                    <p className="text-xs text-muted-foreground">{review.location ?? DEALER.location}</p>
                   </div>
                 </div>
                 <div className="mt-4">
@@ -133,7 +133,7 @@ function Reviews() {
           <h2 className="font-display text-2xl font-bold">Ready to join them?</h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-navy-foreground/80">
             Browse our full inventory of new and used travel trailers, fifth wheels and motorhomes, or call our team in
-            Bend for honest out-the-door pricing.
+            Michigan for honest out-the-door pricing.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">

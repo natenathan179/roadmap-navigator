@@ -82,11 +82,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "RV MotorHomes Dealership | RV Dealership in Bend, Oregon" },
+      { title: "RV MotorHomes Dealership | RV Dealership in Michigan" },
       {
         name: "description",
         content:
-          "New and used RVs for sale in Bend, Oregon — travel trailers, fifth wheels, truck campers and motorhomes with financing, trade-ins, service and nationwide delivery.",
+          "New and used RVs for sale in Michigan — travel trailers, fifth wheels, truck campers and motorhomes with financing, trade-ins, service and nationwide delivery.",
       },
       { name: "author", content: "RV MotorHomes Dealership" },
       { property: "og:site_name", content: "RV MotorHomes Dealership" },

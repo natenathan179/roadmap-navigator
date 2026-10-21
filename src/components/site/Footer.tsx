@@ -42,8 +42,8 @@ export function Footer() {
         <div>
           <Logo stacked />
           <p className="mt-4 text-sm leading-relaxed text-navy-foreground/70">
-            New and pre-owned travel trailers, fifth wheels and motorhomes, full-service RV repair and nationwide delivery from the high desert of
-            Central Oregon.
+            New and pre-owned travel trailers, fifth wheels and motorhomes, full-service RV repair and nationwide delivery from the heart of
+            Michigan.
           </p>
           <div className="mt-5 space-y-2 text-sm text-navy-foreground/80">
             <p className="flex items-start gap-2">

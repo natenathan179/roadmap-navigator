@@ -58,7 +58,7 @@ const BLANK: Record<string, unknown> = {
   dry_weight: null,
   gvwr: null,
   vin: "",
-  location: "Bend, OR",
+  location: "Michigan",
   description: "",
   seo_title: "",
   seo_description: "",
@@ -298,7 +298,7 @@ function RvEditor({ initial, onDone }: { initial: Record<string, unknown>; onDon
       set("photos", [...photos, ...added]);
       set("photo_alts", [
         ...photoAlts,
-        ...added.map(() => `${v["year"]} ${v["make"]} ${v["model"]} for sale in Bend, Oregon`),
+        ...added.map(() => `${v["year"]} ${v["make"]} ${v["model"]} for sale in Michigan`),
       ]);
       toast.success(`${added.length} photo${added.length === 1 ? "" : "s"} uploaded`);
     }

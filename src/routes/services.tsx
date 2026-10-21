@@ -8,11 +8,11 @@ import { SERVICE_CATEGORIES } from "@/lib/dealership";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "RV Service &amp; Inspection | RV MotorHomes Dealership, Bend Oregon" },
+      { title: "RV Service &amp; Inspection | RV MotorHomes Dealership, Michigan" },
       {
         name: "description",
         content:
-          "RV inspection, preventive maintenance, generator, electrical, HVAC, plumbing, roof, detailing and winterization service in Bend, Oregon. Schedule your motorhome service.",
+          "RV inspection, preventive maintenance, generator, electrical, HVAC, plumbing, roof, detailing and winterization service in Michigan. Schedule your motorhome service.",
       },
       { property: "og:title", content: "RV Service & Inspection | RV MotorHomes Dealership" },
       {

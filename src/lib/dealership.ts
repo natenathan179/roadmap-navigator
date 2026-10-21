@@ -1,12 +1,19 @@
 export const DEALER = {
   name: "RV MotorHomes Dealership",
   tagline: "RV Sales, Service & Delivery",
-  street: "6420 N Highway 97",
-  city: "Bend",
-  state: "OR",
-  zip: "97701",
+  // Street, city and ZIP are blank until the dealership's street address is confirmed;
+  // fill them in and every address, map and Google listing picks them up.
+  street: "",
+  city: "",
+  state: "MI",
+  stateName: "Michigan",
+  zip: "",
+  /** Short place name for copy, e.g. "Lansing, Michigan" or just "Michigan". */
+  get location() {
+    return this.city ? `${this.city}, ${this.stateName}` : this.stateName;
+  },
   get address() {
-    return `${this.street}, ${this.city}, ${this.state} ${this.zip}`;
+    return this.street ? `${this.street}, ${this.city}, ${this.state} ${this.zip}` : `${this.location}, USA`;
   },
   phone: "(517) 429-8283",
   phoneHref: "tel:+15174298283",
@@ -18,7 +25,9 @@ export const DEALER = {
     { days: "Saturday", time: "9:00 AM – 5:00 PM" },
     { days: "Sunday", time: "Closed" },
   ],
-  mapQuery: "6420+N+Highway+97,+Bend,+OR+97701",
+  get mapQuery() {
+    return encodeURIComponent(this.address);
+  },
 } as const;
 
 export const RV_CLASSES = [
@@ -45,6 +54,6 @@ export const SERVICE_CATEGORIES = [
   { name: "Plumbing", description: "Fresh, grey and black systems, water heaters, pumps and leaks." },
   { name: "Roof Inspection", description: "Membrane, seam and sealant inspection with full resealing." },
   { name: "Detailing", description: "Wash, wax, ceramic coating, interior deep clean and ozone treatment." },
-  { name: "Winterization", description: "Full winterize and de-winterize service for Pacific Northwest storage." },
+  { name: "Winterization", description: "Full winterize and de-winterize service before Michigan winters." },
   { name: "Warranty Service", description: "Manufacturer and extended warranty claims handled in-house." },
 ] as const;

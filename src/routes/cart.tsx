@@ -11,7 +11,7 @@ import { money } from "@/lib/inventory";
 export const Route = createFileRoute("/cart")({
   head: () => ({
     meta: [
-      { title: "Your RV Quote List | RV MotorHomes Dealership Bend, Oregon" },
+      { title: "Your RV Quote List | RV MotorHomes Dealership, Michigan" },
       {
         name: "description",
         content:

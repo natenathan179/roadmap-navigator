@@ -27,13 +27,13 @@ import type { InventorySearch } from "@/lib/search";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "RVs & Travel Trailers for Sale in Bend, Oregon | RV MotorHomes Dealership" },
+      { title: "RVs & Travel Trailers for Sale in Michigan | RV MotorHomes Dealership" },
       {
         name: "description",
         content:
-          "New and used RVs for sale in Bend, Oregon — travel trailers, fifth wheels, truck campers and motorhomes from Forest River, Coachmen, Grand Design, Keystone, Winnebago and more. RV financing, trade-ins, service and nationwide delivery.",
+          "New and used RVs for sale in Michigan — travel trailers, fifth wheels, truck campers and motorhomes from Forest River, Coachmen, Grand Design, Keystone, Winnebago and more. RV financing, trade-ins, service and nationwide delivery.",
       },
-      { property: "og:title", content: "RVs & Travel Trailers for Sale in Bend, Oregon | RV MotorHomes Dealership" },
+      { property: "og:title", content: "RVs & Travel Trailers for Sale in Michigan | RV MotorHomes Dealership" },
       {
         property: "og:description",
         content:
@@ -57,7 +57,7 @@ const WHY_US = [
   { icon: ClipboardCheck, title: "Professional Inspections", copy: "A multi-point inspection report covering roof, seals, brakes and appliances comes with every used RV." },
   { icon: BadgeDollarSign, title: "Transparent Pricing", copy: "One out-the-door price, posted publicly. No surprise prep or freight fees at the desk." },
   { icon: Handshake, title: "Trade-In Options", copy: "Real written numbers on your current RV, applied the same day." },
-  { icon: Truck, title: "Nationwide Delivery", copy: "Local drop-off across Central Oregon or insured transport to all 48 states." },
+  { icon: Truck, title: "Nationwide Delivery", copy: "Local drop-off across Michigan or insured transport to all 48 states." },
   { icon: Wrench, title: "Experienced RV Specialists", copy: "An in-house service department that works on these units every day." },
 ];
 
@@ -103,15 +103,15 @@ function Home() {
             "@type": "AutoDealer",
             name: DEALER.name,
             description:
-              "New and used RV dealership in Bend, Oregon selling travel trailers, fifth wheels, truck campers and motorhomes with financing, service and nationwide delivery.",
+              "New and used RV dealership in Michigan selling travel trailers, fifth wheels, truck campers and motorhomes with financing, service and nationwide delivery.",
             telephone: DEALER.phone,
             email: DEALER.email,
             address: {
               "@type": "PostalAddress",
-              streetAddress: DEALER.street,
-              addressLocality: DEALER.city,
+              streetAddress: DEALER.street || undefined,
+              addressLocality: DEALER.city || undefined,
               addressRegion: DEALER.state,
-              postalCode: DEALER.zip,
+              postalCode: DEALER.zip || undefined,
               addressCountry: "US",
             },
             areaServed: "United States",
@@ -131,7 +131,7 @@ function Home() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/80 to-navy/20" />
         <div className="container-page flex min-h-[560px] flex-col justify-center py-20 md:min-h-[660px]">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
-            {DEALER.city}, {DEALER.state} · Motorhome Specialists
+            {DEALER.location} · Motorhome Specialists
           </p>
           <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-[1.05] md:text-6xl lg:text-7xl">
             Find Your Road to Adventure
@@ -259,7 +259,7 @@ function Home() {
               >
                 <img
                   src={card.image}
-                  alt={`${card.label} RVs for sale in Bend, Oregon at RV MotorHomes Dealership`}
+                  alt={`${card.label} RVs for sale in Michigan at RV MotorHomes Dealership`}
                   loading="lazy"
                   width={1600}
                   height={1067}
@@ -395,12 +395,12 @@ function Home() {
         <div className="container-page grid gap-10 lg:grid-cols-2">
           <div>
             <h2 className="font-display text-2xl font-bold md:text-3xl">
-              Your RV dealership in Bend, Oregon
+              Your RV dealership in Michigan
             </h2>
             <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground">
               <p>
-                RV MotorHomes Dealership sells new and used RVs across Central Oregon and the wider Pacific Northwest. Our lot
-                on Highway 97 carries lightweight travel trailers, family bunkhouses, residential fifth wheels, truck
+                RV MotorHomes Dealership sells new and used RVs across Michigan and the wider Great Lakes region. Our lot
+                carries lightweight travel trailers, family bunkhouses, residential fifth wheels, truck
                 campers and diesel motorhomes from Forest River, Coachmen, Grand Design, Keystone, KZ, Lance, Newmar
                 and Winnebago.
               </p>
@@ -411,8 +411,8 @@ function Home() {
                 day.
               </p>
               <p>
-                Shoppers travel to us from Redmond, Sisters, Prineville, La Pine, Madras, Eugene, Portland, Boise and
-                Spokane. Can&apos;t make the trip? We coordinate insured RV transport to all 48 states and handle
+                Shoppers travel to us from across Michigan and neighboring Ohio, Indiana and
+                Ontario. Can&apos;t make the trip? We coordinate insured RV transport to all 48 states and handle
                 paperwork remotely.
               </p>
             </div>
@@ -457,8 +457,8 @@ function Home() {
               Coffee&apos;s on. Come walk the lot.
             </h2>
             <p className="mt-4 max-w-md text-navy-foreground/75">
-              We&apos;re just north of Bend on Highway 97, twenty minutes from Redmond Airport with plenty of room to
-              test drive.
+              Our Michigan lot has plenty of room to look around and test drive. Call ahead and we&apos;ll have
+              your coach pulled up and ready.
             </p>
             <dl className="mt-8 space-y-4 text-sm">
               <div className="flex gap-3">

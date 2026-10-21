@@ -12,7 +12,7 @@ export const Route = createFileRoute("/inventory/")({
       {
         name: "description",
         content:
-          "Search our full RV inventory by type, manufacturer, year, price, weight, length and sleeping capacity — travel trailers, fifth wheels, truck campers and motorhomes for sale in Bend, Oregon.",
+          "Search our full RV inventory by type, manufacturer, year, price, weight, length and sleeping capacity — travel trailers, fifth wheels, truck campers and motorhomes for sale in Michigan.",
       },
       { property: "og:title", content: "RV Inventory | RV MotorHomes Dealership" },
       {

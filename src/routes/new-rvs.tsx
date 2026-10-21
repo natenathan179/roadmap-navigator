@@ -8,11 +8,11 @@ export const Route = createFileRoute("/new-rvs")({
   validateSearch: (search: InventorySearchInput): InventorySearch => parseInventorySearch(search),
   head: () => ({
     meta: [
-      { title: "New RVs & Travel Trailers for Sale | RV MotorHomes Dealership, Bend Oregon" },
+      { title: "New RVs & Travel Trailers for Sale | RV MotorHomes Dealership, Michigan" },
       {
         name: "description",
         content:
-          "Shop brand-new travel trailers, fifth wheels, truck campers and motorhomes with full factory warranty at RV MotorHomes Dealership in Bend, Oregon.",
+          "Shop brand-new travel trailers, fifth wheels, truck campers and motorhomes with full factory warranty at RV MotorHomes Dealership in Michigan.",
       },
       { property: "og:title", content: "New RVs for Sale | RV MotorHomes Dealership" },
       {
