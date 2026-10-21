@@ -8,8 +8,8 @@ export const DEALER = {
   get address() {
     return `${this.street}, ${this.city}, ${this.state} ${this.zip}`;
   },
-  phone: "(541) 555-0142",
-  phoneHref: "tel:+15415550142",
+  phone: "(517) 429-8283",
+  phoneHref: "tel:+15174298283",
   email: "sales@rvmotorhomesdealership.com",
   /** Address every website form is emailed to via FormSubmit. */
   formEmail: "sales@rvmotorhomesdealership.com",
