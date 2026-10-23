@@ -9,8 +9,8 @@ export const classAMotorhomesBuyersGuide: Article = {
   excerpt:
     "Gas or diesel pusher? 30 feet or 40? A practical guide to choosing a Class A motorhome, with real prices, towing numbers and an inspection checklist.",
   category: "Class A Motorhomes",
-  cover: "/rv/class-a-ext.jpg",
-  coverAlt: "Class A motorhome with full-width windshield parked at an RV resort",
+  cover: "/blog/class-a-motorhomes-buyers-guide.webp",
+  coverAlt: "2008 Newmar Dutchstar Spartan m-4320 425 hp Diesel Pusher",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

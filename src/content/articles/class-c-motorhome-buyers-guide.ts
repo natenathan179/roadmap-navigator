@@ -9,8 +9,8 @@ export const classCMotorhomeBuyersGuide: Article = {
   excerpt:
     "How to choose the right Class C camper: lengths from 20 to 33 feet, Ford vs. Chevy vs. Sprinter chassis, real fuel mileage, licensing, prices and floorplans.",
   category: "Class C Motorhomes",
-  cover: "/rv/class-c-ext.jpg",
-  coverAlt: "Class C motorhome with over-cab bunk parked at a campsite",
+  cover: "/blog/class-c-motorhome-buyers-guide.jpg",
+  coverAlt: "2026 Coachmen Freelander 27QB Chevy 3500 Class C",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

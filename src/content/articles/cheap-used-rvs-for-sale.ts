@@ -9,8 +9,8 @@ export const cheapUsedRvsForSale: Article = {
   excerpt:
     "What $10k, $25k and $40k really buy in a used RV, whether older motorhomes are worth it, how impound and donated-RV auctions work, and the hidden costs of a cheap camper.",
   category: "Used RVs",
-  cover: "/rv/interior-bedroom.jpg",
-  coverAlt: "Bedroom in an affordable pre-owned motorhome",
+  cover: "/blog/cheap-used-rvs-for-sale.jpg",
+  coverAlt: "2026 Forest River Work and Play 29SS Toy Hauler",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

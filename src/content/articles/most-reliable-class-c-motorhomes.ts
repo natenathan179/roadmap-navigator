@@ -9,8 +9,8 @@ export const mostReliableClassCMotorhomes: Article = {
   excerpt:
     "Reliability in a Class C comes down to the chassis, the build and the dealer behind it. Here's how the major Class C manufacturers compare and what to look for.",
   category: "Class C Motorhomes",
-  cover: "/rv/super-c-ext.jpg",
-  coverAlt: "Super C motorhome on a heavy-duty truck chassis",
+  cover: "/blog/most-reliable-class-c-motorhomes.jpg",
+  coverAlt: "2026 Coachmen Freelander 31MB Class C",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

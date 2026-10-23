@@ -9,8 +9,8 @@ export const usedClassCMotorhomesForSale: Article = {
   excerpt:
     "What used Class C RVs cost at every age, what you get under $15,000 or $30,000, the cheapest new Class C options and how to avoid buying someone else's problem.",
   category: "Class C Motorhomes",
-  cover: "/rv/cockpit.jpg",
-  coverAlt: "Cab and cockpit of a used Class C motorhome",
+  cover: "/blog/used-class-c-motorhomes-for-sale.jpg",
+  coverAlt: "2026 Coachmen Freelander 31MB Class C",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

@@ -6,6 +6,7 @@ import { ArticleBody } from "@/components/site/ArticleBody";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ARTICLES, findArticle } from "@/content/articles";
+import { guideCover } from "@/content/blog-covers";
 import { markdownToBlocks, readMinutes, slugify, type ArticleBlock } from "@/lib/articles";
 import { absoluteUrl, DEALER } from "@/lib/dealership";
 import { postQuery, postsQuery } from "@/lib/inventory";
@@ -107,8 +108,8 @@ function Guide() {
         title: post.title,
         excerpt: post.excerpt,
         category: "RV Buying Guide",
-        cover: post.cover_image,
-        coverAlt: post.title,
+        cover: guideCover(post.slug, post.cover_image, post.title).src,
+        coverAlt: guideCover(post.slug, post.cover_image, post.title).alt,
         publishedAt: post.published_at,
         updatedAt: post.published_at,
         keyTakeaways: [],
@@ -381,7 +382,12 @@ function RelatedGuides({ slugs }: { slugs: string[] }) {
         return { slug, title: article.title, excerpt: article.excerpt, cover: article.cover };
       const post = posts?.find((p) => p.slug === slug);
       return post
-        ? { slug, title: post.title, excerpt: post.excerpt, cover: post.cover_image }
+        ? {
+            slug,
+            title: post.title,
+            excerpt: post.excerpt,
+            cover: guideCover(slug, post.cover_image, post.title).src,
+          }
         : null;
     })
     .filter((c) => c !== null);
@@ -401,7 +407,7 @@ function RelatedGuides({ slugs }: { slugs: string[] }) {
               className="group overflow-hidden rounded-lg border border-border bg-card shadow-card transition-shadow hover:shadow-lift"
             >
               <img
-                src={card.cover ?? "/rv/class-a-ext.jpg"}
+                src={card.cover}
                 alt=""
                 loading="lazy"
                 width={1600}

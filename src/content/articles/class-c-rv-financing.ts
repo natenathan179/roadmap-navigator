@@ -9,8 +9,8 @@ export const classCRvFinancing: Article = {
   excerpt:
     "Typical Class C motorhome loan terms by amount, how much to put down, what credit you need and how a 10-, 15- or 20-year term changes what you really pay.",
   category: "Financing",
-  cover: "/rv/interior-living.jpg",
-  coverAlt: "Living area of a Class C motorhome with dinette and sofa",
+  cover: "/blog/class-c-rv-financing.jpg",
+  coverAlt: "2026 Coachmen Freelander 27QB Chevy 3500 Class C",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

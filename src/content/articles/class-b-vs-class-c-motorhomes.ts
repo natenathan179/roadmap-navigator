@@ -9,8 +9,8 @@ export const classBVsClassCMotorhomes: Article = {
   excerpt:
     "Camper van or cab-over? A side-by-side comparison of Class B and Class C motorhomes — space, driving, bathrooms, mileage, cost and who each one suits.",
   category: "Comparisons",
-  cover: "/rv/class-b-ext.jpg",
-  coverAlt: "Class B camper van parked beside a lake",
+  cover: "/blog/class-b-vs-class-c-motorhomes.jpg",
+  coverAlt: "2026 Coachmen Freelander 31MB Class C",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

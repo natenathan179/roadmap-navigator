@@ -20,6 +20,7 @@ import { StarRating } from "@/components/site/StarRating";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { guideCover } from "@/content/blog-covers";
 import { DEALER, RV_CLASSES } from "@/lib/dealership";
 import { postsQuery, reviewsQuery, rvsQuery } from "@/lib/inventory";
 import type { InventorySearch } from "@/lib/search";
@@ -372,8 +373,8 @@ function Home() {
               className="group overflow-hidden rounded-lg border border-border bg-card shadow-card transition-shadow hover:shadow-lift"
             >
               <img
-                src={post.cover_image ?? "/rv/class-a-ext.jpg"}
-                alt=""
+                src={guideCover(post.slug, post.cover_image, post.title).src}
+                alt={guideCover(post.slug, post.cover_image, post.title).alt}
                 loading="lazy"
                 width={1600}
                 height={1067}

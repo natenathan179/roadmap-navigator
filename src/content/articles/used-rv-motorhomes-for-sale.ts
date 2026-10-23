@@ -10,8 +10,8 @@ export const usedRvMotorhomesForSale: Article = {
   excerpt:
     "Dealers, online marketplaces, private sellers and auctions — where to find used motorhomes and campers for sale, what each source does well and how to buy with confidence.",
   category: "Used RVs",
-  cover: "/rv/dealership.jpg",
-  coverAlt: "Rows of pre-owned motorhomes and campers for sale on a dealership lot",
+  cover: "/blog/used-rv-motorhomes-for-sale.webp",
+  coverAlt: "2025 Coachmen pursuit 31TS Class A",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

@@ -9,8 +9,8 @@ export const smallUsedMotorhomesForSale: Article = {
   excerpt:
     "Camper vans, compact Class C and B+ motorhomes under 25 feet: which small used RVs include a real bathroom, what they cost and what to check before you buy.",
   category: "Used RVs",
-  cover: "/rv/class-b-int.jpg",
-  coverAlt: "Interior of a small Class B camper van with galley and bed",
+  cover: "/blog/small-used-motorhomes-for-sale.jpg",
+  coverAlt: "2026 Lance Truck Campers 825 Truck Camper",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

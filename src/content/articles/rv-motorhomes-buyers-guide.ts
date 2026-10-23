@@ -9,8 +9,8 @@ export const rvMotorhomesBuyersGuide: Article = {
   excerpt:
     "Class A, B or C? New or used? Gas or diesel? Everything you need to compare motorized RVs and buy the right motorhome the first time.",
   category: "Motorhome Basics",
-  cover: "/rv/hero.jpg",
-  coverAlt: "Class A RV motorhome driving on a mountain highway at sunset",
+  cover: "/blog/rv-motorhomes-for-sale-buyers-guide.jpg",
+  coverAlt: "2026 Forest River Georgetown 3 Series 29S3 Class A",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

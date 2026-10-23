@@ -9,8 +9,8 @@ export const motorhomesForSaleByOwner: Article = {
   excerpt:
     "Private-party RV sales can save money — or cost you thousands. Scams to avoid, the paperwork to check, safe payment, and when buying from a dealer makes more sense.",
   category: "Used RVs",
-  cover: "/rv/class-c-ext.jpg",
-  coverAlt: "Used Class C motorhome parked in a driveway with a for-sale sign",
+  cover: "/blog/motorhomes-for-sale-by-owner.webp",
+  coverAlt: "2026 Venture SportTrek Touring Edition STT343VIK Travel Trailer",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

@@ -9,8 +9,8 @@ export const usedClassARvsForSale: Article = {
   excerpt:
     "Why a pre-owned Class A is one of the best values in RVing: used prices by age, high-end diesel motorcoaches, 40-foot and two-bathroom floorplans and a Class A inspection checklist.",
   category: "Class A Motorhomes",
-  cover: "/rv/interior-living.jpg",
-  coverAlt: "Spacious living room with slide-outs in a used Class A motorcoach",
+  cover: "/blog/used-class-a-rvs-for-sale.webp",
+  coverAlt: "2025 Coachmen pursuit 31TS Class A",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [

@@ -9,8 +9,8 @@ export const usedRvValuesAndPrices: Article = {
   excerpt:
     "How used RV values are set, which pricing guides to trust, how depreciation hits motorhomes and campers, and the condition factors that move a price by thousands.",
   category: "Used RVs",
-  cover: "/rv/interior-kitchen.jpg",
-  coverAlt: "Kitchen and dinette inside a pre-owned motorhome",
+  cover: "/blog/used-rv-values-and-prices.jpg",
+  coverAlt: "2025 Keystone Hideout Sport Single Axle 140RE Travel Trailer",
   publishedAt: "2026-10-23",
   updatedAt: "2026-10-23",
   keyTakeaways: [
