@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ARTICLES, findArticle } from "@/content/articles";
 import { markdownToBlocks, readMinutes, slugify, type ArticleBlock } from "@/lib/articles";
-import { DEALER } from "@/lib/dealership";
+import { absoluteUrl, DEALER } from "@/lib/dealership";
 import { postQuery, postsQuery } from "@/lib/inventory";
 
 export const Route = createFileRoute("/guides/$slug")({
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/guides/$slug")({
           { property: "og:title", content: article.metaTitle },
           { property: "og:description", content: article.metaDescription },
           { property: "og:type", content: "article" },
-          { property: "og:image", content: article.cover },
+          { property: "og:image", content: absoluteUrl(article.cover) },
           { property: "article:published_time", content: article.publishedAt },
           { property: "article:modified_time", content: article.updatedAt },
           { property: "article:section", content: article.category },
@@ -134,7 +134,8 @@ function GuideLayout({ guide }: { guide: GuideView }) {
       "@type": "Article",
       headline: guide.title,
       description: guide.excerpt ?? undefined,
-      image: guide.cover ?? undefined,
+      image: guide.cover ? absoluteUrl(guide.cover) : undefined,
+      mainEntityOfPage: absoluteUrl(`/guides/${guide.slug}`),
       datePublished: guide.publishedAt,
       dateModified: guide.updatedAt,
       articleSection: guide.category,
@@ -142,16 +143,21 @@ function GuideLayout({ guide }: { guide: GuideView }) {
       publisher: {
         "@type": "Organization",
         name: DEALER.name,
-        logo: { "@type": "ImageObject", url: "/logo.svg" },
+        logo: { "@type": "ImageObject", url: absoluteUrl("/logo.svg") },
       },
     },
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "/" },
-        { "@type": "ListItem", position: 2, name: "RV Buying Guide", item: "/guides" },
-        { "@type": "ListItem", position: 3, name: guide.title },
+        { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+        { "@type": "ListItem", position: 2, name: "RV Buying Guide", item: absoluteUrl("/guides") },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: guide.title,
+          item: absoluteUrl(`/guides/${guide.slug}`),
+        },
       ],
     },
     ...(guide.faqs.length

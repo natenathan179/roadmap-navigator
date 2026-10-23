@@ -1,5 +1,7 @@
 export const DEALER = {
   name: "RV MotorHomes Dealership",
+  /** Live site origin, no trailing slash. Used for canonical URLs, the sitemap and JSON-LD. */
+  siteUrl: "https://rvmotorhomesdealership.com",
   tagline: "RV Sales, Service & Delivery",
   // Street, city and ZIP are blank until the dealership's street address is confirmed;
   // fill them in and every address, map and Google listing picks them up.
@@ -57,3 +59,6 @@ export const SERVICE_CATEGORIES = [
   { name: "Winterization", description: "Full winterize and de-winterize service before Michigan winters." },
   { name: "Warranty Service", description: "Manufacturer and extended warranty claims handled in-house." },
 ] as const;
+
+/** Turns a site path like "/rv/hero.jpg" into a full URL; leaves full URLs alone. */
+export const absoluteUrl = (path: string) => (/^https?:\/\//.test(path) ? path : `${DEALER.siteUrl}${path}`);

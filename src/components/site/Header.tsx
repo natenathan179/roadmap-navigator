@@ -14,6 +14,7 @@ const NAV = [
   { to: "/used-rvs", label: "Used RVs" },
   { to: "/financing", label: "Financing" },
   { to: "/services", label: "Service" },
+  { to: "/guides", label: "Blog" },
   { to: "/about", label: "About Us" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -112,13 +113,6 @@ export function Header() {
               className="rounded-md px-2 py-2.5 text-sm font-medium text-navy-foreground/90 hover:bg-white/5"
             >
               Value My Trade
-            </Link>
-            <Link
-              to="/guides"
-              onClick={() => setOpen(false)}
-              className="rounded-md px-2 py-2.5 text-sm font-medium text-navy-foreground/90 hover:bg-white/5"
-            >
-              RV Buying Guide
             </Link>
           </div>
         </nav>

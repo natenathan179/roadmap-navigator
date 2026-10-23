@@ -22,6 +22,7 @@ import { Route as NewRvsRouteImport } from './routes/new-rvs'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TradeInRouteImport } from './routes/trade-in'
 import { Route as UsedRvsRouteImport } from './routes/used-rvs'
@@ -96,6 +97,11 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -155,6 +161,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
@@ -178,6 +185,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
@@ -203,6 +211,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
@@ -228,6 +237,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/services'
+    | '/sitemap.xml'
     | '/terms'
     | '/trade-in'
     | '/used-rvs'
@@ -251,6 +261,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/services'
+    | '/sitemap.xml'
     | '/terms'
     | '/trade-in'
     | '/used-rvs'
@@ -275,6 +286,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/services'
+    | '/sitemap.xml'
     | '/terms'
     | '/trade-in'
     | '/used-rvs'
@@ -300,6 +312,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ReviewsRoute: typeof ReviewsRoute
   ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   TradeInRoute: typeof TradeInRoute
   UsedRvsRoute: typeof UsedRvsRoute
@@ -403,6 +416,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -494,6 +514,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ReviewsRoute: ReviewsRoute,
   ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   TradeInRoute: TradeInRoute,
   UsedRvsRoute: UsedRvsRoute,

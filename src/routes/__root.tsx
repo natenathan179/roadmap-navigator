@@ -15,6 +15,7 @@ import { Header } from "../components/site/Header";
 import { MobileCtaBar } from "../components/site/MobileCtaBar";
 import { Toaster } from "../components/ui/sonner";
 import appCss from "../styles.css?url";
+import { absoluteUrl } from "../lib/dealership";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -78,34 +79,42 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "RV MotorHomes Dealership | RV Dealership in Michigan" },
-      {
-        name: "description",
-        content:
-          "New and used RVs for sale in Michigan — travel trailers, fifth wheels, truck campers and motorhomes with financing, trade-ins, service and nationwide delivery.",
-      },
-      { name: "author", content: "RV MotorHomes Dealership" },
-      { property: "og:site_name", content: "RV MotorHomes Dealership" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap",
-      },
-      { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
-      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
-    ],
-  }),
+  head: ({ matches }) => {
+    // Canonical drops query strings so filtered inventory URLs consolidate onto one page.
+    const path = (matches.at(-1)?.pathname ?? "/").replace(/(.)\/$/, "$1");
+    const canonical = absoluteUrl(path);
+
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { title: "RV MotorHomes Dealership | RV Dealership in Michigan" },
+        {
+          name: "description",
+          content:
+            "New and used RVs for sale in Michigan — travel trailers, fifth wheels, truck campers and motorhomes with financing, trade-ins, service and nationwide delivery.",
+        },
+        { name: "author", content: "RV MotorHomes Dealership" },
+        { property: "og:site_name", content: "RV MotorHomes Dealership" },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: canonical },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: [
+        { rel: "canonical", href: canonical },
+        { rel: "stylesheet", href: appCss },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap",
+        },
+        { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+        { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+        { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      ],
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
