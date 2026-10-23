@@ -163,3 +163,119 @@
     padding-inline: 2rem;
   }
 }
+
+/* Long-form guide typography (direct children only, so embedded cards keep their own styles). */
+.article-body {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-foreground);
+}
+
+.article-body > p,
+.article-body > ul,
+.article-body > ol {
+  margin-top: 1.15rem;
+}
+
+.article-body > h2 {
+  margin-top: 3rem;
+  scroll-margin-top: 7rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--color-primary);
+}
+
+.article-body > h3 {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-primary);
+}
+
+.article-body > ul,
+.article-body > ol {
+  padding-left: 1.4rem;
+}
+
+.article-body > ul {
+  list-style: disc;
+}
+
+.article-body > ol {
+  list-style: decimal;
+}
+
+.article-body > ul > li,
+.article-body > ol > li {
+  margin-top: 0.45rem;
+  padding-left: 0.25rem;
+}
+
+.article-body li::marker {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.article-body > p a,
+.article-body > ul a,
+.article-body > ol a,
+.article-table a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-body strong {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.article-table {
+  margin-top: 1.75rem;
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.article-table table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 0.925rem;
+  line-height: 1.5;
+}
+
+.article-table caption {
+  caption-side: bottom;
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--color-muted-foreground);
+}
+
+.article-table thead th {
+  background: var(--color-navy);
+  color: var(--color-navy-foreground);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-align: left;
+}
+
+.article-table th,
+.article-table td {
+  padding: 0.7rem 0.9rem;
+  vertical-align: top;
+}
+
+.article-table tbody tr:nth-child(even) {
+  background: var(--color-surface);
+}
+
+.article-table tbody th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-primary);
+}
