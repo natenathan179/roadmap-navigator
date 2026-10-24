@@ -17,6 +17,8 @@ export type ArticleBlock =
       title: string;
       rvClass?: string;
       condition?: "new" | "used";
+      /** Text match on year, make, model and class, like the inventory search box. */
+      q?: string;
       limit?: number;
     };
 

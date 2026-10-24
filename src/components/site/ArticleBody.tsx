@@ -130,23 +130,28 @@ function InventoryStrip({
   title,
   rvClass,
   condition,
+  q,
   limit = 3,
 }: {
   title: string;
   rvClass?: string;
   condition?: "new" | "used";
+  q?: string;
   limit?: number;
 }) {
   const { data, isLoading } = useQuery(rvsQuery());
+  const text = q?.toLowerCase();
   const matches = (data ?? []).filter(
     (rv) =>
       rv.status !== "sold" &&
       (!rvClass || rv.rv_class === rvClass) &&
-      (!condition || rv.condition === condition),
+      (!condition || rv.condition === condition) &&
+      (!text || `${rv.year} ${rv.make} ${rv.model} ${rv.rv_class}`.toLowerCase().includes(text)),
   );
   const search: Record<string, string> = {};
   if (rvClass) search["rvClass"] = rvClass;
   if (condition) search["condition"] = condition;
+  if (q) search["q"] = q;
 
   return (
     <section className="my-10 rounded-lg border border-border bg-surface p-5 md:p-6">
