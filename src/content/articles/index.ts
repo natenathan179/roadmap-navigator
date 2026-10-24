@@ -7,10 +7,14 @@ import { classCMotorhomeBuyersGuide } from "./class-c-motorhome-buyers-guide";
 import { classCRvFinancing } from "./class-c-rv-financing";
 import { mostReliableClassCMotorhomes } from "./most-reliable-class-c-motorhomes";
 import { motorhomesForSaleByOwner } from "./motorhomes-for-sale-by-owner";
+import { newmarDutchStarBuyersGuide } from "./newmar-dutch-star-buyers-guide";
+import { newmarDutchStarFloorPlans } from "./newmar-dutch-star-floor-plans";
+import { newmarDutchStarPrice } from "./newmar-dutch-star-price";
 import { rvMotorhomesBuyersGuide } from "./rv-motorhomes-buyers-guide";
 import { smallUsedMotorhomesForSale } from "./small-used-motorhomes-for-sale";
 import { usedClassARvsForSale } from "./used-class-a-rvs-for-sale";
 import { usedClassCMotorhomesForSale } from "./used-class-c-motorhomes-for-sale";
+import { usedNewmarDutchStarForSale } from "./used-newmar-dutch-star-for-sale";
 import { usedRvMotorhomesForSale } from "./used-rv-motorhomes-for-sale";
 import { usedRvValuesAndPrices } from "./used-rv-values-and-prices";
 
@@ -29,6 +33,10 @@ export const ARTICLES: [Article, ...Article[]] = [
   cheapUsedRvsForSale,
   smallUsedMotorhomesForSale,
   usedClassARvsForSale,
+  newmarDutchStarBuyersGuide,
+  newmarDutchStarPrice,
+  newmarDutchStarFloorPlans,
+  usedNewmarDutchStarForSale,
 ];
 
 export const findArticle = (slug: string) => ARTICLES.find((a) => a.slug === slug);
