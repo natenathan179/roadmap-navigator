@@ -5,10 +5,14 @@ import { classAMotorhomesBuyersGuide } from "./class-a-motorhomes-buyers-guide";
 import { classBVsClassCMotorhomes } from "./class-b-vs-class-c-motorhomes";
 import { classCMotorhomeBuyersGuide } from "./class-c-motorhome-buyers-guide";
 import { classCRvFinancing } from "./class-c-rv-financing";
+import { forestRiverCherokeeTravelTrailers } from "./forest-river-cherokee-travel-trailers";
+import { forestRiverForesterClassC } from "./forest-river-forester-class-c";
 import { forestRiverImpressionFifthWheel } from "./forest-river-impression-fifth-wheel";
 import { forestRiverRockwoodTravelTrailers } from "./forest-river-rockwood-travel-trailers";
+import { forestRiverSandpiper3800rk } from "./forest-river-sandpiper-3800rk";
 import { forestRiverVibeFloorPlans } from "./forest-river-vibe-floor-plans";
 import { forestRiverVibeTravelTrailerReview } from "./forest-river-vibe-travel-trailer-review";
+import { forestRiverWildwood28view } from "./forest-river-wildwood-28view";
 import { forestRiverWildwoodTravelTrailer } from "./forest-river-wildwood-travel-trailer";
 import { mostReliableClassCMotorhomes } from "./most-reliable-class-c-motorhomes";
 import { motorhomesForSaleByOwner } from "./motorhomes-for-sale-by-owner";
@@ -17,15 +21,19 @@ import { newmarDutchStarFloorPlans } from "./newmar-dutch-star-floor-plans";
 import { newmarDutchStarPrice } from "./newmar-dutch-star-price";
 import { rockwoodFifthWheels } from "./rockwood-fifth-wheels";
 import { rockwoodMiniLiteTravelTrailer } from "./rockwood-mini-lite-travel-trailer";
+import { rockwoodUltraLiteTravelTrailer } from "./rockwood-ultra-lite-travel-trailer";
 import { rockwoodVsWildwoodVsCherokee } from "./rockwood-vs-wildwood-vs-cherokee";
 import { rvMotorhomesBuyersGuide } from "./rv-motorhomes-buyers-guide";
 import { smallUsedMotorhomesForSale } from "./small-used-motorhomes-for-sale";
 import { usedClassARvsForSale } from "./used-class-a-rvs-for-sale";
 import { usedClassCMotorhomesForSale } from "./used-class-c-motorhomes-for-sale";
+import { usedForestRiverRockwoodByYear } from "./used-forest-river-rockwood-by-year";
+import { usedForestRiverTravelTrailersByYear } from "./used-forest-river-travel-trailers-by-year";
 import { usedForestRiverVibeForSale } from "./used-forest-river-vibe-for-sale";
 import { usedNewmarDutchStarForSale } from "./used-newmar-dutch-star-for-sale";
 import { usedRvMotorhomesForSale } from "./used-rv-motorhomes-for-sale";
 import { usedRvValuesAndPrices } from "./used-rv-values-and-prices";
+import { wildwoodFsx179dbk } from "./wildwood-fsx-179dbk";
 
 /** Listed in this order on /guides. */
 export const ARTICLES: [Article, ...Article[]] = [
@@ -55,6 +63,14 @@ export const ARTICLES: [Article, ...Article[]] = [
   rockwoodFifthWheels,
   forestRiverWildwoodTravelTrailer,
   rockwoodVsWildwoodVsCherokee,
+  rockwoodUltraLiteTravelTrailer,
+  usedForestRiverRockwoodByYear,
+  forestRiverWildwood28view,
+  wildwoodFsx179dbk,
+  forestRiverCherokeeTravelTrailers,
+  usedForestRiverTravelTrailersByYear,
+  forestRiverSandpiper3800rk,
+  forestRiverForesterClassC,
 ];
 
 export const findArticle = (slug: string) => ARTICLES.find((a) => a.slug === slug);
