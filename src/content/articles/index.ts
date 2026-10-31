@@ -15,6 +15,7 @@ import { forestRiverVibeTravelTrailerReview } from "./forest-river-vibe-travel-t
 import { forestRiverWildwood28view } from "./forest-river-wildwood-28view";
 import { forestRiverWildwoodTravelTrailer } from "./forest-river-wildwood-travel-trailer";
 import { hideout175bhVsJayFlightSlx175bh } from "./hideout-175bh-vs-jay-flight-slx-175bh";
+import { howMuchIsAWinnebago } from "./how-much-is-a-winnebago";
 import { keystoneHideout175bhByYear } from "./keystone-hideout-175bh-by-year";
 import { keystoneHideout175bh } from "./keystone-hideout-175bh";
 import { keystoneHideout2024Vs2025Vs2026 } from "./keystone-hideout-2024-vs-2025-vs-2026";
@@ -28,6 +29,7 @@ import { motorhomesForSaleByOwner } from "./motorhomes-for-sale-by-owner";
 import { newmarDutchStarBuyersGuide } from "./newmar-dutch-star-buyers-guide";
 import { newmarDutchStarFloorPlans } from "./newmar-dutch-star-floor-plans";
 import { newmarDutchStarPrice } from "./newmar-dutch-star-price";
+import { oldWinnebagoBraveChieftain } from "./old-winnebago-brave-chieftain";
 import { rockwoodFifthWheels } from "./rockwood-fifth-wheels";
 import { rockwoodMiniLiteTravelTrailer } from "./rockwood-mini-lite-travel-trailer";
 import { rockwoodUltraLiteTravelTrailer } from "./rockwood-ultra-lite-travel-trailer";
@@ -40,6 +42,7 @@ import { shastaCompact18fq } from "./shasta-compact-18fq";
 import { shastaOasisTravelTrailer } from "./shasta-oasis-travel-trailer";
 import { shastaTravelTrailer } from "./shasta-travel-trailer";
 import { smallUsedMotorhomesForSale } from "./small-used-motorhomes-for-sale";
+import { smallWinnebago } from "./small-winnebago";
 import { usedClassARvsForSale } from "./used-class-a-rvs-for-sale";
 import { usedClassCMotorhomesForSale } from "./used-class-c-motorhomes-for-sale";
 import { usedForestRiverRockwoodByYear } from "./used-forest-river-rockwood-by-year";
@@ -48,8 +51,18 @@ import { usedForestRiverVibeForSale } from "./used-forest-river-vibe-for-sale";
 import { usedNewmarDutchStarForSale } from "./used-newmar-dutch-star-for-sale";
 import { usedRvMotorhomesForSale } from "./used-rv-motorhomes-for-sale";
 import { usedRvValuesAndPrices } from "./used-rv-values-and-prices";
+import { usedWinnebagoForSale } from "./used-winnebago-for-sale";
 import { vintageShastaCamper } from "./vintage-shasta-camper";
+import { whoMakesWinnebago } from "./who-makes-winnebago";
 import { wildwoodFsx179dbk } from "./wildwood-fsx-179dbk";
+import { winnebagoCamperVan } from "./winnebago-camper-van";
+import { winnebagoClassAMotorhomes } from "./winnebago-class-a-motorhomes";
+import { winnebagoClassCMotorhomes } from "./winnebago-class-c-motorhomes";
+import { winnebagoElora } from "./winnebago-elora";
+import { winnebagoNavion } from "./winnebago-navion";
+import { winnebagoRvGuide } from "./winnebago-rv-guide";
+import { winnebagoTravelTrailers } from "./winnebago-travel-trailers";
+import { winnebagoView } from "./winnebago-view";
 
 /** Listed in this order on /guides. */
 export const ARTICLES: [Article, ...Article[]] = [
@@ -103,6 +116,19 @@ export const ARTICLES: [Article, ...Article[]] = [
   shastaCamperFloorPlans,
   shastaCamperInterior,
   vintageShastaCamper,
+  winnebagoRvGuide,
+  whoMakesWinnebago,
+  howMuchIsAWinnebago,
+  usedWinnebagoForSale,
+  winnebagoClassAMotorhomes,
+  winnebagoCamperVan,
+  winnebagoClassCMotorhomes,
+  winnebagoView,
+  winnebagoNavion,
+  winnebagoElora,
+  winnebagoTravelTrailers,
+  smallWinnebago,
+  oldWinnebagoBraveChieftain,
 ];
 
 export const findArticle = (slug: string) => ARTICLES.find((a) => a.slug === slug);
