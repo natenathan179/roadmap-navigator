@@ -1,5 +1,17 @@
 import type { Article } from "@/lib/articles";
 
+import { bestClassAMotorhomes } from "./best-class-a-motorhomes";
+import { bestClassBMotorhomes } from "./best-class-b-motorhomes";
+import { bestDieselMotorhomes } from "./best-diesel-motorhomes";
+import { bestGasMotorhomes } from "./best-gas-motorhomes";
+import { bestLuxuryMotorhomesUnder200000 } from "./best-luxury-motorhomes-under-200000";
+import { bestLuxuryMotorhomes } from "./best-luxury-motorhomes";
+import { bestMotorhomesFullTimeLiving } from "./best-motorhomes-full-time-living";
+import { bestMotorhomesUnder100000 } from "./best-motorhomes-under-100000";
+import { bestMotorhomesUnder50000 } from "./best-motorhomes-under-50000";
+import { bestRvMotorhomes2026 } from "./best-rv-motorhomes-2026";
+import { bestTimeToBuyAMotorhome } from "./best-time-to-buy-a-motorhome";
+import { bestWebsitesMotorhomesForSale } from "./best-websites-motorhomes-for-sale";
 import { cheapUsedRvsForSale } from "./cheap-used-rvs-for-sale";
 import { classAMotorhomesBuyersGuide } from "./class-a-motorhomes-buyers-guide";
 import { classBVsClassCMotorhomes } from "./class-b-vs-class-c-motorhomes";
@@ -14,6 +26,7 @@ import { forestRiverVibeFloorPlans } from "./forest-river-vibe-floor-plans";
 import { forestRiverVibeTravelTrailerReview } from "./forest-river-vibe-travel-trailer-review";
 import { forestRiverWildwood28view } from "./forest-river-wildwood-28view";
 import { forestRiverWildwoodTravelTrailer } from "./forest-river-wildwood-travel-trailer";
+import { hiddenCostsOfOwningAMotorhome } from "./hidden-costs-of-owning-a-motorhome";
 import { hideout175bhVsJayFlightSlx175bh } from "./hideout-175bh-vs-jay-flight-slx-175bh";
 import { howMuchIsAWinnebago } from "./how-much-is-a-winnebago";
 import { keystoneHideout175bhByYear } from "./keystone-hideout-175bh-by-year";
@@ -25,7 +38,10 @@ import { keystoneHideoutInterior } from "./keystone-hideout-interior";
 import { keystoneHideoutSport } from "./keystone-hideout-sport";
 import { keystoneHideoutTravelTrailer } from "./keystone-hideout-travel-trailer";
 import { mostReliableClassCMotorhomes } from "./most-reliable-class-c-motorhomes";
+import { motorhomeDepreciation } from "./motorhome-depreciation";
+import { motorhomeTradeInGuide } from "./motorhome-trade-in-guide";
 import { motorhomesForSaleByOwner } from "./motorhomes-for-sale-by-owner";
+import { newVsUsedMotorhomes } from "./new-vs-used-motorhomes";
 import { newmarDutchStarBuyersGuide } from "./newmar-dutch-star-buyers-guide";
 import { newmarDutchStarFloorPlans } from "./newmar-dutch-star-floor-plans";
 import { newmarDutchStarPrice } from "./newmar-dutch-star-price";
@@ -53,6 +69,7 @@ import { usedRvMotorhomesForSale } from "./used-rv-motorhomes-for-sale";
 import { usedRvValuesAndPrices } from "./used-rv-values-and-prices";
 import { usedWinnebagoForSale } from "./used-winnebago-for-sale";
 import { vintageShastaCamper } from "./vintage-shasta-camper";
+import { whatIsASuperCMotorhome } from "./what-is-a-super-c-motorhome";
 import { whoMakesWinnebago } from "./who-makes-winnebago";
 import { wildwoodFsx179dbk } from "./wildwood-fsx-179dbk";
 import { winnebagoCamperVan } from "./winnebago-camper-van";
@@ -129,6 +146,23 @@ export const ARTICLES: [Article, ...Article[]] = [
   winnebagoTravelTrailers,
   smallWinnebago,
   oldWinnebagoBraveChieftain,
+  bestRvMotorhomes2026,
+  bestClassAMotorhomes,
+  bestClassBMotorhomes,
+  bestLuxuryMotorhomes,
+  bestDieselMotorhomes,
+  bestGasMotorhomes,
+  bestMotorhomesFullTimeLiving,
+  newVsUsedMotorhomes,
+  bestWebsitesMotorhomesForSale,
+  hiddenCostsOfOwningAMotorhome,
+  bestMotorhomesUnder50000,
+  bestMotorhomesUnder100000,
+  bestLuxuryMotorhomesUnder200000,
+  motorhomeDepreciation,
+  motorhomeTradeInGuide,
+  bestTimeToBuyAMotorhome,
+  whatIsASuperCMotorhome,
 ];
 
 export const findArticle = (slug: string) => ARTICLES.find((a) => a.slug === slug);

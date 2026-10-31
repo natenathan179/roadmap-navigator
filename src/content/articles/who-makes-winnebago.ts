@@ -28,7 +28,7 @@ export const whoMakesWinnebago: Article = {
     { type: "h2", text: "Winnebago Industries at a Glance" },
     {
       type: "table",
-      head: ["", ""],
+      head: ["Fact", "Detail"],
       rows: [
         ["Company", "Winnebago Industries, Inc."],
         ["Founded", "1958, Forest City, Iowa"],
