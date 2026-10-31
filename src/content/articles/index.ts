@@ -33,6 +33,12 @@ import { rockwoodMiniLiteTravelTrailer } from "./rockwood-mini-lite-travel-trail
 import { rockwoodUltraLiteTravelTrailer } from "./rockwood-ultra-lite-travel-trailer";
 import { rockwoodVsWildwoodVsCherokee } from "./rockwood-vs-wildwood-vs-cherokee";
 import { rvMotorhomesBuyersGuide } from "./rv-motorhomes-buyers-guide";
+import { shastaCamperFloorPlans } from "./shasta-camper-floor-plans";
+import { shastaCamperForSale } from "./shasta-camper-for-sale";
+import { shastaCamperInterior } from "./shasta-camper-interior";
+import { shastaCompact18fq } from "./shasta-compact-18fq";
+import { shastaOasisTravelTrailer } from "./shasta-oasis-travel-trailer";
+import { shastaTravelTrailer } from "./shasta-travel-trailer";
 import { smallUsedMotorhomesForSale } from "./small-used-motorhomes-for-sale";
 import { usedClassARvsForSale } from "./used-class-a-rvs-for-sale";
 import { usedClassCMotorhomesForSale } from "./used-class-c-motorhomes-for-sale";
@@ -42,6 +48,7 @@ import { usedForestRiverVibeForSale } from "./used-forest-river-vibe-for-sale";
 import { usedNewmarDutchStarForSale } from "./used-newmar-dutch-star-for-sale";
 import { usedRvMotorhomesForSale } from "./used-rv-motorhomes-for-sale";
 import { usedRvValuesAndPrices } from "./used-rv-values-and-prices";
+import { vintageShastaCamper } from "./vintage-shasta-camper";
 import { wildwoodFsx179dbk } from "./wildwood-fsx-179dbk";
 
 /** Listed in this order on /guides. */
@@ -89,6 +96,13 @@ export const ARTICLES: [Article, ...Article[]] = [
   keystoneHideoutBunkhouse,
   keystoneHideout2024Vs2025Vs2026,
   keystoneHideoutInterior,
+  shastaTravelTrailer,
+  shastaCamperForSale,
+  shastaOasisTravelTrailer,
+  shastaCompact18fq,
+  shastaCamperFloorPlans,
+  shastaCamperInterior,
+  vintageShastaCamper,
 ];
 
 export const findArticle = (slug: string) => ARTICLES.find((a) => a.slug === slug);
