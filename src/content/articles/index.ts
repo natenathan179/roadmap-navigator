@@ -14,6 +14,15 @@ import { forestRiverVibeFloorPlans } from "./forest-river-vibe-floor-plans";
 import { forestRiverVibeTravelTrailerReview } from "./forest-river-vibe-travel-trailer-review";
 import { forestRiverWildwood28view } from "./forest-river-wildwood-28view";
 import { forestRiverWildwoodTravelTrailer } from "./forest-river-wildwood-travel-trailer";
+import { hideout175bhVsJayFlightSlx175bh } from "./hideout-175bh-vs-jay-flight-slx-175bh";
+import { keystoneHideout175bhByYear } from "./keystone-hideout-175bh-by-year";
+import { keystoneHideout175bh } from "./keystone-hideout-175bh";
+import { keystoneHideout2024Vs2025Vs2026 } from "./keystone-hideout-2024-vs-2025-vs-2026";
+import { keystoneHideoutBunkhouse } from "./keystone-hideout-bunkhouse";
+import { keystoneHideoutForSale } from "./keystone-hideout-for-sale";
+import { keystoneHideoutInterior } from "./keystone-hideout-interior";
+import { keystoneHideoutSport } from "./keystone-hideout-sport";
+import { keystoneHideoutTravelTrailer } from "./keystone-hideout-travel-trailer";
 import { mostReliableClassCMotorhomes } from "./most-reliable-class-c-motorhomes";
 import { motorhomesForSaleByOwner } from "./motorhomes-for-sale-by-owner";
 import { newmarDutchStarBuyersGuide } from "./newmar-dutch-star-buyers-guide";
@@ -71,6 +80,15 @@ export const ARTICLES: [Article, ...Article[]] = [
   usedForestRiverTravelTrailersByYear,
   forestRiverSandpiper3800rk,
   forestRiverForesterClassC,
+  keystoneHideoutTravelTrailer,
+  keystoneHideoutForSale,
+  keystoneHideoutSport,
+  keystoneHideout175bh,
+  keystoneHideout175bhByYear,
+  hideout175bhVsJayFlightSlx175bh,
+  keystoneHideoutBunkhouse,
+  keystoneHideout2024Vs2025Vs2026,
+  keystoneHideoutInterior,
 ];
 
 export const findArticle = (slug: string) => ARTICLES.find((a) => a.slug === slug);
