@@ -31,12 +31,20 @@ import { classAMotorhomesBuyersGuide } from "./class-a-motorhomes-buyers-guide";
 import { classBVsClassCMotorhomes } from "./class-b-vs-class-c-motorhomes";
 import { classCMotorhomeBuyersGuide } from "./class-c-motorhome-buyers-guide";
 import { classCRvFinancing } from "./class-c-rv-financing";
+import { coachmenLeprechaun } from "./coachmen-leprechaun";
+import { coachmenMotorhomes } from "./coachmen-motorhomes";
 import { commonMotorhomeProblems } from "./common-motorhome-problems";
 import { dieselMotorhomeMaintenance } from "./diesel-motorhome-maintenance";
+import { entegraAspire } from "./entegra-aspire";
+import { entegraCoachMotorhomes } from "./entegra-coach-motorhomes";
 import { firstMotorhomeTripPackingList } from "./first-motorhome-trip-packing-list";
+import { fleetwoodDiscovery } from "./fleetwood-discovery";
+import { fleetwoodMotorhomes } from "./fleetwood-motorhomes";
 import { forestRiverCherokeeTravelTrailers } from "./forest-river-cherokee-travel-trailers";
 import { forestRiverForesterClassC } from "./forest-river-forester-class-c";
+import { forestRiverFr3 } from "./forest-river-fr3";
 import { forestRiverImpressionFifthWheel } from "./forest-river-impression-fifth-wheel";
+import { forestRiverMotorhomes } from "./forest-river-motorhomes";
 import { forestRiverRockwoodTravelTrailers } from "./forest-river-rockwood-travel-trailers";
 import { forestRiverSandpiper3800rk } from "./forest-river-sandpiper-3800rk";
 import { forestRiverVibeFloorPlans } from "./forest-river-vibe-floor-plans";
@@ -48,6 +56,8 @@ import { hideout175bhVsJayFlightSlx175bh } from "./hideout-175bh-vs-jay-flight-s
 import { howMuchIsAWinnebago } from "./how-much-is-a-winnebago";
 import { howOftenToServiceAMotorhome } from "./how-often-to-service-a-motorhome";
 import { howToWinterizeAMotorhome } from "./how-to-winterize-a-motorhome";
+import { jaycoMotorhomes } from "./jayco-motorhomes";
+import { jaycoPrecept } from "./jayco-precept";
 import { keystoneHideout175bhByYear } from "./keystone-hideout-175bh-by-year";
 import { keystoneHideout175bh } from "./keystone-hideout-175bh";
 import { keystoneHideout2024Vs2025Vs2026 } from "./keystone-hideout-2024-vs-2025-vs-2026";
@@ -68,9 +78,11 @@ import { newVsUsedMotorhomes } from "./new-vs-used-motorhomes";
 import { newmarDutchStarBuyersGuide } from "./newmar-dutch-star-buyers-guide";
 import { newmarDutchStarFloorPlans } from "./newmar-dutch-star-floor-plans";
 import { newmarDutchStarPrice } from "./newmar-dutch-star-price";
+import { newmarMotorhomes } from "./newmar-motorhomes";
 import { oldWinnebagoBraveChieftain } from "./old-winnebago-brave-chieftain";
 import { planAMotorhomeRoadTrip } from "./plan-a-motorhome-road-trip";
 import { prepareMotorhomeForRoadTrip } from "./prepare-motorhome-for-road-trip";
+import { revGroupMotorhomes } from "./rev-group-motorhomes";
 import { rockwoodFifthWheels } from "./rockwood-fifth-wheels";
 import { rockwoodMiniLiteTravelTrailer } from "./rockwood-mini-lite-travel-trailer";
 import { rockwoodUltraLiteTravelTrailer } from "./rockwood-ultra-lite-travel-trailer";
@@ -84,6 +96,10 @@ import { shastaOasisTravelTrailer } from "./shasta-oasis-travel-trailer";
 import { shastaTravelTrailer } from "./shasta-travel-trailer";
 import { smallUsedMotorhomesForSale } from "./small-used-motorhomes-for-sale";
 import { smallWinnebago } from "./small-winnebago";
+import { thorChateau } from "./thor-chateau";
+import { thorMotorCoachMotorhomes } from "./thor-motor-coach-motorhomes";
+import { tiffinAllegroBus } from "./tiffin-allegro-bus";
+import { tiffinMotorhomes } from "./tiffin-motorhomes";
 import { usedClassARvsForSale } from "./used-class-a-rvs-for-sale";
 import { usedClassCMotorhomesForSale } from "./used-class-c-motorhomes-for-sale";
 import { usedForestRiverRockwoodByYear } from "./used-forest-river-rockwood-by-year";
@@ -97,6 +113,7 @@ import { vintageShastaCamper } from "./vintage-shasta-camper";
 import { whatIsASuperCMotorhome } from "./what-is-a-super-c-motorhome";
 import { whoMakesWinnebago } from "./who-makes-winnebago";
 import { wildwoodFsx179dbk } from "./wildwood-fsx-179dbk";
+import { winnebagoAdventurer } from "./winnebago-adventurer";
 import { winnebagoCamperVan } from "./winnebago-camper-van";
 import { winnebagoClassAMotorhomes } from "./winnebago-class-a-motorhomes";
 import { winnebagoClassCMotorhomes } from "./winnebago-class-c-motorhomes";
@@ -213,6 +230,23 @@ export const ARTICLES: [Article, ...Article[]] = [
   bestMotorhomeTires,
   howToWinterizeAMotorhome,
   motorhomeInsurance,
+  thorMotorCoachMotorhomes,
+  thorChateau,
+  tiffinMotorhomes,
+  tiffinAllegroBus,
+  newmarMotorhomes,
+  forestRiverMotorhomes,
+  forestRiverFr3,
+  jaycoMotorhomes,
+  jaycoPrecept,
+  entegraCoachMotorhomes,
+  entegraAspire,
+  fleetwoodMotorhomes,
+  fleetwoodDiscovery,
+  coachmenMotorhomes,
+  coachmenLeprechaun,
+  revGroupMotorhomes,
+  winnebagoAdventurer,
 ];
 
 export const findArticle = (slug: string) => ARTICLES.find((a) => a.slug === slug);
