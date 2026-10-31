@@ -6,6 +6,7 @@ import { bestDieselMotorhomes } from "./best-diesel-motorhomes";
 import { bestGasMotorhomes } from "./best-gas-motorhomes";
 import { bestLuxuryMotorhomesUnder200000 } from "./best-luxury-motorhomes-under-200000";
 import { bestLuxuryMotorhomes } from "./best-luxury-motorhomes";
+import { bestMotorhomeTires } from "./best-motorhome-tires";
 import { bestMotorhomesForBoondocking } from "./best-motorhomes-for-boondocking";
 import { bestMotorhomesForCouples } from "./best-motorhomes-for-couples";
 import { bestMotorhomesForCrossCountryRoadTrips } from "./best-motorhomes-for-cross-country-road-trips";
@@ -30,6 +31,8 @@ import { classAMotorhomesBuyersGuide } from "./class-a-motorhomes-buyers-guide";
 import { classBVsClassCMotorhomes } from "./class-b-vs-class-c-motorhomes";
 import { classCMotorhomeBuyersGuide } from "./class-c-motorhome-buyers-guide";
 import { classCRvFinancing } from "./class-c-rv-financing";
+import { commonMotorhomeProblems } from "./common-motorhome-problems";
+import { dieselMotorhomeMaintenance } from "./diesel-motorhome-maintenance";
 import { firstMotorhomeTripPackingList } from "./first-motorhome-trip-packing-list";
 import { forestRiverCherokeeTravelTrailers } from "./forest-river-cherokee-travel-trailers";
 import { forestRiverForesterClassC } from "./forest-river-forester-class-c";
@@ -43,6 +46,8 @@ import { forestRiverWildwoodTravelTrailer } from "./forest-river-wildwood-travel
 import { hiddenCostsOfOwningAMotorhome } from "./hidden-costs-of-owning-a-motorhome";
 import { hideout175bhVsJayFlightSlx175bh } from "./hideout-175bh-vs-jay-flight-slx-175bh";
 import { howMuchIsAWinnebago } from "./how-much-is-a-winnebago";
+import { howOftenToServiceAMotorhome } from "./how-often-to-service-a-motorhome";
+import { howToWinterizeAMotorhome } from "./how-to-winterize-a-motorhome";
 import { keystoneHideout175bhByYear } from "./keystone-hideout-175bh-by-year";
 import { keystoneHideout175bh } from "./keystone-hideout-175bh";
 import { keystoneHideout2024Vs2025Vs2026 } from "./keystone-hideout-2024-vs-2025-vs-2026";
@@ -53,8 +58,10 @@ import { keystoneHideoutSport } from "./keystone-hideout-sport";
 import { keystoneHideoutTravelTrailer } from "./keystone-hideout-travel-trailer";
 import { livingFullTimeInAMotorhome } from "./living-full-time-in-a-motorhome";
 import { mostReliableClassCMotorhomes } from "./most-reliable-class-c-motorhomes";
+import { motorhomeAccessories } from "./motorhome-accessories";
 import { motorhomeCampingForBeginners } from "./motorhome-camping-for-beginners";
 import { motorhomeDepreciation } from "./motorhome-depreciation";
+import { motorhomeInsurance } from "./motorhome-insurance";
 import { motorhomeTradeInGuide } from "./motorhome-trade-in-guide";
 import { motorhomesForSaleByOwner } from "./motorhomes-for-sale-by-owner";
 import { newVsUsedMotorhomes } from "./new-vs-used-motorhomes";
@@ -199,6 +206,13 @@ export const ARTICLES: [Article, ...Article[]] = [
   planAMotorhomeRoadTrip,
   bestMotorhomesForBoondocking,
   prepareMotorhomeForRoadTrip,
+  dieselMotorhomeMaintenance,
+  commonMotorhomeProblems,
+  howOftenToServiceAMotorhome,
+  motorhomeAccessories,
+  bestMotorhomeTires,
+  howToWinterizeAMotorhome,
+  motorhomeInsurance,
 ];
 
 export const findArticle = (slug: string) => ARTICLES.find((a) => a.slug === slug);
