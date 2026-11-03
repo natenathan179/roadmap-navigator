@@ -27,6 +27,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TradeInRouteImport } from './routes/trade-in'
 import { Route as UsedRvsRouteImport } from './routes/used-rvs'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as FeedsGoogleMerchantDotxmlRouteImport } from './routes/feeds.google-merchant[.]xml'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as InventoryIndexRouteImport } from './routes/inventory.index'
@@ -122,6 +123,12 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const FeedsGoogleMerchantDotxmlRoute =
+  FeedsGoogleMerchantDotxmlRouteImport.update({
+    id: '/feeds/google-merchant.xml',
+    path: '/feeds/google-merchant.xml',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const GuidesIndexRoute = GuidesIndexRouteImport.update({
   id: '/guides/',
   path: '/guides/',
@@ -166,6 +173,7 @@ export interface FileRoutesByFullPath {
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/feeds/google-merchant.xml': typeof FeedsGoogleMerchantDotxmlRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/inventory/$slug': typeof InventorySlugRoute
   '/guides/': typeof GuidesIndexRoute
@@ -190,6 +198,7 @@ export interface FileRoutesByTo {
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/feeds/google-merchant.xml': typeof FeedsGoogleMerchantDotxmlRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/inventory/$slug': typeof InventorySlugRoute
   '/guides': typeof GuidesIndexRoute
@@ -216,6 +225,7 @@ export interface FileRoutesById {
   '/trade-in': typeof TradeInRoute
   '/used-rvs': typeof UsedRvsRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/feeds/google-merchant.xml': typeof FeedsGoogleMerchantDotxmlRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/inventory/$slug': typeof InventorySlugRoute
   '/guides/': typeof GuidesIndexRoute
@@ -242,6 +252,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/used-rvs'
     | '/admin'
+    | '/feeds/google-merchant.xml'
     | '/guides/$slug'
     | '/inventory/$slug'
     | '/guides/'
@@ -266,6 +277,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/used-rvs'
     | '/admin'
+    | '/feeds/google-merchant.xml'
     | '/guides/$slug'
     | '/inventory/$slug'
     | '/guides'
@@ -291,6 +303,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/used-rvs'
     | '/_authenticated/admin'
+    | '/feeds/google-merchant.xml'
     | '/guides/$slug'
     | '/inventory/$slug'
     | '/guides/'
@@ -316,6 +329,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   TradeInRoute: typeof TradeInRoute
   UsedRvsRoute: typeof UsedRvsRoute
+  FeedsGoogleMerchantDotxmlRoute: typeof FeedsGoogleMerchantDotxmlRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   InventorySlugRoute: typeof InventorySlugRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
@@ -451,6 +465,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/feeds/google-merchant.xml': {
+      id: '/feeds/google-merchant.xml'
+      path: '/feeds/google-merchant.xml'
+      fullPath: '/feeds/google-merchant.xml'
+      preLoaderRoute: typeof FeedsGoogleMerchantDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guides/': {
       id: '/guides/'
       path: '/guides'
@@ -518,6 +539,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   TradeInRoute: TradeInRoute,
   UsedRvsRoute: UsedRvsRoute,
+  FeedsGoogleMerchantDotxmlRoute: FeedsGoogleMerchantDotxmlRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   InventorySlugRoute: InventorySlugRoute,
   GuidesIndexRoute: GuidesIndexRoute,

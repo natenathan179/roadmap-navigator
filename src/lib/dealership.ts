@@ -22,6 +22,11 @@ export const DEALER = {
   email: "sales@rvmotorhomesdealership.com",
   /** Address every website form is emailed to via FormSubmit. */
   formEmail: "sales@rvmotorhomesdealership.com",
+  /**
+   * Store code from the dealership's Google Business Profile (case-sensitive). Leave blank until the
+   * profile is verified; once set, the Merchant Center feed marks every unit as available in store.
+   */
+  googleStoreCode: "",
   hours: [
     { days: "Monday – Friday", time: "8:00 AM – 6:00 PM" },
     { days: "Saturday", time: "9:00 AM – 5:00 PM" },

@@ -10,25 +10,41 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useCart } from "@/lib/cart";
-import { DEALER } from "@/lib/dealership";
+import { absoluteUrl, DEALER } from "@/lib/dealership";
 import { miles, money, rvQuery, rvTitle, rvsQuery, type Rv } from "@/lib/inventory";
 
 export const Route = createFileRoute("/inventory/$slug")({
-  head: ({ params }) => {
-    const words = params.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  // Load the unit on the server so the first HTML already carries the price, photos and
+  // structured data — Google Merchant Center checks the landing page against the feed.
+  loader: ({ context, params }) => context.queryClient.ensureQueryData(rvQuery(params.slug)),
+  head: ({ params, loaderData: rv }) => {
+    if (!rv) {
+      const words = params.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+      return {
+        meta: [
+          { title: `${words} | ${DEALER.name}` },
+          { name: "robots", content: "noindex" },
+        ],
+      };
+    }
+    // Built from DEALER rather than rv.seo_title so the business name and location always match
+    // the Merchant Center business info.
+    const title = `${rvTitle(rv)} ${rv.rv_type ?? rv.rv_class} for Sale | ${DEALER.name}, ${DEALER.stateName}`;
+    const description = `${rv.condition === "new" ? "New" : "Used"} ${rvTitle(rv)} for sale at ${DEALER.name} in ${DEALER.stateName}. Full specifications, HD photos, financing and nationwide RV delivery.`;
+    const image = rv.photos[0] ? absoluteUrl(rv.photos[0]) : null;
     return {
       meta: [
-        { title: `${words} for Sale | RV MotorHomes Dealership, Michigan` },
-        {
-          name: "description",
-          content: `${words} for sale at RV MotorHomes Dealership in Michigan. Full specifications, floorplan details, HD photos, financing and nationwide RV delivery.`,
-        },
-        { property: "og:title", content: `${words} for Sale | RV MotorHomes Dealership` },
-        {
-          property: "og:description",
-          content: `Photos, specifications and pricing for this ${words} at RV MotorHomes Dealership, Michigan.`,
-        },
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
         { property: "og:type", content: "product" },
+        ...(image ? [{ property: "og:image", content: image }] : []),
+        { property: "product:price:amount", content: String(rv.price) },
+        { property: "product:price:currency", content: "USD" },
+        { property: "product:availability", content: rv.status === "sold" ? "out of stock" : "in stock" },
+        { property: "product:condition", content: rv.condition === "new" ? "new" : "used" },
+        { property: "product:retailer_item_id", content: rv.stock_number },
         { name: "twitter:card", content: "summary_large_image" },
       ],
     };
@@ -104,7 +120,7 @@ function Gallery({ rv }: { rv: Rv }) {
 
 function RvDetail() {
   const { slug } = Route.useParams();
-  const { data: rv, isLoading } = useQuery(rvQuery(slug));
+  const { data: rv, isLoading } = useQuery({ ...rvQuery(slug), initialData: Route.useLoaderData() });
   const { data: all } = useQuery(rvsQuery());
   const cart = useCart();
   const [modal, setModal] = useState<InquiryKind | null>(null);
@@ -134,20 +150,34 @@ function RvDetail() {
   const inCart = cart.items.some((i) => i.id === rv.id);
   const related = (all ?? []).filter((r) => r.id !== rv.id && r.rv_class === rv.rv_class).slice(0, 3);
 
+  const url = absoluteUrl(`/inventory/${rv.slug}`);
+  const itemCondition =
+    rv.condition === "new" ? "https://schema.org/NewCondition" : "https://schema.org/UsedCondition";
+  // Mirrors the Merchant Center feed (src/routes/feeds.google-merchant[.]xml.ts): same id, price and condition.
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": ["Product", "Vehicle"],
     name: title,
+    url,
     sku: rv.stock_number,
-    description: rv.seo_description ?? rv.description ?? title,
+    productID: rv.stock_number,
+    image: rv.photos.map(absoluteUrl),
+    description: rv.description ?? title,
     brand: { "@type": "Brand", name: rv.make },
-    itemCondition: rv.condition === "new" ? "https://schema.org/NewCondition" : "https://schema.org/UsedCondition",
+    model: rv.model,
+    modelDate: String(rv.year),
+    vehicleIdentificationNumber: rv.vin ?? undefined,
+    color: rv.ext_color ?? undefined,
+    mileageFromOdometer: { "@type": "QuantitativeValue", value: rv.mileage, unitCode: "SMI" },
+    itemCondition,
     offers: {
       "@type": "Offer",
+      url,
       price: rv.price,
       priceCurrency: "USD",
+      itemCondition,
       availability: rv.status === "sold" ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
-      seller: { "@type": "AutoDealer", name: DEALER.name },
+      seller: { "@type": "AutoDealer", name: DEALER.name, url: DEALER.siteUrl, telephone: DEALER.phone },
     },
   };
 
