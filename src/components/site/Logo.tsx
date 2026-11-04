@@ -45,7 +45,7 @@ export function LogoMark({ className }: { className?: string }) {
 export function Logo({ stacked = false, className }: { stacked?: boolean; className?: string }) {
   return (
     <span className={cn("flex", stacked ? "flex-col items-start gap-2" : "items-center gap-2.5", className)}>
-      <LogoMark className={stacked ? "h-10" : undefined} />
+      <LogoMark {...(stacked ? { className: "h-10" } : {})} />
       <span className="leading-none">
         <span className="block whitespace-nowrap bg-gradient-to-b from-white via-[#C3C9CF] to-[#EEF1F3] bg-clip-text font-display text-[15px] font-extrabold uppercase tracking-[0.16em] text-transparent">
           MotorHomes
