@@ -17,6 +17,7 @@ const PAGES = [
   "/guides",
   "/about",
   "/contact",
+  "/return-policy",
   "/privacy",
   "/terms",
 ];

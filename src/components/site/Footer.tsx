@@ -29,6 +29,7 @@ const COLUMNS = [
       { to: "/about", label: "About Us" },
       { to: "/services", label: "Service Department" },
       { to: "/contact", label: "Contact" },
+      { to: "/return-policy", label: "Return & Refund Policy" },
       { to: "/privacy", label: "Privacy Policy" },
       { to: "/terms", label: "Terms & Conditions" },
     ],

@@ -20,6 +20,7 @@ import { Route as DeliveryRouteImport } from './routes/delivery'
 import { Route as FinancingRouteImport } from './routes/financing'
 import { Route as NewRvsRouteImport } from './routes/new-rvs'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ReturnPolicyRouteImport } from './routes/return-policy'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -86,6 +87,11 @@ const NewRvsRoute = NewRvsRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReturnPolicyRoute = ReturnPolicyRouteImport.update({
+  id: '/return-policy',
+  path: '/return-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReviewsRoute = ReviewsRouteImport.update({
@@ -166,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/financing': typeof FinancingRoute
   '/new-rvs': typeof NewRvsRoute
   '/privacy': typeof PrivacyRoute
+  '/return-policy': typeof ReturnPolicyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -191,6 +198,7 @@ export interface FileRoutesByTo {
   '/financing': typeof FinancingRoute
   '/new-rvs': typeof NewRvsRoute
   '/privacy': typeof PrivacyRoute
+  '/return-policy': typeof ReturnPolicyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -218,6 +226,7 @@ export interface FileRoutesById {
   '/financing': typeof FinancingRoute
   '/new-rvs': typeof NewRvsRoute
   '/privacy': typeof PrivacyRoute
+  '/return-policy': typeof ReturnPolicyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -245,6 +254,7 @@ export interface FileRouteTypes {
     | '/financing'
     | '/new-rvs'
     | '/privacy'
+    | '/return-policy'
     | '/reviews'
     | '/services'
     | '/sitemap.xml'
@@ -270,6 +280,7 @@ export interface FileRouteTypes {
     | '/financing'
     | '/new-rvs'
     | '/privacy'
+    | '/return-policy'
     | '/reviews'
     | '/services'
     | '/sitemap.xml'
@@ -296,6 +307,7 @@ export interface FileRouteTypes {
     | '/financing'
     | '/new-rvs'
     | '/privacy'
+    | '/return-policy'
     | '/reviews'
     | '/services'
     | '/sitemap.xml'
@@ -323,6 +335,7 @@ export interface RootRouteChildren {
   FinancingRoute: typeof FinancingRoute
   NewRvsRoute: typeof NewRvsRoute
   PrivacyRoute: typeof PrivacyRoute
+  ReturnPolicyRoute: typeof ReturnPolicyRoute
   ReviewsRoute: typeof ReviewsRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -414,6 +427,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/return-policy': {
+      id: '/return-policy'
+      path: '/return-policy'
+      fullPath: '/return-policy'
+      preLoaderRoute: typeof ReturnPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reviews': {
@@ -533,6 +553,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinancingRoute: FinancingRoute,
   NewRvsRoute: NewRvsRoute,
   PrivacyRoute: PrivacyRoute,
+  ReturnPolicyRoute: ReturnPolicyRoute,
   ReviewsRoute: ReviewsRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
